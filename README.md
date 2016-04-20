@@ -1,4 +1,4 @@
-# W65C816SXB ANS Forth
+# W65C265SXB ANS Forth
 
 This project builds a Forth environment for a WDC W65C265SXB which can be
 accessed via a USB serial connection to the ACIA port. (I use a cheap PL2303
