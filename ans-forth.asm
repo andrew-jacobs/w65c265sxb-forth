@@ -44,7 +44,7 @@
                 longa   off
 
                 include "w65c816.inc"
-
+                
 ;===============================================================================
 ; Macros
 ;-------------------------------------------------------------------------------
@@ -88,7 +88,7 @@ CONTINUE        macro
                 endm
 
 TRAILER         macro
-LAST_WORD       equ     WORD@<WORDZ>
+LAST_WORD       dw      WORD@<WORDZ>
                 endm
 
 ;===============================================================================
@@ -118,33 +118,24 @@ PAD_SIZE        equ     48
 ; Data Areas
 ;-------------------------------------------------------------------------------
 
-                page0
-                org     $00
-
-USER_AREA       ds      USER_SIZE               ; User Variables
-
-
+USER_AREA       equ     $0000                   ; User variable area
+TIB_AREA        equ     USER_AREA+USER_SIZE     ; Terminal Input Buffer
+PAD_AREA        equ     TIB_AREA+TIB_SIZE       ; Scratch pad   
+PAD_END         equ     PAD_AREA+PAD_SIZE
+                
 DSTACK_START    equ     $0100
 DSTACK_END      equ     DSTACK_START+DSTACK_SIZE
 
-RSTACK_START    equ     $0180
+RSTACK_START    equ     DSTACK_END
 RSTACK_END      equ     RSTACK_START+RSTACK_SIZE
-
-
-                data
-                org     $0200
-
-TIB_AREA:       ds      TIB_SIZE                ; Terminal Input Buffer
-                ds      PAD_SIZE                ; Pad area
-PAD_AREA:       ds      0
 
 ;===============================================================================
 ; Forth Entry Point
 ;-------------------------------------------------------------------------------
 
-FORTH           section OFFSET $0400
-
+                code
                 public  Start
+                extern  NEXT_WORD
 Start:
                 native                          ; Go to native mode
                 long_ai                         ; And all 16-bit registers
@@ -168,6 +159,7 @@ COLD:
                 dw      DP
                 dw      STORE
                 dw      DO_LITERAL,LAST_WORD
+                dw      FETCH
                 dw      LATEST
                 dw      STORE
                 dw      CR
@@ -3802,7 +3794,7 @@ HOLD:           jsr     DO_COLON
 
                 HEADER  3,"PAD",NORMAL
 PAD:            jsr     DO_CONSTANT
-                dw      PAD_AREA
+                dw      PAD_END
 
 ; SIGN ( n -- )
 ;
@@ -3913,9 +3905,9 @@ DOT_WORD:       jsr     DO_COLON
 
                 HEADER  2,".S",NORMAL
                 jsr     DO_COLON
-		dw	DO_LITERAL,'{'
-		dw	EMIT
-		dw	SPACE
+                dw      DO_LITERAL,'{'
+                dw      EMIT
+                dw      SPACE
                 dw      AT_DP
                 dw      ONE_PLUS
                 dw      DO_LITERAL,DSTACK_END
@@ -3927,9 +3919,9 @@ DOT_S_1:        dw      I
                 dw      DO_LITERAL,2
                 dw      DO_PLUS_LOOP
                 dw      DOT_S_1
-DOT_S_2:	dw	DO_LITERAL,'}'
-		dw	EMIT
-		dw	SPACE
+DOT_S_2:        dw      DO_LITERAL,'}'
+                dw      EMIT
+                dw      SPACE
                 dw      EXIT
 
 ; ? ( a-addr -- )
@@ -3967,8 +3959,9 @@ AT_RP:
 ;-------------------------------------------------------------------------------
 
                 include "device.asm"
+                
+;-------------------------------------------------------------------------------
 
                 TRAILER
-NEXT_WORD:
-
-                end
+                
+		end
