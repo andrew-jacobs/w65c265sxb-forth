@@ -57,7 +57,7 @@ I will continue to add documentation, more words and debug.
 ## Forth in ROM
 
 The latest version of the code builds an S28 version that runs from RAM and a S19 version that
-is converted into a 32 ROM image that can be loaded into the SXB's flash ROM chip (if installed).
+is converted into a 32K ROM image that can be loaded into the SXB's flash ROM chip (if installed).
 
 To load the image use the W65C265SXB-Hacker program to disable the WDC ROM, erase the default
 flash bank and the XMODEM download the image. The commands are:
