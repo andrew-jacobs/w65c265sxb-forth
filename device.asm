@@ -21,6 +21,8 @@
 ;
 ;------------------------------------------------------------------------------
 
+		include	"w65c265.inc"
+
 ; (TITLE) - ( -- )
 ;
 
@@ -36,9 +38,11 @@ DO_TITLE:       jsr     DO_COLON
 
                 HEADER  3,"BYE",NORMAL
 BYE:
-                sei
+                sei			; Restore control to the Mensch Monitor
                 cld
                 emulate
+		lda	#1<<7		; Ename the WDC ROM
+		trb	BCR
                 jmp     ($fffc)         ; Reset the processor
 
 ; UNUSED ( -- u )

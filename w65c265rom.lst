@@ -1,4 +1,4 @@
-  Fri May  6 2016  0:34                                                                                                    Page 1
+  Sat May  7 2016 20:07                                                                                                    Page 1
 
 
                                                ***************************************
@@ -14,7 +14,7 @@
      5                        ;   \ V  V /| (_) |__) | |___ / __/| (_) |__) |__) /  \| |_) |
      6                        ;    \_/\_/  \___/____/ \____|_____|\___/____/____/_/\_\____/
      7                        ;
-     8                        ; Basic Vector Handling for the W65C265SXB Development Board
+     8                        ; Power On Reset and Basic Vector Handling for the W65C265SXB Development Board
      9                        ;-------------------------------------------------------------------------------
     10                        ; Copyright (C)2015-2016 HandCoded Software Ltd.
     11                        ; All rights reserved.
@@ -28,14 +28,137 @@
     19                        ;===============================================================================
     20                        ; Notes:
     21                        ;
-    22                        ;-------------------------------------------------------------------------------
-    23                        
-    24                                        pw      132
-    25                                        inclist on
-    26                        
-    27                                        chip    65816
-    28                        
-    29                                        include "w65c265.inc"
+    22                        ;
+    23                        ; This ROM takes control of the UART3 serial connection from the Mensch Monitor
+    24                        ; on startup.
+    25                        ;
+    26                        ;-------------------------------------------------------------------------------
+    27                        
+    28                                        pw      132
+    29                                        inclist on
+    30                        
+    31                                        chip    65816
+    32                        
+    33                                        include "w65c816.inc"
+     1                        ;==============================================================================
+     2                        ; __        ____  ____   ____ ___  _  __   
+     3                        ; \ \      / / /_| ___| / ___( _ )/ |/ /_  
+     4                        ;  \ \ /\ / / '_ \___ \| |   / _ \| | '_ \ 
+     5                        ;   \ V  V /| (_) |__) | |__| (_) | | (_) |
+     6                        ;    \_/\_/  \___/____/ \____\___/|_|\___/ 
+     7                        ;
+     8                        ; Western Design Center W65C816 device definitions                                          
+     9                        ;------------------------------------------------------------------------------
+    10                        ; Copyright (C)2015 HandCoded Software Ltd.
+    11                        ; All rights reserved.
+    12                        ;
+    13                        ; This work is made available under the terms of the Creative Commons
+    14                        ; Attribution-NonCommercial-ShareAlike 4.0 International license. Open the
+    15                        ; following URL to see the details.
+    16                        ;
+    17                        ; http://creativecommons.org/licenses/by-nc-sa/4.0/
+    18                        ;
+    19                        ;===============================================================================
+  Sat May  7 2016 20:07                                                                                                    Page 2
+
+
+    20                        ; Notes:
+    21                        ;
+    22                        ; Various macros and definitions for the W65C816 microprocessor.
+    23                        ;
+    24                        ;===============================================================================
+    25                        ; Revision History:
+    26                        ;
+    27                        ; 2015-12-18 AJ Initial version
+    28                        ;-------------------------------------------------------------------------------
+    29                        ; $Id$
+    30                        ;-------------------------------------------------------------------------------
+    31                        
+    32                        ;==============================================================================
+    33                        ; Status Register Bits
+    34                        ;------------------------------------------------------------------------------
+    35                        
+    36             00000080   N_FLAG          equ     1<<7
+    37             00000040   V_FLAG          equ     1<<6
+    38             00000020   M_FLAG          equ     1<<5
+    39             00000010   X_FLAG          equ     1<<4
+    40             00000010   B_FLAG          equ     1<<4
+    41             00000008   D_FLAG          equ     1<<3
+    42             00000004   I_FLAG          equ     1<<2
+    43             00000002   Z_FLAG          equ     1<<1
+    44             00000001   C_FLAG          equ     1<<0
+    45                        
+    46                        ;==============================================================================
+    47                        ; Macros
+    48                        ;------------------------------------------------------------------------------
+    49                        
+    50                        ; Puts the processor in emulation mode. A, X and Y become 8-bits and the stack
+    51                        ; is fixed at $0100-$01ff. 
+    52                        
+    53                        emulate         macro
+    54                                        sec
+    55                                        xce
+    56                                        longa   off
+    57                                        longi   off
+    58                                        endm
+    59                        
+    60                        ; Puts the processor in native mode. The size of the memory and index register
+    61                        ; operations is not controlled by the M & X bits in the status register.
+    62                        
+    63                        native          macro
+    64                                        clc
+    65                                        xce
+    66                                        endm
+    67                        
+    68                        ; Resets the M bit making the accumulator and memory accesses 16-bits wide.
+    69                         
+    70                        long_a          macro
+    71                                        rep     #M_FLAG
+    72                                        longa   on
+    73                                        endm
+    74                        
+    75                        ; Resets the X bit making the index registers 16-bits wide
+    76                        
+    77                        long_i          macro
+  Sat May  7 2016 20:07                                                                                                    Page 3
+
+
+    78                                        rep     #X_FLAG
+    79                                        longi   on
+    80                                        endm
+    81                        
+    82                        ; Resets the M and X bits making the accumulator, memory accesses and index
+    83                        ; registers 16-bits wide.
+    84                                        
+    85                        long_ai         macro
+    86                                        rep     #M_FLAG|X_FLAG
+    87                                        longa   on
+    88                                        longi   on
+    89                                        endm
+    90                        
+    91                        ; Sets the M bit making the accumulator and memory accesses 8-bits wide.
+    92                        
+    93                        short_a         macro
+    94                                        sep     #M_FLAG
+    95                                        longa   off
+    96                                        endm
+    97                        
+    98                        ; Sets the X bit making the index registers 8-bits wide.
+    99                        
+   100                        short_i         macro
+   101                                        sep     #X_FLAG
+   102                                        longi   off
+   103                                        endm
+   104                                        
+   105                        ; Sets the M & X bits making the accumulator, memory accesses and index
+   106                        ; registers 8-bits wide.
+   107                        
+   108                        short_ai        macro
+   109                                        sep     #M_FLAG|X_FLAG
+   110                                        longa   off
+   111                                        longi   off
+   112                                        endm
+    34                                        include "w65c265.inc"
      1                        ;===============================================================================
      2                        ; __        ____  ____   ____ ____   __  ____
      3                        ; \ \      / / /_| ___| / ___|___ \ / /_| ___|
@@ -58,10 +181,10 @@
     20                        ; Notes:
     21                        ;
     22                        ; Various macros and definitions for the W65C265 microcontroller.
+  Sat May  7 2016 20:07                                                                                                    Page 4
+
+
     23                        ;
-  Fri May  6 2016  0:34                                                                                                    Page 2
-
-
     24                        ;===============================================================================
     25                        ; Revision History:
     26                        ;
@@ -119,10 +242,10 @@
     78             0000DF59   T4LH            equ     $00DF59         ; Timer 4 Latch High
     79             0000DF5A   T5LL            equ     $00DF5A         ; Timer 5 Latch Low
     80             0000DF5B   T5LH            equ     $00DF5B         ; Timer 5 Latch High
+  Sat May  7 2016 20:07                                                                                                    Page 5
+
+
     81             0000DF5C   T6LL            equ     $00DF5C         ; Timer 6 Latch Low
-  Fri May  6 2016  0:34                                                                                                    Page 3
-
-
     82             0000DF5D   T6LH            equ     $00DF5D         ; Timer 6 Latch High
     83             0000DF5E   T7LL            equ     $00DF5E         ; Timer 7 Latch Low
     84             0000DF5F   T7LH            equ     $00DF5F         ; Timer 7 Latch High
@@ -163,125 +286,7 @@
    119             0000DF7F   PIR7            equ     $00DF7F         ; Parallel Interface Register 7
    120                        
    121                        ;00DF80-BF RAM RAM Registers uninitialized
-   122                        
-   123                                        include "w65c816.inc"
-     1                        ;==============================================================================
-     2                        ; __        ____  ____   ____ ___  _  __   
-     3                        ; \ \      / / /_| ___| / ___( _ )/ |/ /_  
-     4                        ;  \ \ /\ / / '_ \___ \| |   / _ \| | '_ \ 
-     5                        ;   \ V  V /| (_) |__) | |__| (_) | | (_) |
-     6                        ;    \_/\_/  \___/____/ \____\___/|_|\___/ 
-     7                        ;
-     8                        ; Western Design Center W65C816 device definitions                                          
-     9                        ;------------------------------------------------------------------------------
-    10                        ; Copyright (C)2015 HandCoded Software Ltd.
-    11                        ; All rights reserved.
-    12                        ;
-    13                        ; This work is made available under the terms of the Creative Commons
-    14                        ; Attribution-NonCommercial-ShareAlike 4.0 International license. Open the
-    15                        ; following URL to see the details.
-    16                        ;
-  Fri May  6 2016  0:34                                                                                                    Page 4
-
-
-    17                        ; http://creativecommons.org/licenses/by-nc-sa/4.0/
-    18                        ;
-    19                        ;===============================================================================
-    20                        ; Notes:
-    21                        ;
-    22                        ; Various macros and definitions for the W65C816 microprocessor.
-    23                        ;
-    24                        ;===============================================================================
-    25                        ; Revision History:
-    26                        ;
-    27                        ; 2015-12-18 AJ Initial version
-    28                        ;-------------------------------------------------------------------------------
-    29                        ; $Id$
-    30                        ;-------------------------------------------------------------------------------
-    31                        
-    32                        ;==============================================================================
-    33                        ; Status Register Bits
-    34                        ;------------------------------------------------------------------------------
-    35                        
-    36             00000080   N_FLAG          equ     1<<7
-    37             00000040   V_FLAG          equ     1<<6
-    38             00000020   M_FLAG          equ     1<<5
-    39             00000010   X_FLAG          equ     1<<4
-    40             00000010   B_FLAG          equ     1<<4
-    41             00000008   D_FLAG          equ     1<<3
-    42             00000004   I_FLAG          equ     1<<2
-    43             00000002   Z_FLAG          equ     1<<1
-    44             00000001   C_FLAG          equ     1<<0
-    45                        
-    46                        ;==============================================================================
-    47                        ; Macros
-    48                        ;------------------------------------------------------------------------------
-    49                        
-    50                        ; Puts the processor in emulation mode. A, X and Y become 8-bits and the stack
-    51                        ; is fixed at $0100-$01ff. 
-    52                        
-    53                        emulate         macro
-    54                                        sec
-    55                                        xce
-    56                                        endm
-    57                        
-    58                        ; Puts the processor in native mode. The size of the memory and index register
-    59                        ; operations is not controlled by the M & X bits in the status register.
-    60                        
-    61                        native          macro
-    62                                        clc
-    63                                        xce
-    64                                        endm
-    65                        
-    66                        ; Resets the M bit making the accumulator and memory accesses 16-bits wide.
-    67                         
-    68                        long_a          macro
-    69                                        rep     #M_FLAG
-    70                                        longa   on
-    71                                        endm
-    72                        
-    73                        ; Resets the X bit making the index registers 16-bits wide
-    74                        
-  Fri May  6 2016  0:34                                                                                                    Page 5
-
-
-    75                        long_i          macro
-    76                                        rep     #X_FLAG
-    77                                        longi   on
-    78                                        endm
-    79                        
-    80                        ; Resets the M and X bits making the accumulator, memory accesses and index
-    81                        ; registers 16-bits wide.
-    82                                        
-    83                        long_ai         macro
-    84                                        rep     #M_FLAG|X_FLAG
-    85                                        longa   on
-    86                                        longi   on
-    87                                        endm
-    88                        
-    89                        ; Sets the M bit making the accumulator and memory accesses 8-bits wide.
-    90                        
-    91                        short_a         macro
-    92                                        sep     #M_FLAG
-    93                                        longa   off
-    94                                        endm
-    95                        
-    96                        ; Sets the X bit making the index registers 8-bits wide.
-    97                        
-    98                        short_i         macro
-    99                                        sep     #X_FLAG
-   100                                        longi   off
-   101                                        endm
-   102                                        
-   103                        ; Sets the M & X bits making the accumulator, memory accesses and index
-   104                        ; registers 8-bits wide.
-   105                        
-   106                        short_ai        macro
-   107                                        sep     #M_FLAG|X_FLAG
-   108                                        longa   off
-   109                                        longi   off
-   110                                        endm
-    30                                        include "w65c265sxb.inc"
+    35                                        include "w65c265sxb.inc"
      1                        ;==============================================================================
      2                        ; __        ____  ____   ____ ____   __  ____ ______  ______  
      3                        ; \ \      / / /_| ___| / ___|___ \ / /_| ___/ ___\ \/ / __ ) 
@@ -298,229 +303,401 @@
     14                        ; Attribution-NonCommercial-ShareAlike 4.0 International license. Open the
     15                        ; following URL to see the details.
     16                        ;
+  Sat May  7 2016 20:07                                                                                                    Page 6
+
+
     17                        ; http://creativecommons.org/licenses/by-nc-sa/4.0/
     18                        ;
     19                        ;==============================================================================
     20                        ; Notes:
     21                        ;
-  Fri May  6 2016  0:34                                                                                                    Page 6
-
-
     22                        ;------------------------------------------------------------------------------
     23                        
     24             00384000   OSC_FREQ        equ     3686400      	; SXB runs at 3.6864MHz
-    31                        
-    32                        ;===============================================================================
-    33                        ; Configuration
-    34                        ;-------------------------------------------------------------------------------
-    35                        
-    36             00004B00   BAUD_RATE       equ     19200                   ; ACIA baud rate
-    37                        
-    38             0000000B   BRG_VALUE       equ     OSC_FREQ/(16*BAUD_RATE)-1
-    39                        
-    40                                        if      BRG_VALUE&$ffff0000
-    41                                        messg   "BRG_VALUE does not fit in 16-bits"
-    42                                        endif
-    43                        		
-    44                        ;===============================================================================
-    45                        ; ROM Header
-    46                        ;-------------------------------------------------------------------------------
+    36                        
+    37                        ;===============================================================================
+    38                        ; Configuration
+    39                        ;-------------------------------------------------------------------------------
+    40                        
+    41                        ; The BAUD_RATE constant defines the speed that W65C265 will configure UART3 at
+    42                        ; to communicate with the host PC. The Mensch Monitor works works at 9600 baud
+    43                        ; but if the ROM takes over complete control of the board it could be raised to
+    44                        ; a higher speed.
+    45                        
+    46             00002580   BAUD_RATE       equ     9600                    ; ACIA baud rate
     47                        
-    48                        rom_header	section offset $8000
-    49                        		
-    50 00:8000: 41 4A 4A 00  		db	'AJJ',0
-    51 00:8004: 4C xx xx     		jmp	RESET
-    52                        
-    53                        ;===============================================================================
-    54                        ; Power On Reset
-    55                        ;-------------------------------------------------------------------------------
+    48             00000017   BRG_VALUE       equ     OSC_FREQ/(16*BAUD_RATE)-1
+    49                        
+    50                                        if      BRG_VALUE&$ffff0000
+    51                                        messg   "BRG_VALUE does not fit in 16-bits"
+    52                                        endif
+    53                        
+    54                        ; The size of the UART RX and  TX buffers. Currently a whole page is used for
+    55                        ; these.
     56                        
-    57                        		code
-    58                        	public RESET
-    59                                        extern  Start
-    60                                        longi   off
-    61                                        longa   off
-    62                        RESET:
-    63 00:0000: 78                           sei                             ; Disable interrupts
-    64                                        native                          ; Switch to native mode
-+   64 00:0001: 18                           clc
-+   64 00:0002: FB                           xce
-    65                                        long_i
-+   65 00:0003: C2 10                        rep     #X_FLAG
-+   65                                        longi   on
-    66 00:0005: A2 FF 01                     ldx     #$01ff                  ; Reset the stack
-    67 00:0008: 9A                           txs
-    68                        
-    69                                        ; Ensure no serial interrupts
-    70 00:0009: 9C 49 DF                     stz     UIER
-    71                        
-    72 00:000C: A9 C0                        lda     #$c0                    ; Ensure A15/AMS are output
-    73 00:000E: 8D 24 DF                     sta     PDD4
-    74 00:0011: 9C 20 DF                     stz     PD4                     ; And select bank 0
-    75                        
-    76 00:0014: A9 10                        lda     #%00010000              ; Set UART0 to use timer 3
-    77 00:0016: 1C 42 DF                     trb     TCR
-    78 00:0019: A9 0B                        lda     #<BRG_VALUE             ; And set baud rate
-    79 00:001B: 8D 66 DF                     sta     T3CL
-    80 00:001E: A9 00                        lda     #>BRG_VALUE
-    81 00:0020: 8D 67 DF                     sta     T3CH
-  Fri May  6 2016  0:34                                                                                                    Page 7
+    57             0000007E   BUFF_SIZE       equ     126
+    58                        
+    59                        ;
+    60                        
+    61             000003E8   TIMER0_HZ       equ     1000
+    62             00000E65   TIMER0_PR       equ     OSC_FREQ/TIMER0_HZ-1
+    63                        
+    64                                        if      TIMER0_PR&$ffff0000
+    65                                        messg   "TIMER0_PR does not fit in 16-bits"
+    66                                        endif
+    67                        
+    68                        ;===============================================================================
+    69                        ;-------------------------------------------------------------------------------
+    70                        
+    71                                        udata
+    72                        
+    73 00:0000:              TX_HEAD         ds      1                       ; Offsets to TX data
+    74 00:0001:              TX_TAIL         ds      1
+    75 00:0002:              RX_HEAD         ds      1                       ; Offsets to RX data
+    76 00:0003:              RX_TAIL         ds      1
+    77                        
+    78 00:0004:              TX_DATA         ds      BUFF_SIZE
+    79 00:0082:              RX_DATA         ds      BUFF_SIZE
+    80                        
+    81                        ;===============================================================================
+    82                        ; ROM Header
+    83                        ;-------------------------------------------------------------------------------
+    84                        
+    85                        rom_header      section offset $8000
+  Sat May  7 2016 20:07                                                                                                    Page 7
 
 
-    82                        
-    83 00:0023: A9 08                        lda     #1<<3                   ; Enable timer 3
-    84 00:0025: 0C 43 DF                     tsb     TER
-    85                        
-    86 00:0028: A9 25                        lda     #%00100101              ; Set UART0 for 8-N-1
-    87 00:002A: 8D 70 DF                     sta     ACSR0
-    88                        
-    89 00:002D: 4C xx xx                     jmp     Start                   ; Jump to the application start
-    90                        
-    91                        ;===============================================================================
-    92                        ; ACIA Interface
-    93                        ;-------------------------------------------------------------------------------
-    94                        
-    95                        ; Wait until the last transmission has been completed then send the character
-    96                        ; in A.
-    97                        
-    98                                        public  UartTx
-    99                        UartTx:
-   100 00:0030: 48                           pha                             ; Save the character
-   101 00:0031: 08                           php                             ; Save register sizes
-   102                                        short_a                         ; Make A 8-bits
-+  102 00:0032: E2 20                        sep     #M_FLAG
-+  102                                        longa   off
-   103 00:0034: 48                           pha
-   104 00:0035: A9 02                        lda     #1<<1
-   105 00:0037: 2C 48 DF     TxWait:         bit     UIFR                    ; Has the timer finished?
-   106 00:003A: F0 FB                        beq     TxWait
-   107 00:003C: 68                           pla
-   108 00:003D: 8D 71 DF                     sta     ARTD0                   ; Transmit the character
-   109 00:0040: 28                           plp                             ; Restore register sizes
-   110 00:0041: 68                           pla                             ; And callers A
-   111 00:0042: 60                           rts                             ; Done
+    86                        
+    87 00:8000: 41 4A 4A 00                  db      'AJJ',0
+    88 00:8004: 4C xx xx                     jmp     RESET
+    89                        
+    90                        ;===============================================================================
+    91                        ; Power On Reset
+    92                        ;-------------------------------------------------------------------------------
+    93                        
+    94                                        code
+    95                        
+    96                                        extern  Start
+    97                                        longi   off
+    98                                        longa   off
+    99                        RESET:
+   100 00:0000: 78                           sei                             ; Disable interrupts
+   101                                        native                          ; Switch to native mode
++  101 00:0001: 18                           clc
++  101 00:0002: FB                           xce
+   102                                        long_i
++  102 00:0003: C2 10                        rep     #X_FLAG
++  102                                        longi   on
+   103 00:0005: A2 FF 01                     ldx     #$01ff                  ; Reset the stack
+   104 00:0008: 9A                           txs
+   105                        
+   106 00:0009: A9 80                        lda     #$80                    ; Disable the WDC ROM
+   107 00:000B: 0C 40 DF                     tsb     BCR             
+   108 00:000E: 9C 43 DF                     stz     TER                     ; Disable all interrupts
+   109 00:0011: 9C 46 DF                     stz     TIER
+   110 00:0014: 9C 49 DF                     stz     UIER    
+   111 00:0017: 9C 47 DF                     stz     EIER
    112                        
-   113                        ; Fetch the next character from the receive buffer waiting for some to arrive
-   114                        ; if the buffer is empty.
-   115                        
-   116                                        public  UartRx
-   117                        UartRx:
-   118 00:0043: 08                           php                             ; Save register sizes
-   119                                        short_a                         ; Make A 8-bits
-+  119 00:0044: E2 20                        sep     #M_FLAG
-+  119                                        longa   off
-   120 00:0046: A9 01                        lda     #1<<0
-   121 00:0048: 2C 48 DF     RxWait:         bit     UIFR                    ; Any data in RX buffer?
-   122 00:004B: F0 FB                        beq     RxWait                  ; No
-   123 00:004D: AD 71 DF                     lda     ARTD0                   ; Yes, read it
-   124 00:0050: 28                           plp                             ; Restore register sizes
-   125 00:0051: 60                           rts                             ; Done
-   126                        
-   127                        ; Check if the receive buffer contains any data and return C=1 if there is
-   128                        ; some.
-   129                        
-   130                                        public  UartRxTest
-   131                        UartRxTest:
-   132 00:0052: 48                           pha                             ; Save callers A
-   133 00:0053: 08                           php
-   134                                        short_a
-+  134 00:0054: E2 20                        sep     #M_FLAG
-  Fri May  6 2016  0:34                                                                                                    Page 8
+   113 00:001A: A9 65                        lda     #<TIMER0_PR             ; Initialise Timer 0
+   114 00:001C: 8D 60 DF                     sta     T0CL
+   115 00:001F: A9 0E                        lda     #>TIMER0_PR
+   116 00:0021: 8D 61 DF                     sta     T0CH
+   117 00:0024: A9 01                        lda     #1<<0                   ; Enable the timer
+   118 00:0026: 0C 43 DF                     tsb     TER
+   119                        
+   120 00:0029: A9 80                        lda     #1<<7                   ; Set UART3 to use timer 3
+   121 00:002B: 1C 42 DF                     trb     TCR
+   122 00:002E: A9 17                        lda     #<BRG_VALUE             ; And set baud rate
+   123 00:0030: 8D 66 DF                     sta     T3CL
+   124 00:0033: A9 00                        lda     #>BRG_VALUE
+   125 00:0035: 8D 67 DF                     sta     T3CH
+   126 00:0038: A9 08                        lda     #1<<3                   ; Enable timer 3
+   127 00:003A: 0C 43 DF                     tsb     TER
+   128                        
+   129 00:003D: A9 25                        lda     #%00100101              ; Set UART3 for 8-N-1
+   130 00:003F: 8D 76 DF                     sta     ACSR3
+   131 00:0042: A9 40                        lda     #1<<6                   ; Enable RX interrupt
+   132 00:0044: 0C 49 DF                     tsb     UIER
+   133                        
+   134 00:0047: 9C xx xx                     stz     TX_HEAD                 ; Clear buffer offsets
+   135 00:004A: 9C xx xx                     stz     TX_TAIL
+   136 00:004D: 9C xx xx                     stz     RX_HEAD
+   137 00:0050: 9C xx xx                     stz     RX_TAIL
+   138                        
+   139                                ; CTS/RTS pins
+  Sat May  7 2016 20:07                                                                                                    Page 8
 
 
-+  134                                        longa   off
-   135 00:0056: AD 48 DF                     lda     UIFR                    ; Read the status register
-   136 00:0059: 28                           plp
-   137 00:005A: 6A                           ror     a                       ; Shift UART0R bit into carry
-   138 00:005B: 68                           pla                             ; Restore A
-   139 00:005C: 60                           rts                             ; Done
    140                        
-   141                        ;===============================================================================
-   142                        ;-------------------------------------------------------------------------------
+   141 00:0053: 58                           cli
+   142 00:0054: 4C xx xx                     jmp     Start                   ; Jump to the application start
    143                        
-   144 00:005D: 80 FE        IRQT0:		bra	$
-   145                        
-   146 00:005F: 80 FE        BadVector:	bra	$
+   144                        ;===============================================================================
+   145                        ; UART Interface
+   146                        ;-------------------------------------------------------------------------------
    147                        
-   148                        ;===============================================================================
-   149                        ; Vectors
-   150                        ;-------------------------------------------------------------------------------
-   151                        
-   152                        native_vector	section	 offset $ff80
-   153                        	
-   154 00:FF80: xx xx        		dw	IRQT0			; Timer 0 Interrupt
-   155 00:FF82: xx xx        		dw	IRQT0			; Timer 1 Interrupt
-   156 00:FF84: xx xx        		dw	IRQT0			; Timer 2 Interrupt
-   157 00:FF86: xx xx        		dw	IRQT0			; Timer 3 Interrupt
-   158 00:FF88: xx xx        		dw	IRQT0			; Timer 4 Interrupt
-   159 00:FF8A: xx xx        		dw	IRQT0			; Timer 5 Interrupt
-   160 00:FF8C: xx xx        		dw	IRQT0			; Timer 6 Interrupt
-   161 00:FF8E: xx xx        		dw	IRQT0			; Timer 7 Interrupt
-   162 00:FF90: xx xx        		dw	BadVector		; Positive Edge Interrupt on P56
-   163 00:FF92: xx xx        		dw	BadVector		; Negative Edge Interrupt on P57
-   164 00:FF94: xx xx        		dw	BadVector		; Positive Edge Interrupt on P60
-   165 00:FF96: xx xx        		dw	BadVector		; Positive Edge Interrupt on P62
-   166 00:FF98: xx xx        		dw	BadVector		; Negative Edge Interrupt on P64
-   167 00:FF9A: xx xx        		dw	BadVector		; Negative Edge Interrupt on P66
-   168 00:FF9C: xx xx        		dw	BadVector		; Parallel Interface Bus (PIB) Interrupt
-   169 00:FF9E: xx xx        		dw	BadVector		; IRQ Level Interrupt
-   170 00:FFA0: xx xx        		dw	BadVector		; UART0 Receiver Interrupt
-   171 00:FFA2: xx xx        		dw	BadVector		; UART0 Transmitter Interrupt
-   172 00:FFA4: xx xx        		dw	BadVector		; UART1 Receiver Interrupt
-   173 00:FFA6: xx xx        		dw	BadVector		; UART1 Transmitter Interrupt
-   174 00:FFA8: xx xx        		dw	BadVector		; UART2 Receiver Interrupt
-   175 00:FFAA: xx xx        		dw	BadVector		; UART2 Transmitter Interrupt
-   176 00:FFAC: xx xx        		dw	BadVector		; UART3 Receiver Interrupt
-   177 00:FFAE: xx xx        		dw	BadVector		; UART3 Transmitter Interrupt
-   178 00:FFB0: xx xx        		dw	BadVector		; Reserved
-   179 00:FFB2: xx xx        		dw	BadVector		; Reserved
-   180 00:FFB4: xx xx        		dw	BadVector		; COP Software Interrupt
-   181 00:FFB6: xx xx        		dw	BadVector		; BRK Software Interrupt
-   182 00:FFB8: xx xx        		dw	BadVector		; ABORT Interrupt
-   183 00:FFBA: xx xx        		dw	BadVector		; Non-Maskable Interrupt
-   184 00:FFBC: xx xx        		dw	BadVector		; Reserved
-   185 00:FFBE: xx xx        		dw	BadVector		; Reserved
-   186                        
-   187                        emulate_vectors	section	offset $ffc0
-   188                        
-   189 00:FFC0: xx xx        		dw	IRQT0			; Timer 0 Interrupt
-   190 00:FFC2: xx xx        		dw	IRQT0			; Timer 1 Interrupt
-   191 00:FFC4: xx xx        		dw	IRQT0			; Timer 2 Interrupt
-  Fri May  6 2016  0:34                                                                                                    Page 9
+   148                        ; Appends the character in A to the transmit buffer. If the buffer is completely
+   149                        ; full then wait until a transmit interrupt has occurred before returning.
+   150                        
+   151                                        public  UartTx
+   152                        UartTx:
+   153 00:0057: 48                           pha                             ; Save callers registers
+   154 00:0058: DA                           phx
+   155 00:0059: 5A                           phy
+   156 00:005A: 08                           php
+   157                                        short_ai
++  157 00:005B: E2 30                        sep     #M_FLAG|X_FLAG
++  157                                        longa   off
++  157                                        longi   off
+   158 00:005D: AE xx xx                     ldx     TX_TAIL                 ; Append new data to buffer
+   159 00:0060: 9D xx xx                     sta     TX_DATA,x
+   160 00:0063: E8                           inx                             ; Bump and wrap the offset
+   161 00:0064: E0 7E                        cpx     #BUFF_SIZE
+   162 00:0066: D0 02                        bne     $+4
+   163 00:0068: A2 00                        ldx     #0
+   164                        
+   165 00:006A: EC xx xx     TxLoop:         cpx     TX_HEAD                 ; Is the buffer completely full?
+   166 00:006D: F0 0D                        beq     TxWait
+   167 00:006F: 8E xx xx                     stx     TX_TAIL                 ; No, update the tail
+   168                        
+   169 00:0072: A9 80                        lda     #1<<7                   ; Ensure TX interrupts enabled
+   170 00:0074: 0C 49 DF                     tsb     UIER
+   171 00:0077: 28                           plp                             ; Restore callers registers
+   172 00:0078: 7A                           ply
+   173 00:0079: FA                           plx
+   174 00:007A: 68                           pla
+   175 00:007B: 60                           rts                             ; Done
+   176                        
+   177 00:007C: CB           TxWait:         wai                             ; Wait for an interrupt
+   178 00:007D: 80 EB                        bra     TxLoop                  ; The check again
+   179                        
+   180                        ; Fetch the next character from the receive buffer waiting for some to arrive
+   181                        ; if the buffer is empty.
+   182                        
+   183                                        public  UartRx
+   184                        UartRx:
+   185 00:007F: DA                           phx                             ; Save callers registers
+   186 00:0080: 5A                           phy
+   187 00:0081: 08                           php
+   188                                        short_ai
++  188 00:0082: E2 30                        sep     #M_FLAG|X_FLAG
++  188                                        longa   off
++  188                                        longi   off
+   189 00:0084: AE xx xx     RxLoop:         ldx     RX_HEAD                 ; Any data in the buffer?
+   190 00:0087: EC xx xx                     cpx     RX_TAIL
+   191 00:008A: F0 11                        beq     RxWait                  ; No, wait for some
+  Sat May  7 2016 20:07                                                                                                    Page 9
 
 
-   192 00:FFC6: xx xx        		dw	IRQT0			; Timer 3 Interrupt
-   193 00:FFC8: xx xx        		dw	IRQT0			; Timer 4 Interrupt
-   194 00:FFCA: xx xx        		dw	IRQT0			; Timer 5 Interrupt
-   195 00:FFCC: xx xx        		dw	IRQT0			; Timer 6 Interrupt
-   196 00:FFCE: xx xx        		dw	IRQT0			; Timer 7 Interrupt
-   197 00:FFD0: xx xx        		dw	BadVector		; Positive Edge Interrupt on P56
-   198 00:FFD2: xx xx        		dw	BadVector		; Negative Edge Interrupt on P57
-   199 00:FFD4: xx xx        		dw	BadVector		; Positive Edge Interrupt on P60
-   200 00:FFD6: xx xx        		dw	BadVector		; Positive Edge Interrupt on P62
-   201 00:FFD8: xx xx        		dw	BadVector		; Negative Edge Interrupt on P64
-   202 00:FFDA: xx xx        		dw	BadVector		; Negative Edge Interrupt on P66
-   203 00:FFDC: xx xx        		dw	BadVector		; Parallel Interface Bus (PIB) Interrupt
-   204 00:FFDE: xx xx        		dw	BadVector		; IRQ Level Interrupt
-   205 00:FFE0: xx xx        		dw	BadVector		; UART0 Receiver Interrupt
-   206 00:FFE2: xx xx        		dw	BadVector		; UART0 Transmitter Interrupt
-   207 00:FFE4: xx xx        		dw	BadVector		; UART1 Receiver Interrupt
-   208 00:FFE6: xx xx        		dw	BadVector		; UART1 Transmitter Interrupt
-   209 00:FFE8: xx xx        		dw	BadVector		; UART2 Receiver Interrupt
-   210 00:FFEA: xx xx        		dw	BadVector		; UART2 Transmitter Interrupt
-   211 00:FFEC: xx xx        		dw	BadVector		; UART3 Receiver Interrupt
-   212 00:FFEE: xx xx        		dw	BadVector		; UART3 Transmitter Interrupt
-   213 00:FFF0: xx xx        		dw	BadVector		; Reserved
-   214 00:FFF2: xx xx        		dw	BadVector		; Reserved
-   215 00:FFF4: xx xx        		dw	BadVector		; COP Software Interrupt
-   216 00:FFF6: xx xx        		dw	BadVector		; Reserved
-   217 00:FFF8: xx xx        		dw	BadVector		; ABORT Interrupt
-   218 00:FFFA: xx xx        		dw	BadVector		; Non-Maskable Interrupt
-   219 00:FFFC: xx xx        		dw	RESET    		; Reset
-   220 00:FFFE: xx xx        		dw	BadVector		; IRQ/BRK
-   221                        
-   222                                        end
+   192                        
+   193 00:008C: BD xx xx                     lda     RX_DATA,x               ; Extract a byte
+   194 00:008F: E8                           inx                             ; Bump and wrap offset
+   195 00:0090: E0 7E                        cpx     #BUFF_SIZE
+   196 00:0092: D0 02                        bne     $+4
+   197 00:0094: A2 00                        ldx     #0
+   198 00:0096: 8E xx xx                     stx     RX_HEAD                 ; Update the offset
+   199 00:0099: 28                           plp                             ; Restore callers registers
+   200 00:009A: 7A                           ply
+   201 00:009B: FA                           plx
+   202 00:009C: 60                           rts                             ; Done
+   203                        
+   204 00:009D: CB           RxWait:         wai                             ; Wait for an interrupt
+   205 00:009E: 80 E4                        bra     RxLoop
+   206                        
+   207                        ; Check if the receive buffer contains any data and return C=1 if there is
+   208                        ; some.
+   209                        
+   210                                        public  UartRxTest
+   211                        UartRxTest:
+   212 00:00A0: 48                           pha                             ; Save callers registers
+   213 00:00A1: 08                           php
+   214                                        short_a
++  214 00:00A2: E2 20                        sep     #M_FLAG
++  214                                        longa   off
+   215 00:00A4: 18                           clc                             ; Assume buffer empty
+   216 00:00A5: AD xx xx                     lda     RX_HEAD                 ; Compare offsets
+   217 00:00A8: 4D xx xx                     eor     RX_TAIL
+   218 00:00AB: F0 01                        beq     $+3                     ; Empty?
+   219 00:00AD: 38                           sec                             ; No, set C
+   220 00:00AE: 2A                           rol     a                       ; Save carry
+   221 00:00AF: 28                           plp
+   222 00:00B0: 6A                           ror     a                       ; Restore carry
+   223 00:00B1: 68                           pla                             ; Restore callers A
+   224 00:00B2: 60                           rts                             ; Done
+   225                        
+   226                        ;===============================================================================
+   227                        ; UART Interrupt Handlers
+   228                        ;-------------------------------------------------------------------------------
+   229                        
+   230                        ; Handle an RX interrupt for UART3. Append the recieved data to the tail of the
+   231                        ; buffer.
+   232                        
+   233                        IRQAR3:
+   234                                        long_ai                         ; Save users registers
++  234 00:00B3: C2 30                        rep     #M_FLAG|X_FLAG
++  234                                        longa   on
++  234                                        longi   on
+   235 00:00B5: 48                           pha
+   236 00:00B6: DA                           phx
+   237 00:00B7: 5A                           phy
+   238                                        
+   239                                        short_ai
++  239 00:00B8: E2 30                        sep     #M_FLAG|X_FLAG
++  239                                        longa   off
++  239                                        longi   off
+   240 00:00BA: A9 40                        lda     #1<<6                   ; Clear the RX interrupt flag
+   241 00:00BC: 1C 48 DF                     trb     UIFR
+  Sat May  7 2016 20:07                                                                                                    Page 10
 
 
-      Lines assembled: 489
+   242 00:00BF: AE xx xx                     ldx     RX_TAIL
+   243 00:00C2: AD 77 DF                     lda     ARTD3                   ; Copy recieved byte to buffer
+   244 00:00C5: 9D xx xx                     sta     RX_DATA,X
+   245 00:00C8: E8                           inx                             ; Bump and wrap
+   246 00:00C9: E0 7E                        cpx     #BUFF_SIZE
+   247 00:00CB: D0 02                        bne     $+4
+   248 00:00CD: A2 00                        ldx     #0
+   249                                        
+   250 00:00CF: EC xx xx                     cpx     RX_HEAD                 ; Buffer already full?
+   251 00:00D2: F0 03                        beq     $+5                     ; Yes
+   252 00:00D4: 8E xx xx                     stx     RX_TAIL                 ; Update the tail
+   253                        
+   254                                        ; RTS/CTS processing
+   255                        
+   256                                        long_ai                         ; Restore users registers
++  256 00:00D7: C2 30                        rep     #M_FLAG|X_FLAG
++  256                                        longa   on
++  256                                        longi   on
+   257 00:00D9: 7A                           ply
+   258 00:00DA: FA                           plx
+   259 00:00DB: 68                           pla
+   260 00:00DC: 40                           rti                             ; Continue
+   261                        
+   262                        ; Handle a TX interrupt for UART3. If the buffer is empty then disable the
+   263                        ; interrupt until more data is added to the TX buffer.
+   264                        
+   265                        IRQAT3:
+   266                                        long_ai                         ; Save users registers
++  266 00:00DD: C2 30                        rep     #M_FLAG|X_FLAG
++  266                                        longa   on
++  266                                        longi   on
+   267 00:00DF: 48                           pha
+   268 00:00E0: DA                           phx
+   269 00:00E1: 5A                           phy
+   270                                        
+   271                                        short_ai
++  271 00:00E2: E2 30                        sep     #M_FLAG|X_FLAG
++  271                                        longa   off
++  271                                        longi   off
+   272 00:00E4: AE xx xx                     ldx     TX_HEAD                 ; Any data to transmit?
+   273 00:00E7: EC xx xx                     cpx     TX_TAIL
+   274 00:00EA: D0 07                        bne     IRQAT3Send              ; Yes
+   275 00:00EC: A9 80                        lda     #1<<7
+   276 00:00EE: 1C 49 DF                     trb     UIER                    ; No, disable interrupt
+   277 00:00F1: 80 10                        bra     IRQAT3Done
+   278                                        
+   279 00:00F3: BD xx xx     IRQAT3Send:     lda     TX_DATA,x               ; Transmit the nex character
+   280 00:00F6: 8D 77 DF                     sta     ARTD3
+   281 00:00F9: E8                           inx                             ; Bump and wrap offset
+   282 00:00FA: E0 7E                        cpx     #BUFF_SIZE
+   283 00:00FC: D0 02                        bne     $+4
+   284 00:00FE: A2 00                        ldx     #0
+   285 00:0100: 8E xx xx                     stx     TX_HEAD                 ; Update the offset
+   286                                        
+   287                        IRQAT3Done:     long_ai                         ; Restor users registers
++  287 00:0103: C2 30                        rep     #M_FLAG|X_FLAG
++  287                                        longa   on
++  287                                        longi   on
+  Sat May  7 2016 20:07                                                                                                    Page 11
+
+
+   288 00:0105: 7A                           ply
+   289 00:0106: FA                           plx
+   290 00:0107: 68                           pla
+   291 00:0108: 40                           rti
+   292                        
+   293                        ;===============================================================================
+   294                        ; Vectors
+   295                        ;-------------------------------------------------------------------------------
+   296                        
+   297 00:0109: 80 FE        UnusedVector:   bra     $
+   298 00:010B: 80 FE        BadVector:      bra     $
+   299                        
+   300                        native_vector   section  offset $ff80
+   301                        
+   302 00:FF80: xx xx                        dw      UnusedVector            ; Timer 0 Interrupt
+   303 00:FF82: xx xx                        dw      UnusedVector            ; Timer 1 Interrupt
+   304 00:FF84: xx xx                        dw      UnusedVector            ; Timer 2 Interrupt
+   305 00:FF86: xx xx                        dw      UnusedVector            ; Timer 3 Interrupt
+   306 00:FF88: xx xx                        dw      UnusedVector            ; Timer 4 Interrupt
+   307 00:FF8A: xx xx                        dw      UnusedVector            ; Timer 5 Interrupt
+   308 00:FF8C: xx xx                        dw      UnusedVector            ; Timer 6 Interrupt
+   309 00:FF8E: xx xx                        dw      UnusedVector            ; Timer 7 Interrupt
+   310 00:FF90: xx xx                        dw      UnusedVector            ; Positive Edge Interrupt on P56
+   311 00:FF92: xx xx                        dw      UnusedVector            ; Negative Edge Interrupt on P57
+   312 00:FF94: xx xx                        dw      UnusedVector            ; Positive Edge Interrupt on P60
+   313 00:FF96: xx xx                        dw      UnusedVector            ; Positive Edge Interrupt on P62
+   314 00:FF98: xx xx                        dw      UnusedVector            ; Negative Edge Interrupt on P64
+   315 00:FF9A: xx xx                        dw      UnusedVector            ; Negative Edge Interrupt on P66
+   316 00:FF9C: xx xx                        dw      UnusedVector            ; Parallel Interface Bus (PIB) Interrupt
+   317 00:FF9E: xx xx                        dw      UnusedVector            ; IRQ Level Interrupt
+   318 00:FFA0: xx xx                        dw      UnusedVector            ; UART0 Receiver Interrupt
+   319 00:FFA2: xx xx                        dw      UnusedVector            ; UART0 Transmitter Interrupt
+   320 00:FFA4: xx xx                        dw      UnusedVector            ; UART1 Receiver Interrupt
+   321 00:FFA6: xx xx                        dw      UnusedVector            ; UART1 Transmitter Interrupt
+   322 00:FFA8: xx xx                        dw      UnusedVector            ; UART2 Receiver Interrupt
+   323 00:FFAA: xx xx                        dw      UnusedVector            ; UART2 Transmitter Interrupt
+   324 00:FFAC: xx xx                        dw      IRQAR3                  ; UART3 Receiver Interrupt
+   325 00:FFAE: xx xx                        dw      IRQAT3                  ; UART3 Transmitter Interrupt
+   326 00:FFB0: xx xx                        dw      BadVector               ; Reserved
+   327 00:FFB2: xx xx                        dw      BadVector               ; Reserved
+   328 00:FFB4: xx xx                        dw      UnusedVector            ; COP Software Interrupt
+   329 00:FFB6: xx xx                        dw      UnusedVector            ; BRK Software Interrupt
+   330 00:FFB8: xx xx                        dw      UnusedVector            ; ABORT Interrupt
+   331 00:FFBA: xx xx                        dw      UnusedVector            ; Non-Maskable Interrupt
+   332 00:FFBC: xx xx                        dw      UnusedVector            ; Reserved
+   333 00:FFBE: xx xx                        dw      UnusedVector            ; Reserved
+   334                        
+   335                        emulate_vectors section offset $ffc0
+   336                        
+   337 00:FFC0: xx xx                        dw      UnusedVector            ; Timer 0 Interrupt
+   338 00:FFC2: xx xx                        dw      UnusedVector            ; Timer 1 Interrupt
+   339 00:FFC4: xx xx                        dw      UnusedVector            ; Timer 2 Interrupt
+   340 00:FFC6: xx xx                        dw      UnusedVector            ; Timer 3 Interrupt
+   341 00:FFC8: xx xx                        dw      UnusedVector            ; Timer 4 Interrupt
+   342 00:FFCA: xx xx                        dw      UnusedVector            ; Timer 5 Interrupt
+   343 00:FFCC: xx xx                        dw      UnusedVector            ; Timer 6 Interrupt
+   344 00:FFCE: xx xx                        dw      UnusedVector            ; Timer 7 Interrupt
+   345 00:FFD0: xx xx                        dw      UnusedVector            ; Positive Edge Interrupt on P56
+  Sat May  7 2016 20:07                                                                                                    Page 12
+
+
+   346 00:FFD2: xx xx                        dw      UnusedVector            ; Negative Edge Interrupt on P57
+   347 00:FFD4: xx xx                        dw      UnusedVector            ; Positive Edge Interrupt on P60
+   348 00:FFD6: xx xx                        dw      UnusedVector            ; Positive Edge Interrupt on P62
+   349 00:FFD8: xx xx                        dw      UnusedVector            ; Negative Edge Interrupt on P64
+   350 00:FFDA: xx xx                        dw      UnusedVector            ; Negative Edge Interrupt on P66
+   351 00:FFDC: xx xx                        dw      UnusedVector            ; Parallel Interface Bus (PIB) Interrupt
+   352 00:FFDE: xx xx                        dw      UnusedVector            ; IRQ Level Interrupt
+   353 00:FFE0: xx xx                        dw      UnusedVector            ; UART0 Receiver Interrupt
+   354 00:FFE2: xx xx                        dw      UnusedVector            ; UART0 Transmitter Interrupt
+   355 00:FFE4: xx xx                        dw      UnusedVector            ; UART1 Receiver Interrupt
+   356 00:FFE6: xx xx                        dw      UnusedVector            ; UART1 Transmitter Interrupt
+   357 00:FFE8: xx xx                        dw      UnusedVector            ; UART2 Receiver Interrupt
+   358 00:FFEA: xx xx                        dw      UnusedVector            ; UART2 Transmitter Interrupt
+   359 00:FFEC: xx xx                        dw      UnusedVector            ; UART3 Receiver Interrupt
+   360 00:FFEE: xx xx                        dw      UnusedVector            ; UART3 Transmitter Interrupt
+   361 00:FFF0: xx xx                        dw      BadVector               ; Reserved
+   362 00:FFF2: xx xx                        dw      BadVector               ; Reserved
+   363 00:FFF4: xx xx                        dw      UnusedVector            ; COP Software Interrupt
+   364 00:FFF6: xx xx                        dw      BadVector               ; Reserved
+   365 00:FFF8: xx xx                        dw      UnusedVector            ; ABORT Interrupt
+   366 00:FFFA: xx xx                        dw      UnusedVector            ; Non-Maskable Interrupt
+   367 00:FFFC: xx xx                        dw      RESET                   ; Reset
+   368 00:FFFE: xx xx                        dw      UnusedVector            ; IRQ/BRK
+   369                        
+   370                                        end
+
+
+      Lines assembled: 657
       Errors: 0

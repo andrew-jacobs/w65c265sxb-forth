@@ -54,11 +54,10 @@ ans-forth.s28: 		w65c265sxb.obj ans-forth.obj word-area.obj
 
 rom-forth.bin: 		rom-forth.s19
 		srec_cat rom-forth.s19 -offset - 0x8000 -o rom-forth.bin -binary
-
-#		$(LD) -g -hb -t -C8000 -U0200 -Zcode=8000,10000 -O $@ w65c265rom.obj ans-forth.obj word-area.obj
+#		$(LD) -g -hz -t -C8000 -U0300 -Zcode=8000,10000 -O $@ w65c265rom.obj ans-forth.obj word-area.obj
 
 rom-forth.s19: 		w65c265rom.obj ans-forth.obj word-area.obj
-		$(LD) -g -hm19 -t -C8000 -U0200 -Zcode=8000,10000 -O $@ w65c265rom.obj ans-forth.obj word-area.obj
+		$(LD) -g -hm19 -t -C8000 -U0300 -Zcode=8000,10000 -O $@ w65c265rom.obj ans-forth.obj word-area.obj
 
 w65c265sxb.obj: \
 		w65c816.inc \

@@ -1,4 +1,4 @@
-  Fri May  6 2016  0:34                                                                                                    Page 1
+  Sat May  7 2016 20:07                                                                                                    Page 1
 
 
                                                ***************************************
@@ -59,7 +59,7 @@
      4                        ;  \ \ /\ / / '_ \___ \| |   / _ \| | '_ \ 
      5                        ;   \ V  V /| (_) |__) | |__| (_) | | (_) |
      6                        ;    \_/\_/  \___/____/ \____\___/|_|\___/ 
-  Fri May  6 2016  0:34                                                                                                    Page 2
+  Sat May  7 2016 20:07                                                                                                    Page 2
 
 
      7                        ;
@@ -111,64 +111,66 @@
     53                        emulate         macro
     54                                        sec
     55                                        xce
-    56                                        endm
-    57                        
-    58                        ; Puts the processor in native mode. The size of the memory and index register
-    59                        ; operations is not controlled by the M & X bits in the status register.
-    60                        
-    61                        native          macro
-    62                                        clc
-    63                                        xce
-    64                                        endm
-  Fri May  6 2016  0:34                                                                                                    Page 3
+    56                                        longa   off
+    57                                        longi   off
+    58                                        endm
+    59                        
+    60                        ; Puts the processor in native mode. The size of the memory and index register
+    61                        ; operations is not controlled by the M & X bits in the status register.
+    62                        
+    63                        native          macro
+    64                                        clc
+  Sat May  7 2016 20:07                                                                                                    Page 3
 
 
-    65                        
-    66                        ; Resets the M bit making the accumulator and memory accesses 16-bits wide.
-    67                         
-    68                        long_a          macro
-    69                                        rep     #M_FLAG
-    70                                        longa   on
-    71                                        endm
-    72                        
-    73                        ; Resets the X bit making the index registers 16-bits wide
+    65                                        xce
+    66                                        endm
+    67                        
+    68                        ; Resets the M bit making the accumulator and memory accesses 16-bits wide.
+    69                         
+    70                        long_a          macro
+    71                                        rep     #M_FLAG
+    72                                        longa   on
+    73                                        endm
     74                        
-    75                        long_i          macro
-    76                                        rep     #X_FLAG
-    77                                        longi   on
-    78                                        endm
-    79                        
-    80                        ; Resets the M and X bits making the accumulator, memory accesses and index
-    81                        ; registers 16-bits wide.
-    82                                        
-    83                        long_ai         macro
-    84                                        rep     #M_FLAG|X_FLAG
-    85                                        longa   on
-    86                                        longi   on
-    87                                        endm
-    88                        
-    89                        ; Sets the M bit making the accumulator and memory accesses 8-bits wide.
+    75                        ; Resets the X bit making the index registers 16-bits wide
+    76                        
+    77                        long_i          macro
+    78                                        rep     #X_FLAG
+    79                                        longi   on
+    80                                        endm
+    81                        
+    82                        ; Resets the M and X bits making the accumulator, memory accesses and index
+    83                        ; registers 16-bits wide.
+    84                                        
+    85                        long_ai         macro
+    86                                        rep     #M_FLAG|X_FLAG
+    87                                        longa   on
+    88                                        longi   on
+    89                                        endm
     90                        
-    91                        short_a         macro
-    92                                        sep     #M_FLAG
-    93                                        longa   off
-    94                                        endm
-    95                        
-    96                        ; Sets the X bit making the index registers 8-bits wide.
+    91                        ; Sets the M bit making the accumulator and memory accesses 8-bits wide.
+    92                        
+    93                        short_a         macro
+    94                                        sep     #M_FLAG
+    95                                        longa   off
+    96                                        endm
     97                        
-    98                        short_i         macro
-    99                                        sep     #X_FLAG
-   100                                        longi   off
-   101                                        endm
-   102                                        
-   103                        ; Sets the M & X bits making the accumulator, memory accesses and index
-   104                        ; registers 8-bits wide.
-   105                        
-   106                        short_ai        macro
-   107                                        sep     #M_FLAG|X_FLAG
-   108                                        longa   off
-   109                                        longi   off
-   110                                        endm
+    98                        ; Sets the X bit making the index registers 8-bits wide.
+    99                        
+   100                        short_i         macro
+   101                                        sep     #X_FLAG
+   102                                        longi   off
+   103                                        endm
+   104                                        
+   105                        ; Sets the M & X bits making the accumulator, memory accesses and index
+   106                        ; registers 8-bits wide.
+   107                        
+   108                        short_ai        macro
+   109                                        sep     #M_FLAG|X_FLAG
+   110                                        longa   off
+   111                                        longi   off
+   112                                        endm
     47                        
     48                        ;===============================================================================
     49                        ;-------------------------------------------------------------------------------
@@ -179,11 +181,11 @@
     54                        
     55 00:0000:              NEXT_WORD:	ds	4096;
     56                        
+  Sat May  7 2016 20:07                                                                                                    Page 4
+
+
     57                                        end
 
-  Fri May  6 2016  0:34                                                                                                    Page 4
 
-
-
-      Lines assembled: 167
+      Lines assembled: 169
       Errors: 0

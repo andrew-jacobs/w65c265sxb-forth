@@ -5,7 +5,7 @@
 ;   \ V  V /| (_) |__) | |___ / __/| (_) |__) |__) /  \| |_) |
 ;    \_/\_/  \___/____/ \____|_____|\___/____/____/_/\_\____/
 ;
-; Basic Vector Handling for the W65C265SXB Development Board
+; Application Startup Code for the W65C265SXB Development Board
 ;------------------------------------------------------------------------------
 ; Copyright (C)2015 HandCoded Software Ltd.
 ; All rights reserved.
@@ -26,6 +26,7 @@
 
                 chip    65816
 
+		include "w65c816.inc"
                 include "w65c265.inc"
                 include "w65c265sxb.inc"
 
@@ -79,7 +80,7 @@ RESET:
                 jmp     Start                   ; Jump to the application start
 
 ;==============================================================================
-; ACIA Interface
+; UART Interface
 ;------------------------------------------------------------------------------
 
 ; Wait until the last transmission has been completed then send the character
@@ -92,8 +93,8 @@ UartTx:
                 short_a                         ; Make A 8-bits
                 pha
                 lda     #1<<1
-TxWait:         bit     UIFR                    ; Has the timer finished?
-                beq     TxWait
+TxWait:         bit     UIFR                    ; Has last transmit finished?
+                beq     TxWait			; No.
                 pla
                 sta     ARTD0                   ; Transmit the character
                 plp                             ; Restore register sizes
@@ -127,42 +128,5 @@ UartRxTest:
                 ror     a                       ; Shift UART0R bit into carry
                 pla                             ; Restore A
                 rts                             ; Done
-
-;===============================================================================
-; ROM Bank Selection
-;-------------------------------------------------------------------------------
-
-; Select the flash ROM bank indicated by the two low order bits of A. The pins
-; should be set to inputs when a hi bit is needed and a low output for a lo bit.
-
-                public RomSelect
-RomSelect:
-                php
-                short_a
-                and     #$03                    ; Strip out bank number
-                asl     a                       ; And rotate into bits
-                asl     a
-                asl     a
-                pha                             ; Save bit pattern
-                eor     #$18                    ; Invert to get directions
-                eor     PDD4                    ; Work out change
-                and     #$18
-                eor     PDD4                    ; And apply to direction reg
-                sta     PDD4
-                pla
-                eor     PD4                     ; Then adjust data register
-                and     #$18
-                eor     PD4
-                sta     PD4
-                plp                             ; Restore register sizes
-                rts                             ; Done
-
-; Check if the select ROM bank contains WDC firmware. If it does return with
-; the Z flag set.
-
-                public RomCheck
-RomCheck:
-                rep     #Z_FLAG                 ; No firmware in the ROM
-                rts
 
                 end

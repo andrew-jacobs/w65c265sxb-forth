@@ -53,6 +53,8 @@ C_FLAG          equ     1<<0
 emulate         macro
                 sec
                 xce
+                longa   off
+                longi   off
                 endm
 
 ; Puts the processor in native mode. The size of the memory and index register

@@ -119,5 +119,3 @@ PIR6            equ     $00DF7E         ; Parallel Interface Register 6
 PIR7            equ     $00DF7F         ; Parallel Interface Register 7
 
 ;00DF80-BF RAM RAM Registers uninitialized
-
-                include "w65c816.inc"
