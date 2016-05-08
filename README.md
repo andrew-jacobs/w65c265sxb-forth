@@ -52,7 +52,20 @@ I will continue to add documentation, more words and debug.
 
 ## Bugs
 
-- The interpreter does not correctly convert signed numbers. Until I have tracked
-  this down you have to enter expressions like '7 NEGATE' instead of -7.
-
 - The generation of new lines during command entry needs to be improved.
+
+## Forth in ROM
+
+The latest version of the code builds an S28 version that runs from RAM and a S19 version that
+is converted into a 32K ROM image that can be loaded into the SXB's flash ROM chip (if installed).
+
+To load the image use the W65C265SXB-Hacker program to disable the WDC ROM, erase the default
+flash bank and the XMODEM download the image. The commands are:
+```
+F 0
+E
+X 8000
+```
+The current image still expects a USB serial adapter on UART0. The ROM does not start with the
+'WDC' character sequence that would cause it to auto execute so you need to start it with a 'G 00:8004'
+command in the Mensch monitor.
