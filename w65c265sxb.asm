@@ -26,7 +26,7 @@
 
                 chip    65816
 
-		include "w65c816.inc"
+                include "w65c816.inc"
                 include "w65c265.inc"
                 include "w65c265sxb.inc"
 
@@ -57,7 +57,6 @@ RESET:
                 ldx     #$01ff                  ; Reset the stack
                 txs
 
-                ; Ensure no via interrupts
                 stz     UIER
 
                 lda     #$c0                    ; Ensure A15/AMS are output
@@ -94,7 +93,7 @@ UartTx:
                 pha
                 lda     #1<<1
 TxWait:         bit     UIFR                    ; Has last transmit finished?
-                beq     TxWait			; No.
+                beq     TxWait                  ; No.
                 pla
                 sta     ARTD0                   ; Transmit the character
                 plp                             ; Restore register sizes

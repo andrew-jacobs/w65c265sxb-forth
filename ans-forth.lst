@@ -1,4 +1,4 @@
-  Sat May  7 2016 20:07                                                                                                    Page 1
+  Sun May  8 2016 22:10                                                                                                    Page 1
 
 
                                                ***************************************
@@ -59,7 +59,7 @@
      4                        ;  \ \ /\ / / '_ \___ \| |   / _ \| | '_ \ 
      5                        ;   \ V  V /| (_) |__) | |__| (_) | | (_) |
      6                        ;    \_/\_/  \___/____/ \____\___/|_|\___/ 
-  Sat May  7 2016 20:07                                                                                                    Page 2
+  Sun May  8 2016 22:10                                                                                                    Page 2
 
 
      7                        ;
@@ -120,7 +120,7 @@
     62                        
     63                        native          macro
     64                                        clc
-  Sat May  7 2016 20:07                                                                                                    Page 3
+  Sun May  8 2016 22:10                                                                                                    Page 3
 
 
     65                                        xce
@@ -171,7 +171,7 @@
    110                                        longa   off
    111                                        longi   off
    112                                        endm
-    47                                        
+    47                        
     48                        ;===============================================================================
     49                        ; Macros
     50                        ;-------------------------------------------------------------------------------
@@ -181,7 +181,7 @@
     54                        
     55             00000000   WORDZ           set     0                       ; Word counter
     56             00000000   WORD0           equ     0                       ; Null address for first word
-  Sat May  7 2016 20:07                                                                                                    Page 4
+  Sun May  8 2016 22:10                                                                                                    Page 4
 
 
     57                        
@@ -242,7 +242,7 @@
    112             00000014   HP_OFFSET       equ     20
    113                        
    114             00000080   TIB_SIZE        equ     128
-  Sat May  7 2016 20:07                                                                                                    Page 5
+  Sun May  8 2016 22:10                                                                                                    Page 5
 
 
    115             00000030   PAD_SIZE        equ     48
@@ -253,9 +253,9 @@
    120                        
    121             00000000   USER_AREA       equ     $0000                   ; User variable area
    122             00000016   TIB_AREA        equ     USER_AREA+USER_SIZE     ; Terminal Input Buffer
-   123             00000096   PAD_AREA        equ     TIB_AREA+TIB_SIZE       ; Scratch pad   
+   123             00000096   PAD_AREA        equ     TIB_AREA+TIB_SIZE       ; Scratch pad
    124             000000C6   PAD_END         equ     PAD_AREA+PAD_SIZE
-   125                                        
+   125                        
    126             00000100   DSTACK_START    equ     $0100
    127             00000180   DSTACK_END      equ     DSTACK_START+DSTACK_SIZE
    128                        
@@ -303,7 +303,7 @@
    169 00:003D: xx xx                        dw      CR
    170 00:003F: xx xx                        dw      CR
    171 00:0041: xx xx                        dw      ABORT
-  Sat May  7 2016 20:07                                                                                                    Page 6
+  Sun May  8 2016 22:10                                                                                                    Page 6
 
 
    172                        
@@ -364,7 +364,7 @@
    223                        ; Dictionary Pointer
    224                        
    225 00:007C: xx xx 00 02                  HEADER  2,"DP",NORMAL
-  Sat May  7 2016 20:07                                                                                                    Page 7
+  Sun May  8 2016 22:10                                                                                                    Page 7
 
 
        00:0080: 44 50 
@@ -425,7 +425,7 @@
    275 00:00BF: xx xx 00 03                  HEADER  3,"TIB",NORMAL
        00:00C3: 54 49 42 
    276 00:00C6: 20 xx xx     TIB:            jsr     DO_CONSTANT
-  Sat May  7 2016 20:07                                                                                                    Page 8
+  Sun May  8 2016 22:10                                                                                                    Page 8
 
 
    277 00:00C9: 16 00                        dw      TIB_AREA
@@ -486,7 +486,7 @@
    325                        ; Return a true flag, a single-cell value with all bits set.
    326                        
    327 00:0106: xx xx 00 04                  HEADER  4,"TRUE",NORMAL
-  Sat May  7 2016 20:07                                                                                                    Page 9
+  Sun May  8 2016 22:10                                                                                                    Page 9
 
 
        00:010A: 54 52 55 45 
@@ -547,7 +547,7 @@
    377 00:0153: 1A                           inc     a
    378 00:0154: 1A                           inc     a
    379 00:0155: 1A                           inc     a
-  Sat May  7 2016 20:07                                                                                                    Page 10
+  Sun May  8 2016 22:10                                                                                                    Page 10
 
 
    380 00:0156: 5B                           tcd
@@ -608,7 +608,7 @@
        00:0190: 32 21 
    432 00:0192: 20 xx xx     TWO_STORE:      jsr     DO_COLON
    433 00:0195: xx xx                        dw      SWAP
-  Sat May  7 2016 20:07                                                                                                    Page 11
+  Sun May  8 2016 22:10                                                                                                    Page 11
 
 
    434 00:0197: xx xx                        dw      OVER
@@ -669,7 +669,7 @@
    484                        ; C! ( char c-addr -- )
    485                        ;
    486                        ; Store char at c-addr. When character size is smaller than cell size, only the
-  Sat May  7 2016 20:07                                                                                                    Page 12
+  Sun May  8 2016 22:10                                                                                                    Page 12
 
 
    487                        ; number of low-order bits corresponding to character size are transferred.
@@ -730,7 +730,7 @@
    538                        ;
    539                        ; addr is the data-space pointer.
    540                        
-  Sat May  7 2016 20:07                                                                                                    Page 13
+  Sun May  8 2016 22:10                                                                                                    Page 13
 
 
    541 00:021E: xx xx 00 04                  HEADER  4,"HERE",NORMAL
@@ -791,7 +791,7 @@
    584 00:026D: BB C8 C8 7C                  CONTINUE                        ; Done
        00:0271: 00 00 
    585                        
-  Sat May  7 2016 20:07                                                                                                    Page 14
+  Sun May  8 2016 22:10                                                                                                    Page 14
 
 
    586                        ; CHAR+ ( c-addr1 -- c-addr2 )
@@ -852,7 +852,7 @@
    629                        
    630                        ; 2DUP ( x1 x2 -- x1 x2 x1 x2 )
    631                        ;
-  Sat May  7 2016 20:07                                                                                                    Page 15
+  Sun May  8 2016 22:10                                                                                                    Page 15
 
 
    632                        ; Duplicate cell pair x1 x2.
@@ -913,7 +913,7 @@
    681 00:030B: A5 03                        lda     <3                      ; Move x5
    682 00:030D: 85 07                        sta     <7
    683 00:030F: A5 01                        lda     <1                      ; Move x6
-  Sat May  7 2016 20:07                                                                                                    Page 16
+  Sun May  8 2016 22:10                                                                                                    Page 16
 
 
    684 00:0311: 85 05                        sta     <5
@@ -974,7 +974,7 @@
    731 00:0368: xx xx                        dw      MINUS
    732 00:036A: xx xx                        dw      TWO_SLASH
    733 00:036C: xx xx                        dw      EXIT
-  Sat May  7 2016 20:07                                                                                                    Page 17
+  Sun May  8 2016 22:10                                                                                                    Page 17
 
 
    734                        
@@ -1035,7 +1035,7 @@
    783 00:03B2: BB C8 C8 7C                  CONTINUE                        ; Done
        00:03B6: 00 00 
    784                        
-  Sat May  7 2016 20:07                                                                                                    Page 18
+  Sun May  8 2016 22:10                                                                                                    Page 18
 
 
    785                        ; PICK ( xu ... x1 x0 u -- xu ... x1 x0 xu )
@@ -1096,7 +1096,7 @@
    835                        ;
    836                        ; Exchange the top two stack items.
    837                        
-  Sat May  7 2016 20:07                                                                                                    Page 19
+  Sun May  8 2016 22:10                                                                                                    Page 19
 
 
    838 00:0406: xx xx 00 04                  HEADER  4,"SWAP",NORMAL
@@ -1157,7 +1157,7 @@
    887 00:044E: 3A                           dec     a                       ; Make space for values
    888 00:044F: 3A                           dec     a
    889 00:0450: 3A                           dec     a
-  Sat May  7 2016 20:07                                                                                                    Page 20
+  Sun May  8 2016 22:10                                                                                                    Page 20
 
 
    890 00:0451: 3A                           dec     a
@@ -1218,7 +1218,7 @@
    939 00:0493: 3A                           dec     a
    940 00:0494: 3A                           dec     a
    941 00:0495: 5B                           tcd
-  Sat May  7 2016 20:07                                                                                                    Page 21
+  Sun May  8 2016 22:10                                                                                                    Page 21
 
 
    942 00:0496: A3 01                        lda     1,s
@@ -1279,7 +1279,7 @@
    990                        ;===============================================================================
    991                        ; Single Precision Arithmetic
    992                        ;-------------------------------------------------------------------------------
-  Sat May  7 2016 20:07                                                                                                    Page 22
+  Sun May  8 2016 22:10                                                                                                    Page 22
 
 
    993                        
@@ -1340,7 +1340,7 @@
        00:0507: 44 
   1045 00:0508: 20 xx xx     STAR_SLASH_MOD: jsr     DO_COLON
   1046 00:050B: xx xx                        dw      TO_R
-  Sat May  7 2016 20:07                                                                                                    Page 23
+  Sun May  8 2016 22:10                                                                                                    Page 23
 
 
   1047 00:050D: xx xx                        dw      M_STAR
@@ -1401,7 +1401,7 @@
   1097 00:0549: xx xx                        dw      TO_R
   1098 00:054B: xx xx                        dw      S_TO_D
   1099 00:054D: xx xx                        dw      R_FROM
-  Sat May  7 2016 20:07                                                                                                    Page 24
+  Sun May  8 2016 22:10                                                                                                    Page 24
 
 
   1100 00:054F: xx xx                        dw      FM_SLASH_MOD
@@ -1462,7 +1462,7 @@
   1149 00:058E: 06 01                        asl     <1                      ; Multiply top value by two
   1150 00:0590: BB C8 C8 7C                  CONTINUE                        ; Done
        00:0594: 00 00 
-  Sat May  7 2016 20:07                                                                                                    Page 25
+  Sun May  8 2016 22:10                                                                                                    Page 25
 
 
   1151                        
@@ -1523,7 +1523,7 @@
   1202                        ;   SWAP R> ?NEGATE SWAP        apply sign to remainder
   1203                        ;   R> 0< IF                    if quotient negative,
   1204                        ;       NEGATE
-  Sat May  7 2016 20:07                                                                                                    Page 26
+  Sun May  8 2016 22:10                                                                                                    Page 26
 
 
   1205                        ;       OVER IF                 if remainder nonzero,
@@ -1584,7 +1584,7 @@
   1257                        
   1258 00:0629: xx xx 00 03                  HEADER  3,"MIN",NORMAL
        00:062D: 4D 49 4E 
-  Sat May  7 2016 20:07                                                                                                    Page 27
+  Sun May  8 2016 22:10                                                                                                    Page 27
 
 
   1259 00:0630: 20 xx xx     MIN:            jsr     DO_COLON
@@ -1645,7 +1645,7 @@
   1309 00:0680: 4C xx xx     UMAX_EXIT:      jmp     NIP
   1310                        
   1311                        ; UMIN ( x1 x2 -- x3 )
-  Sat May  7 2016 20:07                                                                                                    Page 28
+  Sun May  8 2016 22:10                                                                                                    Page 28
 
 
   1312                        ;
@@ -1706,7 +1706,7 @@
   1363                        D_MINUS:
   1364 00:06C9: 38                           sec
   1365 00:06CA: A5 07                        lda     <7                      ; Subtract low words
-  Sat May  7 2016 20:07                                                                                                    Page 29
+  Sun May  8 2016 22:10                                                                                                    Page 29
 
 
   1366 00:06CC: E5 03                        sbc     <3
@@ -1767,7 +1767,7 @@
   1416                        ; filling the vacated least-significant bit with zero.
   1417                        
   1418 00:0716: xx xx 00 03                  HEADER  3,"D2*",NORMAL
-  Sat May  7 2016 20:07                                                                                                    Page 30
+  Sun May  8 2016 22:10                                                                                                    Page 30
 
 
        00:071A: 44 32 2A 
@@ -1828,7 +1828,7 @@
        00:076C: 00 00 
   1467                        
   1468                        ; DMAX ( d1 d2 -- d3 )
-  Sat May  7 2016 20:07                                                                                                    Page 31
+  Sun May  8 2016 22:10                                                                                                    Page 31
 
 
   1469                        ;
@@ -1889,7 +1889,7 @@
   1519                        ; range of a signed single-cell number.
   1520                        
   1521 00:07C6: xx xx 00 03                  HEADER  3,"D>S",NORMAL
-  Sat May  7 2016 20:07                                                                                                    Page 32
+  Sun May  8 2016 22:10                                                                                                    Page 32
 
 
        00:07CA: 44 3E 53 
@@ -1950,7 +1950,7 @@
   1573 00:0805: E6 03                        inc     <3
   1574 00:0807: 7B                           tdc
   1575 00:0808: 1A                           inc     a
-  Sat May  7 2016 20:07                                                                                                    Page 33
+  Sun May  8 2016 22:10                                                                                                    Page 33
 
 
   1576 00:0809: 1A                           inc     a
@@ -2011,7 +2011,7 @@
   1626 00:084F: xx xx                        dw      QUERY_NEGATE
   1627 00:0851: xx xx                        dw      SWAP
   1628 00:0853: xx xx                        dw      R_FROM
-  Sat May  7 2016 20:07                                                                                                    Page 34
+  Sun May  8 2016 22:10                                                                                                    Page 34
 
 
   1629 00:0855: xx xx                        dw      QUERY_NEGATE
@@ -2072,7 +2072,7 @@
   1681                        
   1682 00:08A0: xx xx 00 06                  HEADER  6,"UM/MOD",NORMAL
        00:08A4: 55 4D 2F 4D 
-  Sat May  7 2016 20:07                                                                                                    Page 35
+  Sun May  8 2016 22:10                                                                                                    Page 35
 
 
        00:08A8: 4F 44 
@@ -2133,7 +2133,7 @@
        00:08F1: 30 3C 3E 
   1735                        ZERO_NOT_EQUAL:
   1736 00:08F4: A5 01                        lda     <1                      ; Test top of stack
-  Sat May  7 2016 20:07                                                                                                    Page 36
+  Sun May  8 2016 22:10                                                                                                    Page 36
 
 
   1737 00:08F6: 64 01                        stz     <1                      ; Assume false result
@@ -2194,7 +2194,7 @@
   1785 00:0943: 1A                           inc     a
   1786 00:0944: 1A                           inc     a
   1787 00:0945: 5B                           tcd
-  Sat May  7 2016 20:07                                                                                                    Page 37
+  Sun May  8 2016 22:10                                                                                                    Page 37
 
 
   1788 00:0946: E4 01                        cpx     <1                      ; Compare with x1
@@ -2255,7 +2255,7 @@
   1837                        U_LESS:
   1838 00:0993: A6 01                        ldx     <1                      ; Pull x2
   1839 00:0995: 7B                           tdc                             ; Drop from stack
-  Sat May  7 2016 20:07                                                                                                    Page 38
+  Sun May  8 2016 22:10                                                                                                    Page 38
 
 
   1840 00:0996: 1A                           inc     a
@@ -2316,7 +2316,7 @@
        00:09E4: 00 00 
   1889                        
   1890                        ; LSHIFT ( x1 u -- x2 )
-  Sat May  7 2016 20:07                                                                                                    Page 39
+  Sun May  8 2016 22:10                                                                                                    Page 39
 
 
   1891                        ;
@@ -2377,7 +2377,7 @@
   1938 00:0A32: A6 01                        ldx     <1                      ; Pull bit count
   1939 00:0A34: 08                           php
   1940 00:0A35: 7B                           tdc
-  Sat May  7 2016 20:07                                                                                                    Page 40
+  Sun May  8 2016 22:10                                                                                                    Page 40
 
 
   1941 00:0A36: 1A                           inc     a                       ; .. from the stack
@@ -2438,7 +2438,7 @@
        00:0A80: 41 42 4F 52 
        00:0A84: 54 
   1992 00:0A85: 20 xx xx     ABORT:          jsr     DO_COLON
-  Sat May  7 2016 20:07                                                                                                    Page 41
+  Sun May  8 2016 22:10                                                                                                    Page 41
 
 
   1993 00:0A88: xx xx                        dw      DO_ABORT
@@ -2499,7 +2499,7 @@
   2043                        EXECUTE:
   2044 00:0AD7: A6 01                        ldx     <1
   2045 00:0AD9: 7B                           tdc
-  Sat May  7 2016 20:07                                                                                                    Page 42
+  Sun May  8 2016 22:10                                                                                                    Page 42
 
 
   2046 00:0ADA: 1A                           inc     a
@@ -2560,7 +2560,7 @@
   2098 00:0B14: xx xx                        dw      ZERO_EQUAL
   2099 00:0B16: xx xx xx xx                  dw      QUERY_BRANCH,QUIT_3
   2100 00:0B1A: xx xx                        dw      DO_S_QUOTE
-  Sat May  7 2016 20:07                                                                                                    Page 43
+  Sun May  8 2016 22:10                                                                                                    Page 43
 
 
   2101 00:0B1C: 02 4F 6B                     db      2,"Ok"
@@ -2621,7 +2621,7 @@
   2153                        ;       >R 1 /STRING R>     -- adr' n' f
   2154                        ;   THEN ;
   2155                        
-  Sat May  7 2016 20:07                                                                                                    Page 44
+  Sun May  8 2016 22:10                                                                                                    Page 44
 
 
   2156 00:0B71: xx xx 00 05                  HEADER  5,"?SIGN",NORMAL
@@ -2682,7 +2682,7 @@
   2209                        ;   REPEAT ;
   2210                        
   2211 00:0BB6: xx xx 00 07                  HEADER  7,">NUMBER",NORMAL
-  Sat May  7 2016 20:07                                                                                                    Page 45
+  Sun May  8 2016 22:10                                                                                                    Page 45
 
 
        00:0BBA: 3E 4E 55 4D 
@@ -2743,7 +2743,7 @@
   2265                        
   2266 00:0BF6: xx xx 00 06                  HEADER  6,"ACCEPT",NORMAL
        00:0BFA: 41 43 43 45 
-  Sat May  7 2016 20:07                                                                                                    Page 46
+  Sun May  8 2016 22:10                                                                                                    Page 46
 
 
        00:0BFE: 50 54 
@@ -2804,7 +2804,7 @@
   2319 00:0C76: xx xx                        dw      DUP
   2320 00:0C78: xx xx 39 00                  dw      DO_LITERAL,'9'
   2321 00:0C7C: xx xx                        dw      GREATER
-  Sat May  7 2016 20:07                                                                                                    Page 47
+  Sun May  8 2016 22:10                                                                                                    Page 47
 
 
   2322 00:0C7E: xx xx 00 01                  dw      DO_LITERAL,$100
@@ -2865,7 +2865,7 @@
   2375                        ; INTERPRET ( -- )
   2376                        ;
   2377                        ;
-  Sat May  7 2016 20:07                                                                                                    Page 48
+  Sun May  8 2016 22:10                                                                                                    Page 48
 
 
   2378                        ;   BEGIN
@@ -2926,7 +2926,7 @@
   2430                        ; FIND ( c-addr -- c-addr 0 | xt 1 | xt -1 )
   2431                        ;
   2432                        ; Find the definition named in the counted string at c-addr. If the definition
-  Sat May  7 2016 20:07                                                                                                    Page 49
+  Sun May  8 2016 22:10                                                                                                    Page 49
 
 
   2433                        ; is not found, return c-addr and zero. If the definition is found, return its
@@ -2987,7 +2987,7 @@
   2487 00:0D8F: xx xx                        dw      C_FETCH
   2488 00:0D91: xx xx                        dw      EXIT
   2489                        
-  Sat May  7 2016 20:07                                                                                                    Page 50
+  Sun May  8 2016 22:10                                                                                                    Page 50
 
 
   2490                        ; NFA>CFA ( nfa -- cfa )
@@ -3048,7 +3048,7 @@
   2543 00:0DD2: xx xx                        dw      TO_IN
   2544 00:0DD4: xx xx                        dw      STORE
   2545 00:0DD6: xx xx                        dw      TRUE
-  Sat May  7 2016 20:07                                                                                                    Page 51
+  Sun May  8 2016 22:10                                                                                                    Page 51
 
 
   2546 00:0DD8: xx xx                        dw      EXIT
@@ -3109,7 +3109,7 @@
   2597 00:0E1C: A2 FF FF                     ldx     #$ffff                  ; Difference found
   2598                        S_EQUAL_3:
   2599 00:0E1F: C2 20                        long_a
-  Sat May  7 2016 20:07                                                                                                    Page 52
+  Sun May  8 2016 22:10                                                                                                    Page 52
 
 
   2600 00:0E21: 7B                           tdc                             ; Clean up the stack
@@ -3170,7 +3170,7 @@
   2651 00:0E72: D2 05                        cmp     (5)
   2652 00:0E74: C2 20                        long_a
   2653 00:0E76: D0 06                        bne     SKIP_2                  ; Cannot be skipped
-  Sat May  7 2016 20:07                                                                                                    Page 53
+  Sun May  8 2016 22:10                                                                                                    Page 53
 
 
   2654 00:0E78: E6 05                        inc     <5                      ; Bump data address
@@ -3231,7 +3231,7 @@
   2704                        ;   OVER >R  ROT SCAN           -- adr" n"
   2705                        ;   DUP IF CHAR- THEN        skip trailing delim.
   2706                        ;   R> R> ROT -   >IN +!        update >IN offset
-  Sat May  7 2016 20:07                                                                                                    Page 54
+  Sun May  8 2016 22:10                                                                                                    Page 54
 
 
   2707                        ;   TUCK -                      -- adr' N
@@ -3292,7 +3292,7 @@
        00:0F09: 47 
   2759                        DASH_TRAILING:
   2760 00:0F0A: 5A                           phy                             ; Save IP
-  Sat May  7 2016 20:07                                                                                                    Page 55
+  Sun May  8 2016 22:10                                                                                                    Page 55
 
 
   2761 00:0F0B: A4 01                        ldy     <1                      ; Is u1 > 0?
@@ -3353,7 +3353,7 @@
   2811 00:0F59: xx xx                        dw      SWAP
   2812 00:0F5B: xx xx                        dw      DO_DO
   2813 00:0F5D: xx xx        BLANK_1:        dw      BL
-  Sat May  7 2016 20:07                                                                                                    Page 56
+  Sun May  8 2016 22:10                                                                                                    Page 56
 
 
   2814 00:0F5F: xx xx                        dw      I
@@ -3414,7 +3414,7 @@
   2864 00:0FAB: B1 05                        lda     (5),y
   2865 00:0FAD: 91 03                        sta     (3),y
   2866 00:0FAF: CA                           dex                             ; Decrement length
-  Sat May  7 2016 20:07                                                                                                    Page 57
+  Sun May  8 2016 22:10                                                                                                    Page 57
 
 
   2867 00:0FB0: D0 F8                        bne     CMOVE_GT_1              ; .. and repeat until done
@@ -3475,7 +3475,7 @@
   2919 00:0FFB: 18                           clc
   2920 00:0FFC: 69 06 00                     adc     #6
   2921 00:0FFF: 5B                           tcd
-  Sat May  7 2016 20:07                                                                                                    Page 58
+  Sun May  8 2016 22:10                                                                                                    Page 58
 
 
   2922 00:1000: BB C8 C8 7C                  CONTINUE                        ; Done
@@ -3536,1145 +3536,1265 @@
        00:1033: 28 
   2971 00:1034: 20 xx xx                     jsr     DO_COLON
   2972 00:1037: xx xx 29 00                  dw      DO_LITERAL,')'
-  Sat May  7 2016 20:07                                                                                                    Page 59
+  Sun May  8 2016 22:10                                                                                                    Page 59
 
 
   2973 00:103B: xx xx                        dw      WORD
   2974 00:103D: xx xx                        dw      DROP
   2975 00:103F: xx xx                        dw      EXIT
   2976                        
-  2977                        ; .(
-  2978                        
-  2979 00:1041: xx xx 80 02                  HEADER  2,".(",IMMEDIATE
+  2977                        ; .( ( “ccc<paren>” -- )
+  2978                        ;
+  2979                        ; Parse and display ccc delimited by ) (right parenthesis). .( is an immediate
+  2980                        ; word.
+  2981                        
+  2982 00:1041: xx xx 80 02                  HEADER  2,".(",IMMEDIATE
        00:1045: 2E 28 
-  2980 00:1047: 20 xx xx     DOT_PAREN:      jsr     DO_COLON
-  2981 00:104A: xx xx 29 00                  dw      DO_LITERAL,')'
-  2982 00:104E: xx xx                        dw      WORD
-  2983 00:1050: xx xx                        dw      COUNT
-  2984 00:1052: xx xx                        dw      TYPE
-  2985 00:1054: xx xx                        dw      EXIT
-  2986                        
-  2987                        ; ." ( -- )
-  2988                        
-  2989 00:1056: xx xx 80                     LINK    IMMEDIATE
-  2990 00:1059: 02 2E 22                     db      2,".",'"'
-  2991 00:105C: 20 xx xx     DOT_QUOTE:      jsr     DO_COLON
-  2992 00:105F: xx xx                        dw      S_QUOTE
-  2993 00:1061: xx xx xx xx                  dw      DO_LITERAL,TYPE
-  2994 00:1065: xx xx                        dw      COMMA
-  2995 00:1067: xx xx                        dw      EXIT
-  2996                        
-  2997                        
-  2998                        ; +LOOP ( -- )
-  2999                        
-  3000 00:1069: xx xx 80 05                  HEADER  5,"+LOOP",IMMEDIATE
+  2983 00:1047: 20 xx xx     DOT_PAREN:      jsr     DO_COLON
+  2984 00:104A: xx xx 29 00                  dw      DO_LITERAL,')'
+  2985 00:104E: xx xx                        dw      WORD
+  2986 00:1050: xx xx                        dw      COUNT
+  2987 00:1052: xx xx                        dw      TYPE
+  2988 00:1054: xx xx                        dw      EXIT
+  2989                        
+  2990                        ; ." ( “ccc<quote>” -- )
+  2991                        ;
+  2992                        ; Parse ccc delimited by " (double-quote). Append the run-time semantics given
+  2993                        ; below to the current definition.
+  2994                        
+  2995 00:1056: xx xx 80                     LINK    IMMEDIATE
+  2996 00:1059: 02 2E 22                     db      2,".",'"'
+  2997 00:105C: 20 xx xx     DOT_QUOTE:      jsr     DO_COLON
+  2998 00:105F: xx xx                        dw      S_QUOTE
+  2999 00:1061: xx xx xx xx                  dw      DO_LITERAL,TYPE
+  3000 00:1065: xx xx                        dw      COMMA
+  3001 00:1067: xx xx                        dw      EXIT
+  3002                        
+  3003                        
+  3004                        ; +LOOP ( -- )
+  3005                        
+  3006 00:1069: xx xx 80 05                  HEADER  5,"+LOOP",IMMEDIATE
        00:106D: 2B 4C 4F 4F 
        00:1071: 50 
-  3001 00:1072: 20 xx xx     PLUS_LOOP:      jsr     DO_COLON
-  3002 00:1075: xx xx xx xx                  dw      DO_LITERAL,DO_PLUS_LOOP
-  3003 00:1079: xx xx                        dw      COMMA
-  3004 00:107B: xx xx                        dw      COMMA
-  3005 00:107D: xx xx                        dw      QUERY_DUP
-  3006 00:107F: xx xx xx xx                  dw      QUERY_BRANCH,PLUS_LOOP_1
-  3007 00:1083: xx xx                        dw      HERE
-  3008 00:1085: xx xx                        dw      SWAP
-  3009 00:1087: xx xx                        dw      STORE
-  3010 00:1089: xx xx        PLUS_LOOP_1:    dw      EXIT
-  3011                        
-  3012                        DO_PLUS_LOOP:
-  3013 00:108B: A6 01                        ldx     <1                      ; Fetch increment
-  3014 00:108D: 7B                           tdc                             ; And drop
-  3015 00:108E: 1A                           inc     a
-  3016 00:108F: 1A                           inc     a
-  3017 00:1090: 5B                           tcd
-  3018 00:1091: 18                           clc                             ; Add to loop counter
-  3019 00:1092: 8A                           txa
-  3020 00:1093: 63 01                        adc     1,s
-  3021 00:1095: 83 01                        sta     1,s
-  3022 00:1097: C3 03                        cmp     3,s                     ; Reached limit?
-  3023 00:1099: B0 0A                        bcs     DO_PLOOP_END            ; Yes
-  3024 00:109B: B9 00 00                     lda     !0,y                    ; No, branch back to start
-  3025 00:109E: A8                           tay
-  3026 00:109F: BB C8 C8 7C                  CONTINUE                        ; Done
+  3007 00:1072: 20 xx xx     PLUS_LOOP:      jsr     DO_COLON
+  3008 00:1075: xx xx xx xx                  dw      DO_LITERAL,DO_PLUS_LOOP
+  3009 00:1079: xx xx                        dw      COMMA
+  3010 00:107B: xx xx                        dw      COMMA
+  3011 00:107D: xx xx                        dw      QUERY_DUP
+  3012 00:107F: xx xx xx xx                  dw      QUERY_BRANCH,PLUS_LOOP_1
+  3013 00:1083: xx xx                        dw      HERE
+  3014 00:1085: xx xx                        dw      SWAP
+  3015 00:1087: xx xx                        dw      STORE
+  3016 00:1089: xx xx        PLUS_LOOP_1:    dw      EXIT
+  3017                        
+  3018                        DO_PLUS_LOOP:
+  3019 00:108B: A6 01                        ldx     <1                      ; Fetch increment
+  3020 00:108D: 7B                           tdc                             ; And drop
+  3021 00:108E: 1A                           inc     a
+  3022 00:108F: 1A                           inc     a
+  3023 00:1090: 5B                           tcd
+  3024 00:1091: 18                           clc                             ; Add to loop counter
+  3025 00:1092: 8A                           txa
+  3026 00:1093: 63 01                        adc     1,s
+  3027 00:1095: 83 01                        sta     1,s
+  Sun May  8 2016 22:10                                                                                                    Page 60
+
+
+  3028 00:1097: C3 03                        cmp     3,s                     ; Reached limit?
+  3029 00:1099: B0 0A                        bcs     DO_PLOOP_END            ; Yes
+  3030 00:109B: B9 00 00                     lda     !0,y                    ; No, branch back to start
+  3031 00:109E: A8                           tay
+  3032 00:109F: BB C8 C8 7C                  CONTINUE                        ; Done
        00:10A3: 00 00 
-  Sat May  7 2016 20:07                                                                                                    Page 60
-
-
-  3027                        
-  3028 00:10A5: C8           DO_PLOOP_END:   iny                             ; Skip over address
-  3029 00:10A6: C8                           iny
-  3030 00:10A7: 68                           pla                             ; Drop loop variables
-  3031 00:10A8: 68                           pla
-  3032 00:10A9: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:10AD: 00 00 
   3033                        
-  3034                        ; : ( -- )
-  3035                        
-  3036 00:10AF: xx xx 00 01                  HEADER  1,":",NORMAL
-       00:10B3: 3A 
-  3037 00:10B4: 20 xx xx     COLON:          jsr     DO_COLON
-  3038 00:10B7: xx xx                        dw      CREATE
-  3039 00:10B9: xx xx xx xx                  dw      DO_LITERAL,DO_COLON
-  3040 00:10BD: xx xx                        dw      BUILD
-  3041 00:10BF: xx xx                        dw      RIGHT_BRACKET
-  3042 00:10C1: xx xx                        dw      EXIT
-  3043                        
-  3044                        DO_COLON:
-  3045 00:10C3: FA                           plx                             ; Pull new word IP-1
-  3046 00:10C4: 5A                           phy                             ; Save the old IP
-  3047 00:10C5: E8                           inx                             ; Work out new IP
-  3048 00:10C6: 9B                           txy
-  3049 00:10C7: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:10CB: 00 00 
-  3050                        
-  3051                        ; :NONAME ( -- xt )
-  3052                        
-  3053 00:10CD: xx xx 00 07                  HEADER  7,":NONAME",NORMAL
-       00:10D1: 3A 4E 4F 4E 
-       00:10D5: 41 4D 45 
-  3054 00:10D8: 20 xx xx     NONAME:         jsr     DO_COLON
-  3055 00:10DB: xx xx                        dw      HERE
-  3056 00:10DD: xx xx xx xx                  dw      DO_LITERAL,DO_COLON
-  3057 00:10E1: xx xx                        dw      BUILD
-  3058 00:10E3: xx xx                        dw      RIGHT_BRACKET
-  3059 00:10E5: xx xx                        dw      EXIT
-  3060                        
-  3061                        ; ; ( -- )
-  3062                        
-  3063 00:10E7: xx xx 80                     LINK    IMMEDIATE
-  3064 00:10EA: 01 3B                        db      1,";"
-  3065 00:10EC: 20 xx xx     SEMICOLON:      jsr     DO_COLON
-  3066 00:10EF: xx xx xx xx                  dw      DO_LITERAL,EXIT
-  3067 00:10F3: xx xx                        dw      COMMA
-  3068 00:10F5: xx xx                        dw      LEFT_BRACKET
-  3069 00:10F7: xx xx                        dw      EXIT
-  3070                        
-  3071                        ; ?DO ( -- )
-  3072                        
-  3073 00:10F9: xx xx 80 03                  HEADER  3,"?DO",IMMEDIATE
-       00:10FD: 3F 44 4F 
-  3074 00:1100: 20 xx xx     QUERY_DO:       jsr     DO_COLON
-  3075 00:1103: xx xx xx xx                  dw      DO_LITERAL,QUERY_DO_DO
-  3076 00:1107: xx xx                        dw      COMMA
-  3077 00:1109: xx xx                        dw      HERE
-  3078 00:110B: xx xx                        dw      ZERO
-  Sat May  7 2016 20:07                                                                                                    Page 61
+  3034 00:10A5: C8           DO_PLOOP_END:   iny                             ; Skip over address
+  3035 00:10A6: C8                           iny
+  3036 00:10A7: 68                           pla                             ; Drop loop variables
+  3037 00:10A8: 68                           pla
+  3038 00:10A9: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:10AD: 00 00 
+  3039                        
+  3040                        ; ' ( -- xt )
+  3041                        ;
+  3042                        ; Skip leading space delimiters. Parse name delimited by a space. Find name and
+  3043                        ; return xt, the execution token for name. An ambiguous condition exists if name
+  3044                        ; is not found.
+  3045                        ;
+  3046                        ; In this implementation it is defined as:
+  3047                        ;
+  3048                        ;   BL WORD FIND 0= IF ." ?" ABORT THEN
+  3049                        
+  3050 00:10AF: xx xx 00 01                  HEADER  1,"'",NORMAL
+       00:10B3: 27 
+  3051 00:10B4: 20 xx xx     TICK:           jsr     DO_COLON
+  3052 00:10B7: xx xx                        dw      BL
+  3053 00:10B9: xx xx                        dw      WORD
+  3054 00:10BB: xx xx                        dw      FIND
+  3055 00:10BD: xx xx                        dw      ZERO_EQUAL
+  3056 00:10BF: xx xx xx xx                  dw      QUERY_BRANCH,TICK_1
+  3057 00:10C3: xx xx                        dw      DO_S_QUOTE
+  3058 00:10C5: 01 3F                        db      1,"?"
+  3059 00:10C7: xx xx                        dw      ABORT
+  3060 00:10C9: xx xx        TICK_1:         dw      EXIT
+  3061                        
+  3062                        ; : ( -- )
+  3063                        
+  3064 00:10CB: xx xx 00 01                  HEADER  1,":",NORMAL
+       00:10CF: 3A 
+  3065 00:10D0: 20 xx xx     COLON:          jsr     DO_COLON
+  3066 00:10D3: xx xx                        dw      CREATE
+  3067 00:10D5: xx xx xx xx                  dw      DO_LITERAL,DO_COLON
+  3068 00:10D9: xx xx                        dw      BUILD
+  3069 00:10DB: xx xx                        dw      RIGHT_BRACKET
+  3070 00:10DD: xx xx                        dw      EXIT
+  3071                        
+  3072                        DO_COLON:
+  3073 00:10DF: FA                           plx                             ; Pull new word IP-1
+  3074 00:10E0: 5A                           phy                             ; Save the old IP
+  3075 00:10E1: E8                           inx                             ; Work out new IP
+  3076 00:10E2: 9B                           txy
+  3077 00:10E3: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:10E7: 00 00 
+  3078                        
+  3079                        ; :NONAME ( -- xt )
+  3080                        
+  Sun May  8 2016 22:10                                                                                                    Page 61
 
 
-  3079 00:110D: xx xx                        dw      COMMA
-  3080 00:110F: xx xx                        dw      HERE
-  3081 00:1111: xx xx                        dw      EXIT
-  3082                        
-  3083                        QUERY_DO_DO:
-  3084 00:1113: A5 01                        lda     <1                      ; Are the start and limit
-  3085 00:1115: 45 03                        eor     <3                      ; .. the same?
-  3086 00:1117: F0 05                        beq     QUERY_DO_DO_1
-  3087 00:1119: C8                           iny                             ; No, Skip over jump address
-  3088 00:111A: C8                           iny
-  3089 00:111B: 4C xx xx                     jmp     DO_DO                   ; And start a normal loop
+  3081 00:10E9: xx xx 00 07                  HEADER  7,":NONAME",NORMAL
+       00:10ED: 3A 4E 4F 4E 
+       00:10F1: 41 4D 45 
+  3082 00:10F4: 20 xx xx     NONAME:         jsr     DO_COLON
+  3083 00:10F7: xx xx                        dw      HERE
+  3084 00:10F9: xx xx xx xx                  dw      DO_LITERAL,DO_COLON
+  3085 00:10FD: xx xx                        dw      BUILD
+  3086 00:10FF: xx xx                        dw      RIGHT_BRACKET
+  3087 00:1101: xx xx                        dw      EXIT
+  3088                        
+  3089                        ; ; ( -- )
   3090                        
-  3091 00:111E: 7B           QUERY_DO_DO_1:  tdc                             ; Drop the loop parameters
-  3092 00:111F: 1A                           inc     a
-  3093 00:1120: 1A                           inc     a
-  3094 00:1121: 1A                           inc     a
-  3095 00:1122: 1A                           inc     a
-  3096 00:1123: 5B                           tcd
-  3097 00:1124: 4C xx xx                     jmp     BRANCH                  ; And skip over loop
+  3091 00:1103: xx xx 80                     LINK    IMMEDIATE
+  3092 00:1106: 01 3B                        db      1,";"
+  3093 00:1108: 20 xx xx     SEMICOLON:      jsr     DO_COLON
+  3094 00:110B: xx xx xx xx                  dw      DO_LITERAL,EXIT
+  3095 00:110F: xx xx                        dw      COMMA
+  3096 00:1111: xx xx                        dw      LEFT_BRACKET
+  3097 00:1113: xx xx                        dw      EXIT
   3098                        
-  3099                        ; 2CONSTANT ( x “<spaces>name” -- )
-  3100                        ;
-  3101                        ; Skip leading space delimiters. Parse name delimited by a space. Create a
-  3102                        ; definition for name with the execution semantics defined below.
-  3103                        
-  3104 00:1127: xx xx 00 09                  HEADER  9,"2CONSTANT",NORMAL
-       00:112B: 32 43 4F 4E 
-       00:112F: 53 54 41 4E 
-       00:1133: 54 
-  3105 00:1134: 20 xx xx     TWO_CONSTANT:   jsr     DO_COLON
-  3106 00:1137: xx xx                        dw      CREATE
-  3107 00:1139: xx xx xx xx                  dw      DO_LITERAL,DO_TWO_CONSTANT
-  3108 00:113D: xx xx                        dw      BUILD
-  3109 00:113F: xx xx                        dw      COMMA
-  3110 00:1141: xx xx                        dw      COMMA
-  3111 00:1143: xx xx                        dw      EXIT; AGAIN ( -- )
-  3112                        
-  3113                        DO_TWO_CONSTANT:
-  3114 00:1145: FA                           plx                             ; Get return address
-  3115 00:1146: 7B                           tdc                             ; Create space on stack
-  3116 00:1147: 3A                           dec     a
-  3117 00:1148: 3A                           dec     a
-  3118 00:1149: 3A                           dec     a
-  3119 00:114A: 3A                           dec     a
-  3120 00:114B: 5B                           tcd
-  3121 00:114C: BD 01 00                     lda     !1,x                    ; Transfer the value
-  3122 00:114F: 85 01                        sta     <1
-  3123 00:1151: BD 03 00                     lda     !3,x
-  3124 00:1154: 85 03                        sta     <3
-  3125 00:1156: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:115A: 00 00 
+  3099                        ; ?DO ( -- jump orig )
+  3100                        
+  3101 00:1115: xx xx 80 03                  HEADER  3,"?DO",IMMEDIATE
+       00:1119: 3F 44 4F 
+  3102 00:111C: 20 xx xx     QUERY_DO:       jsr     DO_COLON
+  3103 00:111F: xx xx xx xx                  dw      DO_LITERAL,QUERY_DO_DO
+  3104 00:1123: xx xx                        dw      COMMA
+  3105 00:1125: xx xx                        dw      HERE
+  3106 00:1127: xx xx                        dw      ZERO
+  3107 00:1129: xx xx                        dw      COMMA
+  3108 00:112B: xx xx                        dw      HERE
+  3109 00:112D: xx xx                        dw      EXIT
+  3110                        
+  3111                        QUERY_DO_DO:
+  3112 00:112F: A5 01                        lda     <1                      ; Are the start and limit
+  3113 00:1131: 45 03                        eor     <3                      ; .. the same?
+  3114 00:1133: F0 05                        beq     QUERY_DO_DO_1
+  3115 00:1135: C8                           iny                             ; No, Skip over jump address
+  3116 00:1136: C8                           iny
+  3117 00:1137: 4C xx xx                     jmp     DO_DO                   ; And start a normal loop
+  3118                        
+  3119 00:113A: 7B           QUERY_DO_DO_1:  tdc                             ; Drop the loop parameters
+  3120 00:113B: 1A                           inc     a
+  3121 00:113C: 1A                           inc     a
+  3122 00:113D: 1A                           inc     a
+  3123 00:113E: 1A                           inc     a
+  3124 00:113F: 5B                           tcd
+  3125 00:1140: 4C xx xx                     jmp     BRANCH                  ; And skip over loop
   3126                        
-  3127                        ; 2LITERAL
-  3128                        
-  3129 00:115C: xx xx 80 08                  HEADER  8,"2LITERAL",IMMEDIATE
-       00:1160: 32 4C 49 54 
-       00:1164: 45 52 41 4C 
-  3130 00:1168: 20 xx xx     TWO_LITERAL:    jsr     DO_COLON
-  Sat May  7 2016 20:07                                                                                                    Page 62
+  3127                        ; 2CONSTANT ( x “<spaces>name” -- )
+  3128                        ;
+  3129                        ; Skip leading space delimiters. Parse name delimited by a space. Create a
+  3130                        ; definition for name with the execution semantics defined below.
+  3131                        
+  3132 00:1143: xx xx 00 09                  HEADER  9,"2CONSTANT",NORMAL
+       00:1147: 32 43 4F 4E 
+       00:114B: 53 54 41 4E 
+       00:114F: 54 
+  Sun May  8 2016 22:10                                                                                                    Page 62
 
 
-  3131 00:116B: xx xx xx xx                  dw      DO_LITERAL,DO_TWO_LITERAL
-  3132 00:116F: xx xx                        dw      COMMA
-  3133 00:1171: xx xx                        dw      COMMA
-  3134 00:1173: xx xx                        dw      COMMA
-  3135 00:1175: xx xx                        dw      EXIT
-  3136                        
-  3137                        DO_TWO_LITERAL:
-  3138 00:1177: 7B                           tdc                             ; Make room on stack
-  3139 00:1178: 3A                           dec     a
-  3140 00:1179: 3A                           dec     a
-  3141 00:117A: 3A                           dec     a
-  3142 00:117B: 3A                           dec     a
-  3143 00:117C: 5B                           tcd
-  3144 00:117D: B9 00 00                     lda     !0,y                    ; Fetch constant from IP
-  3145 00:1180: 85 01                        sta     <1
-  3146 00:1182: B9 02 00                     lda     !2,y
-  3147 00:1185: 85 03                        sta     <3
-  3148 00:1187: C8                           iny                             ; Bump IP
-  3149 00:1188: C8                           iny
-  3150 00:1189: C8                           iny
-  3151 00:118A: C8                           iny
-  3152 00:118B: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:118F: 00 00 
-  3153                        
-  3154                        ; 2VARIABLE
-  3155                        
-  3156 00:1191: xx xx 80 09                  HEADER  9,"2VARIABLE",IMMEDIATE
-       00:1195: 32 56 41 52 
-       00:1199: 49 41 42 4C 
-       00:119D: 45 
-  3157 00:119E: 20 xx xx     TWO_VARIABLE:   jsr     DO_COLON
-  3158 00:11A1: xx xx                        dw      CREATE
-  3159 00:11A3: xx xx xx xx                  dw      DO_LITERAL,DO_VARIABLE
-  3160 00:11A7: xx xx                        dw      BUILD
-  3161 00:11A9: xx xx 02 00                  dw      DO_LITERAL,2
-  3162 00:11AD: xx xx                        dw      CELLS
-  3163 00:11AF: xx xx                        dw      ALLOT
-  3164 00:11B1: xx xx                        dw      EXIT
-  3165                        
-  3166                        ; ABORT" ( -- )
-  3167                        
-  3168 00:11B3: xx xx 80                     LINK    IMMEDIATE
-  3169 00:11B6: 06 41 42 4F                  db      6,"ABORT",'"'
-       00:11BA: 52 54 22 
-  3170 00:11BD: 20 xx xx     ABORT_QUOTE:    jsr     DO_COLON
-  3171 00:11C0: xx xx                        dw      S_QUOTE
-  3172 00:11C2: xx xx xx xx                  dw      DO_LITERAL,QUERY_ABORT
-  3173 00:11C6: xx xx                        dw      COMMA
-  3174 00:11C8: xx xx                        dw      EXIT
-  3175                        
-  3176                        ; AGAIN ( -- )
-  3177 00:11CA: xx xx 80 05                  HEADER  5,"AGAIN",IMMEDIATE
-       00:11CE: 41 47 41 49 
-       00:11D2: 4E 
-  3178 00:11D3: 20 xx xx     AGAIN:          jsr     DO_COLON
-  3179 00:11D6: xx xx xx xx                  dw      DO_LITERAL,BRANCH
-  3180 00:11DA: xx xx                        dw      COMMA
-  3181 00:11DC: xx xx                        dw      COMMA
-  Sat May  7 2016 20:07                                                                                                    Page 63
-
-
-  3182 00:11DE: xx xx                        dw      EXIT
+  3133 00:1150: 20 xx xx     TWO_CONSTANT:   jsr     DO_COLON
+  3134 00:1153: xx xx                        dw      CREATE
+  3135 00:1155: xx xx xx xx                  dw      DO_LITERAL,DO_TWO_CONSTANT
+  3136 00:1159: xx xx                        dw      BUILD
+  3137 00:115B: xx xx                        dw      COMMA
+  3138 00:115D: xx xx                        dw      COMMA
+  3139 00:115F: xx xx                        dw      EXIT; AGAIN ( -- )
+  3140                        
+  3141                        DO_TWO_CONSTANT:
+  3142 00:1161: FA                           plx                             ; Get return address
+  3143 00:1162: 7B                           tdc                             ; Create space on stack
+  3144 00:1163: 3A                           dec     a
+  3145 00:1164: 3A                           dec     a
+  3146 00:1165: 3A                           dec     a
+  3147 00:1166: 3A                           dec     a
+  3148 00:1167: 5B                           tcd
+  3149 00:1168: BD 01 00                     lda     !1,x                    ; Transfer the value
+  3150 00:116B: 85 01                        sta     <1
+  3151 00:116D: BD 03 00                     lda     !3,x
+  3152 00:1170: 85 03                        sta     <3
+  3153 00:1172: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:1176: 00 00 
+  3154                        
+  3155                        ; 2LITERAL
+  3156                        
+  3157 00:1178: xx xx 80 08                  HEADER  8,"2LITERAL",IMMEDIATE
+       00:117C: 32 4C 49 54 
+       00:1180: 45 52 41 4C 
+  3158 00:1184: 20 xx xx     TWO_LITERAL:    jsr     DO_COLON
+  3159 00:1187: xx xx xx xx                  dw      DO_LITERAL,DO_TWO_LITERAL
+  3160 00:118B: xx xx                        dw      COMMA
+  3161 00:118D: xx xx                        dw      COMMA
+  3162 00:118F: xx xx                        dw      COMMA
+  3163 00:1191: xx xx                        dw      EXIT
+  3164                        
+  3165                        DO_TWO_LITERAL:
+  3166 00:1193: 7B                           tdc                             ; Make room on stack
+  3167 00:1194: 3A                           dec     a
+  3168 00:1195: 3A                           dec     a
+  3169 00:1196: 3A                           dec     a
+  3170 00:1197: 3A                           dec     a
+  3171 00:1198: 5B                           tcd
+  3172 00:1199: B9 00 00                     lda     !0,y                    ; Fetch constant from IP
+  3173 00:119C: 85 01                        sta     <1
+  3174 00:119E: B9 02 00                     lda     !2,y
+  3175 00:11A1: 85 03                        sta     <3
+  3176 00:11A3: C8                           iny                             ; Bump IP
+  3177 00:11A4: C8                           iny
+  3178 00:11A5: C8                           iny
+  3179 00:11A6: C8                           iny
+  3180 00:11A7: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:11AB: 00 00 
+  3181                        
+  3182                        ; 2VARIABLE
   3183                        
-  3184                        ; BEGIN ( -- )
-  3185                        
-  3186 00:11E0: xx xx 80 05                  HEADER  5,"BEGIN",IMMEDIATE
-       00:11E4: 42 45 47 49 
-       00:11E8: 4E 
-  3187 00:11E9: 20 xx xx     BEGIN:          jsr     DO_COLON
-  3188 00:11EC: xx xx                        dw      HERE
-  3189 00:11EE: xx xx                        dw      EXIT
-  3190                        
-  3191                        ; CONSTANT ( x “<spaces>name” -- )
-  3192                        ;
-  3193                        ; Skip leading space delimiters. Parse name delimited by a space. Create a
-  3194                        ; definition for name with the execution semantics defined below.
+  3184 00:11AD: xx xx 80 09                  HEADER  9,"2VARIABLE",IMMEDIATE
+       00:11B1: 32 56 41 52 
+       00:11B5: 49 41 42 4C 
+  Sun May  8 2016 22:10                                                                                                    Page 63
+
+
+       00:11B9: 45 
+  3185 00:11BA: 20 xx xx     TWO_VARIABLE:   jsr     DO_COLON
+  3186 00:11BD: xx xx                        dw      CREATE
+  3187 00:11BF: xx xx xx xx                  dw      DO_LITERAL,DO_VARIABLE
+  3188 00:11C3: xx xx                        dw      BUILD
+  3189 00:11C5: xx xx 02 00                  dw      DO_LITERAL,2
+  3190 00:11C9: xx xx                        dw      CELLS
+  3191 00:11CB: xx xx                        dw      ALLOT
+  3192 00:11CD: xx xx                        dw      EXIT
+  3193                        
+  3194                        ; ABORT" ( -- )
   3195                        
-  3196 00:11F0: xx xx 00 08                  HEADER  8,"CONSTANT",NORMAL
-       00:11F4: 43 4F 4E 53 
-       00:11F8: 54 41 4E 54 
-  3197 00:11FC: 20 xx xx     CONSTANT:       jsr     DO_COLON
-  3198 00:11FF: xx xx                        dw      CREATE
-  3199 00:1201: xx xx xx xx                  dw      DO_LITERAL,DO_CONSTANT
-  3200 00:1205: xx xx                        dw      BUILD
-  3201 00:1207: xx xx                        dw      COMMA
-  3202 00:1209: xx xx                        dw      EXIT
+  3196 00:11CF: xx xx 80                     LINK    IMMEDIATE
+  3197 00:11D2: 06 41 42 4F                  db      6,"ABORT",'"'
+       00:11D6: 52 54 22 
+  3198 00:11D9: 20 xx xx     ABORT_QUOTE:    jsr     DO_COLON
+  3199 00:11DC: xx xx                        dw      S_QUOTE
+  3200 00:11DE: xx xx xx xx                  dw      DO_LITERAL,QUERY_ABORT
+  3201 00:11E2: xx xx                        dw      COMMA
+  3202 00:11E4: xx xx                        dw      EXIT
   3203                        
-  3204                        DO_CONSTANT:
-  3205 00:120B: FA                           plx                             ; Get return address
-  3206 00:120C: 7B                           tdc                             ; Create space on stack
-  3207 00:120D: 3A                           dec     a
-  3208 00:120E: 3A                           dec     a
-  3209 00:120F: 5B                           tcd
-  3210 00:1210: BD 01 00                     lda     !1,x                    ; Transfer the value
-  3211 00:1213: 85 01                        sta     <1
-  3212 00:1215: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:1219: 00 00 
+  3204                        ; AGAIN ( orig -- )
+  3205 00:11E6: xx xx 80 05                  HEADER  5,"AGAIN",IMMEDIATE
+       00:11EA: 41 47 41 49 
+       00:11EE: 4E 
+  3206 00:11EF: 20 xx xx     AGAIN:          jsr     DO_COLON
+  3207 00:11F2: xx xx xx xx                  dw      DO_LITERAL,BRANCH
+  3208 00:11F6: xx xx                        dw      COMMA
+  3209 00:11F8: xx xx                        dw      COMMA
+  3210 00:11FA: xx xx                        dw      EXIT
+  3211                        
+  3212                        ; BEGIN ( -- orig )
   3213                        
-  3214                        ; DO ( -- )
-  3215                        
-  3216 00:121B: xx xx 80 02                  HEADER  2,"DO",IMMEDIATE
-       00:121F: 44 4F 
-  3217 00:1221: 20 xx xx     DO:             jsr     DO_COLON
-  3218 00:1224: xx xx xx xx                  dw      DO_LITERAL,DO_DO
-  3219 00:1228: xx xx                        dw      COMMA
-  3220 00:122A: xx xx                        dw      ZERO
-  3221 00:122C: xx xx                        dw      HERE
-  3222 00:122E: xx xx                        dw      EXIT
-  3223                        
-  3224                        DO_DO:
-  3225 00:1230: A5 03                        lda     <3
-  3226 00:1232: 48                           pha
-  3227 00:1233: A5 01                        lda     <1
-  3228 00:1235: 48                           pha
-  3229 00:1236: 7B                           tdc
-  3230 00:1237: 1A                           inc     a
-  3231 00:1238: 1A                           inc     a
-  3232 00:1239: 1A                           inc     a
-  3233 00:123A: 1A                           inc     a
-  Sat May  7 2016 20:07                                                                                                    Page 64
+  3214 00:11FC: xx xx 80 05                  HEADER  5,"BEGIN",IMMEDIATE
+       00:1200: 42 45 47 49 
+       00:1204: 4E 
+  3215 00:1205: 20 xx xx     BEGIN:          jsr     DO_COLON
+  3216 00:1208: xx xx                        dw      HERE
+  3217 00:120A: xx xx                        dw      EXIT
+  3218                        
+  3219                        ; CHAR ( -- char )
+  3220                        ;
+  3221                        ;   BL WORD 1+ C@
+  3222                        
+  3223 00:120C: xx xx 00 04                  HEADER  4,"CHAR",NORMAL
+       00:1210: 43 48 41 52 
+  3224 00:1214: 20 xx xx     CHAR:           jsr     DO_COLON
+  3225 00:1217: xx xx                        dw      BL
+  3226 00:1219: xx xx                        dw      WORD
+  3227 00:121B: xx xx                        dw      ONE_PLUS
+  3228 00:121D: xx xx                        dw      C_FETCH
+  3229 00:121F: xx xx                        dw      EXIT
+  3230                        
+  3231                        ; CONSTANT ( x “<spaces>name” -- )
+  3232                        ;
+  3233                        ; Skip leading space delimiters. Parse name delimited by a space. Create a
+  3234                        ; definition for name with the execution semantics defined below.
+  3235                        
+  Sun May  8 2016 22:10                                                                                                    Page 64
 
 
-  3234 00:123B: 5B                           tcd
-  3235 00:123C: BB C8 C8 7C                  CONTINUE
-       00:1240: 00 00 
-  3236                        
-  3237                        ; ELSE ( -- )
-  3238                        
-  3239 00:1242: xx xx 80 04                  HEADER  4,"ELSE",IMMEDIATE
-       00:1246: 45 4C 53 45 
-  3240 00:124A: 20 xx xx     ELSE:           jsr     DO_COLON
-  3241 00:124D: xx xx xx xx                  dw      DO_LITERAL,BRANCH
-  3242 00:1251: xx xx                        dw      COMMA
-  3243 00:1253: xx xx                        dw      HERE
-  3244 00:1255: xx xx                        dw      ZERO
-  3245 00:1257: xx xx                        dw      COMMA
-  3246 00:1259: xx xx                        dw      HERE
-  3247 00:125B: xx xx                        dw      SWAP
-  3248 00:125D: xx xx                        dw      STORE
-  3249 00:125F: xx xx                        dw      EXIT
-  3250                        
-  3251                        BRANCH:
-  3252 00:1261: B9 00 00                     lda     !0,y                    ; Load branch address into IP
-  3253 00:1264: A8                           tay
-  3254 00:1265: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:1269: 00 00 
+  3236 00:1221: xx xx 00 08                  HEADER  8,"CONSTANT",NORMAL
+       00:1225: 43 4F 4E 53 
+       00:1229: 54 41 4E 54 
+  3237 00:122D: 20 xx xx     CONSTANT:       jsr     DO_COLON
+  3238 00:1230: xx xx                        dw      CREATE
+  3239 00:1232: xx xx xx xx                  dw      DO_LITERAL,DO_CONSTANT
+  3240 00:1236: xx xx                        dw      BUILD
+  3241 00:1238: xx xx                        dw      COMMA
+  3242 00:123A: xx xx                        dw      EXIT
+  3243                        
+  3244                        DO_CONSTANT:
+  3245 00:123C: FA                           plx                             ; Get return address
+  3246 00:123D: 7B                           tdc                             ; Create space on stack
+  3247 00:123E: 3A                           dec     a
+  3248 00:123F: 3A                           dec     a
+  3249 00:1240: 5B                           tcd
+  3250 00:1241: BD 01 00                     lda     !1,x                    ; Transfer the value
+  3251 00:1244: 85 01                        sta     <1
+  3252 00:1246: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:124A: 00 00 
+  3253                        
+  3254                        ; DO ( -- 0 orig )
   3255                        
-  3256                        ; IF ( -- )
-  3257                        
-  3258 00:126B: xx xx 80 02                  HEADER  2,"IF",IMMEDIATE
-       00:126F: 49 46 
-  3259 00:1271: 20 xx xx     IF:             jsr     DO_COLON
-  3260 00:1274: xx xx xx xx                  dw      DO_LITERAL,QUERY_BRANCH
-  3261 00:1278: xx xx                        dw      COMMA
-  3262 00:127A: xx xx                        dw      HERE
-  3263 00:127C: xx xx                        dw      ZERO
-  3264 00:127E: xx xx                        dw      COMMA
-  3265 00:1280: xx xx                        dw      EXIT
-  3266                        
-  3267                        QUERY_BRANCH:
-  3268 00:1282: A6 01                        ldx     <1                      ; Pull the top of stack value
-  3269 00:1284: 7B                           tdc
-  3270 00:1285: 1A                           inc     a                       ; Drop top item
-  3271 00:1286: 1A                           inc     a
-  3272 00:1287: 5B                           tcd
-  3273 00:1288: 8A                           txa
-  3274 00:1289: F0 D6                        beq     BRANCH                  ; Branch if top was zero
-  3275 00:128B: C8                           iny                             ; Otherwise skip address
-  3276 00:128C: C8                           iny
-  3277 00:128D: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:1291: 00 00 
+  3256 00:124C: xx xx 80 02                  HEADER  2,"DO",IMMEDIATE
+       00:1250: 44 4F 
+  3257 00:1252: 20 xx xx     DO:             jsr     DO_COLON
+  3258 00:1255: xx xx xx xx                  dw      DO_LITERAL,DO_DO
+  3259 00:1259: xx xx                        dw      COMMA
+  3260 00:125B: xx xx                        dw      ZERO
+  3261 00:125D: xx xx                        dw      HERE
+  3262 00:125F: xx xx                        dw      EXIT
+  3263                        
+  3264                        DO_DO:
+  3265 00:1261: A5 03                        lda     <3
+  3266 00:1263: 48                           pha
+  3267 00:1264: A5 01                        lda     <1
+  3268 00:1266: 48                           pha
+  3269 00:1267: 7B                           tdc
+  3270 00:1268: 1A                           inc     a
+  3271 00:1269: 1A                           inc     a
+  3272 00:126A: 1A                           inc     a
+  3273 00:126B: 1A                           inc     a
+  3274 00:126C: 5B                           tcd
+  3275 00:126D: BB C8 C8 7C                  CONTINUE
+       00:1271: 00 00 
+  3276                        
+  3277                        ; ELSE ( jump -- jump' )
   3278                        
-  3279                        ; IMMEDIATE ( -- )
-  3280                        
-  3281 00:1293: xx xx 80 09                  HEADER  9,"IMMEDIATE",IMMEDIATE
-       00:1297: 49 4D 4D 45 
-       00:129B: 44 49 41 54 
-       00:129F: 45 
-  3282 00:12A0: 20 xx xx                     jsr     DO_COLON
-  3283 00:12A3: xx xx 80 00                  dw      DO_LITERAL,IMMEDIATE
-  Sat May  7 2016 20:07                                                                                                    Page 65
+  3279 00:1273: xx xx 80 04                  HEADER  4,"ELSE",IMMEDIATE
+       00:1277: 45 4C 53 45 
+  3280 00:127B: 20 xx xx     ELSE:           jsr     DO_COLON
+  3281 00:127E: xx xx xx xx                  dw      DO_LITERAL,BRANCH
+  3282 00:1282: xx xx                        dw      COMMA
+  3283 00:1284: xx xx                        dw      HERE
+  3284 00:1286: xx xx                        dw      ZERO
+  3285 00:1288: xx xx                        dw      COMMA
+  3286 00:128A: xx xx                        dw      HERE
+  3287 00:128C: xx xx                        dw      SWAP
+  Sun May  8 2016 22:10                                                                                                    Page 65
 
 
-  3284 00:12A7: xx xx                        dw      LATEST
-  3285 00:12A9: xx xx                        dw      FETCH
-  3286 00:12AB: xx xx                        dw      ONE_MINUS
-  3287 00:12AD: xx xx                        dw      C_STORE
-  3288 00:12AF: xx xx                        dw      EXIT
-  3289                        
-  3290                        ; LITERAL ( x -- )
-  3291                        ;
-  3292                        ; Append the run-time semantics given below to the current definition.
-  3293                        
-  3294 00:12B1: xx xx 80 07                  HEADER  7,"LITERAL",IMMEDIATE
-       00:12B5: 4C 49 54 45 
-       00:12B9: 52 41 4C 
-  3295 00:12BC: 20 xx xx     LITERAL:        jsr     DO_COLON
-  3296 00:12BF: xx xx xx xx                  dw      DO_LITERAL,DO_LITERAL
-  3297 00:12C3: xx xx                        dw      COMMA
-  3298 00:12C5: xx xx                        dw      COMMA
-  3299 00:12C7: xx xx                        dw      EXIT
-  3300                        
-  3301                        DO_LITERAL:
-  3302 00:12C9: 7B                           tdc                             ; Make room on stack
-  3303 00:12CA: 3A                           dec     a
-  3304 00:12CB: 3A                           dec     a
-  3305 00:12CC: 5B                           tcd
-  3306 00:12CD: B9 00 00                     lda     !0,y                    ; Fetch constant from IP
-  3307 00:12D0: 85 01                        sta     <1
-  3308 00:12D2: C8                           iny
-  3309 00:12D3: C8                           iny
-  3310 00:12D4: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:12D8: 00 00 
-  3311                        
-  3312                        ; LOOP
-  3313                        
-  3314 00:12DA: xx xx 80 04                  HEADER  4,"LOOP",IMMEDIATE
-       00:12DE: 4C 4F 4F 50 
-  3315 00:12E2: 20 xx xx     LOOP:           jsr     DO_COLON
-  3316 00:12E5: xx xx xx xx                  dw      DO_LITERAL,DO_LOOP
-  3317 00:12E9: xx xx                        dw      COMMA
-  3318 00:12EB: xx xx                        dw      COMMA
-  3319 00:12ED: xx xx                        dw      QUERY_DUP
-  3320 00:12EF: xx xx xx xx                  dw      QUERY_BRANCH,LOOP_1
-  3321 00:12F3: xx xx                        dw      HERE
-  3322 00:12F5: xx xx                        dw      SWAP
-  3323 00:12F7: xx xx                        dw      STORE
-  3324 00:12F9: xx xx        LOOP_1:         dw      EXIT
-  3325                        
-  3326                        ; (LOOP)
-  3327                        
-  3328                        ;               HEADER  6,"(LOOP)",NORMAL
-  3329                        DO_LOOP
-  3330 00:12FB: A3 01                        lda     1,s                     ; Add one to loop counter
-  3331 00:12FD: 1A                           inc     a
-  3332 00:12FE: 83 01                        sta     1,s
-  3333 00:1300: C3 03                        cmp     3,s                     ; Reached limit?
-  3334 00:1302: B0 0A                        bcs     DO_LOOP_END             ; Yes
-  3335 00:1304: B9 00 00                     lda     !0,y                    ; No, branch back to start
-  3336 00:1307: A8                           tay
-  3337 00:1308: BB C8 C8 7C                  CONTINUE                        ; Done
-  Sat May  7 2016 20:07                                                                                                    Page 66
+  3288 00:128E: xx xx                        dw      STORE
+  3289 00:1290: xx xx                        dw      EXIT
+  3290                        
+  3291                        BRANCH:
+  3292 00:1292: B9 00 00                     lda     !0,y                    ; Load branch address into IP
+  3293 00:1295: A8                           tay
+  3294 00:1296: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:129A: 00 00 
+  3295                        
+  3296                        ; IF ( -- jump )
+  3297                        
+  3298 00:129C: xx xx 80 02                  HEADER  2,"IF",IMMEDIATE
+       00:12A0: 49 46 
+  3299 00:12A2: 20 xx xx     IF:             jsr     DO_COLON
+  3300 00:12A5: xx xx xx xx                  dw      DO_LITERAL,QUERY_BRANCH
+  3301 00:12A9: xx xx                        dw      COMMA
+  3302 00:12AB: xx xx                        dw      HERE
+  3303 00:12AD: xx xx                        dw      ZERO
+  3304 00:12AF: xx xx                        dw      COMMA
+  3305 00:12B1: xx xx                        dw      EXIT
+  3306                        
+  3307                        QUERY_BRANCH:
+  3308 00:12B3: A6 01                        ldx     <1                      ; Pull the top of stack value
+  3309 00:12B5: 7B                           tdc
+  3310 00:12B6: 1A                           inc     a                       ; Drop top item
+  3311 00:12B7: 1A                           inc     a
+  3312 00:12B8: 5B                           tcd
+  3313 00:12B9: 8A                           txa
+  3314 00:12BA: F0 D6                        beq     BRANCH                  ; Branch if top was zero
+  3315 00:12BC: C8                           iny                             ; Otherwise skip address
+  3316 00:12BD: C8                           iny
+  3317 00:12BE: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:12C2: 00 00 
+  3318                        
+  3319                        ; IMMEDIATE ( -- )
+  3320                        
+  3321 00:12C4: xx xx 80 09                  HEADER  9,"IMMEDIATE",IMMEDIATE
+       00:12C8: 49 4D 4D 45 
+       00:12CC: 44 49 41 54 
+       00:12D0: 45 
+  3322 00:12D1: 20 xx xx                     jsr     DO_COLON
+  3323 00:12D4: xx xx 80 00                  dw      DO_LITERAL,IMMEDIATE
+  3324 00:12D8: xx xx                        dw      LATEST
+  3325 00:12DA: xx xx                        dw      FETCH
+  3326 00:12DC: xx xx                        dw      ONE_MINUS
+  3327 00:12DE: xx xx                        dw      C_STORE
+  3328 00:12E0: xx xx                        dw      EXIT
+  3329                        
+  3330                        ; LITERAL ( x -- )
+  3331                        ;
+  3332                        ; Append the run-time semantics given below to the current definition.
+  3333                        
+  3334 00:12E2: xx xx 80 07                  HEADER  7,"LITERAL",IMMEDIATE
+       00:12E6: 4C 49 54 45 
+       00:12EA: 52 41 4C 
+  3335 00:12ED: 20 xx xx     LITERAL:        jsr     DO_COLON
+  3336 00:12F0: xx xx xx xx                  dw      DO_LITERAL,DO_LITERAL
+  3337 00:12F4: xx xx                        dw      COMMA
+  Sun May  8 2016 22:10                                                                                                    Page 66
 
 
-       00:130C: 00 00 
-  3338                        
-  3339 00:130E: C8           DO_LOOP_END:    iny                             ; Skip over address
-  3340 00:130F: C8                           iny
-  3341 00:1310: 68                           pla                             ; Drop loop variables
-  3342 00:1311: 68                           pla
-  3343 00:1312: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:1316: 00 00 
-  3344                        
-  3345                        ; POSTPONE
-  3346                        
-  3347                        ;   BL WORD FIND
-  3348                        ;   DUP 0= ABORT" ?"
-  3349                        ;   0< IF   -- xt       non immed: add code to current
-  3350                        ;                       def'n to compile xt later.
-  3351                        ;       ['] LIT ,XT  ,  add "LIT,xt,COMMAXT"
-  3352                        ;       ['] ,XT ,XT     to current definition
-  3353                        ;   ELSE  ,XT      immed: compile into cur. def'n
-  3354                        ;   THEN ; IMMEDIATE
-  3355                        
-  3356 00:1318: xx xx 80 08                  HEADER  8,"POSTPONE",IMMEDIATE
-       00:131C: 50 4F 53 54 
-       00:1320: 50 4F 4E 45 
-  3357 00:1324: 20 xx xx     POSTPONE:       jsr     DO_COLON
-  3358 00:1327: xx xx                        dw      BL
-  3359 00:1329: xx xx                        dw      WORD
-  3360 00:132B: xx xx                        dw      FIND
-  3361 00:132D: xx xx                        dw      DUP
-  3362 00:132F: xx xx                        dw      ZERO_EQUAL
-  3363 00:1331: xx xx                        dw      DO_S_QUOTE
-  3364 00:1333: 01 3F                        db      1,"?"
-  3365 00:1335: xx xx                        dw      QUERY_ABORT
-  3366 00:1337: xx xx                        dw      ZERO_LESS
-  3367 00:1339: xx xx xx xx                  dw      QUERY_BRANCH,POSTPONE_1
-  3368 00:133D: xx xx xx xx                  dw      DO_LITERAL,DO_LITERAL
-  3369 00:1341: xx xx                        dw      COMMA
-  3370 00:1343: xx xx                        dw      COMMA
-  3371 00:1345: xx xx xx xx                  dw      BRANCH,POSTPONE_2
-  3372 00:1349: xx xx        POSTPONE_1:     dw      COMMA
-  3373 00:134B: xx xx        POSTPONE_2:     dw      EXIT
-  3374                        
-  3375                        ; RECURSE ( -- )
-  3376                        
-  3377 00:134D: xx xx 80 07                  HEADER  7,"RECURSE",IMMEDIATE
-       00:1351: 52 45 43 55 
-       00:1355: 52 53 45 
-  3378 00:1358: 20 xx xx     RECURSE:        jsr     DO_COLON
-  3379 00:135B: xx xx                        dw      LATEST
-  3380 00:135D: xx xx                        dw      FETCH
-  3381 00:135F: xx xx                        dw      NFA_TO_CFA
-  3382 00:1361: xx xx                        dw      COMMA
-  3383 00:1363: xx xx                        dw      EXIT
-  3384                        
-  3385                        ; S"
-  3386                        
-  3387 00:1365: xx xx 80                     LINK    IMMEDIATE
-  3388 00:1368: 02 53 22                     db      2,"S",'"'
-  3389 00:136B: 20 xx xx     S_QUOTE:        jsr     DO_COLON
-  Sat May  7 2016 20:07                                                                                                    Page 67
+  3338 00:12F6: xx xx                        dw      COMMA
+  3339 00:12F8: xx xx                        dw      EXIT
+  3340                        
+  3341                        DO_LITERAL:
+  3342 00:12FA: 7B                           tdc                             ; Make room on stack
+  3343 00:12FB: 3A                           dec     a
+  3344 00:12FC: 3A                           dec     a
+  3345 00:12FD: 5B                           tcd
+  3346 00:12FE: B9 00 00                     lda     !0,y                    ; Fetch constant from IP
+  3347 00:1301: 85 01                        sta     <1
+  3348 00:1303: C8                           iny
+  3349 00:1304: C8                           iny
+  3350 00:1305: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:1309: 00 00 
+  3351                        
+  3352                        ; LOOP ( jump orig -- )
+  3353                        
+  3354 00:130B: xx xx 80 04                  HEADER  4,"LOOP",IMMEDIATE
+       00:130F: 4C 4F 4F 50 
+  3355 00:1313: 20 xx xx     LOOP:           jsr     DO_COLON
+  3356 00:1316: xx xx xx xx                  dw      DO_LITERAL,DO_LOOP
+  3357 00:131A: xx xx                        dw      COMMA
+  3358 00:131C: xx xx                        dw      COMMA
+  3359 00:131E: xx xx                        dw      QUERY_DUP
+  3360 00:1320: xx xx xx xx                  dw      QUERY_BRANCH,LOOP_1
+  3361 00:1324: xx xx                        dw      HERE
+  3362 00:1326: xx xx                        dw      SWAP
+  3363 00:1328: xx xx                        dw      STORE
+  3364 00:132A: xx xx        LOOP_1:         dw      EXIT
+  3365                        
+  3366                        ; (LOOP)
+  3367                        
+  3368                        DO_LOOP
+  3369 00:132C: A3 01                        lda     1,s                     ; Add one to loop counter
+  3370 00:132E: 1A                           inc     a
+  3371 00:132F: 83 01                        sta     1,s
+  3372 00:1331: C3 03                        cmp     3,s                     ; Reached limit?
+  3373 00:1333: B0 0A                        bcs     DO_LOOP_END             ; Yes
+  3374 00:1335: B9 00 00                     lda     !0,y                    ; No, branch back to start
+  3375 00:1338: A8                           tay
+  3376 00:1339: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:133D: 00 00 
+  3377                        
+  3378 00:133F: C8           DO_LOOP_END:    iny                             ; Skip over address
+  3379 00:1340: C8                           iny
+  3380 00:1341: 68                           pla                             ; Drop loop variables
+  3381 00:1342: 68                           pla
+  3382 00:1343: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:1347: 00 00 
+  3383                        
+  3384                        ; POSTPONE
+  3385                        
+  3386                        ;   BL WORD FIND
+  3387                        ;   DUP 0= ABORT" ?"
+  3388                        ;   0< IF   -- xt       non immed: add code to current
+  3389                        ;                       def'n to compile xt later.
+  3390                        ;       ['] LIT ,XT  ,  add "LIT,xt,COMMAXT"
+  3391                        ;       ['] ,XT ,XT     to current definition
+  Sun May  8 2016 22:10                                                                                                    Page 67
 
 
-  3390 00:136E: xx xx xx xx                  dw      DO_LITERAL,DO_S_QUOTE
-  3391 00:1372: xx xx                        dw      COMMA
-  3392 00:1374: xx xx 22 00                  dw      DO_LITERAL,'"'
-  3393 00:1378: xx xx                        dw      WORD
-  3394 00:137A: xx xx                        dw      C_FETCH
-  3395 00:137C: xx xx                        dw      ONE_PLUS
-  3396 00:137E: xx xx                        dw      ALIGNED
-  3397 00:1380: xx xx                        dw      ALLOT
-  3398 00:1382: xx xx                        dw      EXIT
-  3399                        
-  3400                        ; (S") ( -- c-addr u )
-  3401                        
-  3402                        DO_S_QUOTE:
-  3403 00:1384: 20 xx xx                     jsr     DO_COLON
-  3404 00:1387: xx xx                        dw      R_FROM
-  3405 00:1389: xx xx                        dw      COUNT
-  3406 00:138B: xx xx                        dw      TWO_DUP
-  3407 00:138D: xx xx                        dw      PLUS
-  3408 00:138F: xx xx                        dw      ALIGNED
-  3409 00:1391: xx xx                        dw      TO_R
-  3410 00:1393: xx xx                        dw      EXIT
-  3411                        
-  3412                        ; THEN ( -- )
+  3392                        ;   ELSE  ,XT      immed: compile into cur. def'n
+  3393                        ;   THEN ; IMMEDIATE
+  3394                        
+  3395 00:1349: xx xx 80 08                  HEADER  8,"POSTPONE",IMMEDIATE
+       00:134D: 50 4F 53 54 
+       00:1351: 50 4F 4E 45 
+  3396 00:1355: 20 xx xx     POSTPONE:       jsr     DO_COLON
+  3397 00:1358: xx xx                        dw      BL
+  3398 00:135A: xx xx                        dw      WORD
+  3399 00:135C: xx xx                        dw      FIND
+  3400 00:135E: xx xx                        dw      DUP
+  3401 00:1360: xx xx                        dw      ZERO_EQUAL
+  3402 00:1362: xx xx                        dw      DO_S_QUOTE
+  3403 00:1364: 01 3F                        db      1,"?"
+  3404 00:1366: xx xx                        dw      QUERY_ABORT
+  3405 00:1368: xx xx                        dw      ZERO_LESS
+  3406 00:136A: xx xx xx xx                  dw      QUERY_BRANCH,POSTPONE_1
+  3407 00:136E: xx xx xx xx                  dw      DO_LITERAL,DO_LITERAL
+  3408 00:1372: xx xx                        dw      COMMA
+  3409 00:1374: xx xx                        dw      COMMA
+  3410 00:1376: xx xx xx xx                  dw      BRANCH,POSTPONE_2
+  3411 00:137A: xx xx        POSTPONE_1:     dw      COMMA
+  3412 00:137C: xx xx        POSTPONE_2:     dw      EXIT
   3413                        
-  3414 00:1395: xx xx 80 04                  HEADER  4,"THEN",IMMEDIATE
-       00:1399: 54 48 45 4E 
-  3415 00:139D: 20 xx xx     THEN:           jsr     DO_COLON
-  3416 00:13A0: xx xx                        dw      HERE
-  3417 00:13A2: xx xx                        dw      SWAP
-  3418 00:13A4: xx xx                        dw      STORE
-  3419 00:13A6: xx xx                        dw      EXIT
-  3420                        
-  3421                        ; UNTIL ( -- )
-  3422                        
-  3423 00:13A8: xx xx 80 05                  HEADER  5,"UNTIL",IMMEDIATE
-       00:13AC: 55 4E 54 49 
-       00:13B0: 4C 
-  3424 00:13B1: 20 xx xx     UNTIL:          jsr     DO_COLON
-  3425 00:13B4: xx xx xx xx                  dw      DO_LITERAL,QUERY_BRANCH
-  3426 00:13B8: xx xx                        dw      COMMA
-  3427 00:13BA: xx xx                        dw      COMMA
-  3428 00:13BC: xx xx                        dw      EXIT
-  3429                        
-  3430                        ; USER
-  3431                        
-  3432 00:13BE: xx xx 00 04                  HEADER  4,"USER",NORMAL
-       00:13C2: 55 53 45 52 
-  3433 00:13C6: 20 xx xx     USER:           jsr     DO_COLON
-  3434 00:13C9: xx xx                        dw      CREATE
-  3435 00:13CB: xx xx xx xx                  dw      DO_LITERAL,DO_USER
-  3436 00:13CF: xx xx                        dw      BUILD
-  3437 00:13D1: xx xx                        dw      COMMA
-  3438 00:13D3: xx xx                        dw      EXIT
-  3439                        
-  3440 00:13D5: xx xx 00 06                  HEADER  6,"(USER)",NORMAL
-       00:13D9: 28 55 53 45 
-       00:13DD: 52 29 
-  3441                        DO_USER:
-  Sat May  7 2016 20:07                                                                                                    Page 68
+  3414                        ; RECURSE ( -- )
+  3415                        
+  3416 00:137E: xx xx 80 07                  HEADER  7,"RECURSE",IMMEDIATE
+       00:1382: 52 45 43 55 
+       00:1386: 52 53 45 
+  3417 00:1389: 20 xx xx     RECURSE:        jsr     DO_COLON
+  3418 00:138C: xx xx                        dw      LATEST
+  3419 00:138E: xx xx                        dw      FETCH
+  3420 00:1390: xx xx                        dw      NFA_TO_CFA
+  3421 00:1392: xx xx                        dw      COMMA
+  3422 00:1394: xx xx                        dw      EXIT
+  3423                        
+  3424                        ; REPEAT ( orig jump -- )
+  3425                        
+  3426 00:1396: xx xx 80 06                  HEADER  6,"REPEAT",IMMEDIATE
+       00:139A: 52 45 50 45 
+       00:139E: 41 54 
+  3427 00:13A0: 20 xx xx     REPEAT:         jsr     DO_COLON
+  3428 00:13A3: xx xx                        dw      SWAP
+  3429 00:13A5: xx xx xx xx                  dw      DO_LITERAL,BRANCH
+  3430 00:13A9: xx xx                        dw      COMMA
+  3431 00:13AB: xx xx                        dw      COMMA
+  3432 00:13AD: xx xx                        dw      HERE
+  3433 00:13AF: xx xx                        dw      SWAP
+  3434 00:13B1: xx xx                        dw      STORE
+  3435 00:13B3: xx xx                        dw      EXIT
+  3436                        
+  3437                        ; S"
+  3438                        
+  3439 00:13B5: xx xx 80                     LINK    IMMEDIATE
+  3440 00:13B8: 02 53 22                     db      2,"S",'"'
+  3441 00:13BB: 20 xx xx     S_QUOTE:        jsr     DO_COLON
+  3442 00:13BE: xx xx xx xx                  dw      DO_LITERAL,DO_S_QUOTE
+  3443 00:13C2: xx xx                        dw      COMMA
+  Sun May  8 2016 22:10                                                                                                    Page 68
 
 
-  3442 00:13DF: 7B                           tdc
-  3443 00:13E0: 3A                           dec     a                       ; Push on data stack
-  3444 00:13E1: 3A                           dec     a
-  3445 00:13E2: 5B                           tcd
-  3446 00:13E3: FA                           plx
-  3447 00:13E4: 18                           clc
-  3448 00:13E5: BD 01 00                     lda     !1,x
-  3449 00:13E8: 69 00 00                     adc     #USER_AREA
-  3450 00:13EB: 85 01                        sta     <1
-  3451 00:13ED: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:13F1: 00 00 
-  3452                        
-  3453                        ; VARIABLE ( “<spaces>name” -- )
-  3454                        ;
-  3455                        ; Skip leading space delimiters. Parse name delimited by a space. Create a
-  3456                        ; definition for name with the execution semantics defined below. Reserve one
-  3457                        ; cell of data space at an aligned address.
-  3458                        
-  3459 00:13F3: xx xx 00                     LINK    NORMAL
-  3460 00:13F6: 08 56 41 52                  db      8,"VARIABLE"
-       00:13FA: 49 41 42 4C 
-       00:13FE: 45 
-  3461 00:13FF: 20 xx xx     VARIABLE:       jsr     DO_COLON
-  3462 00:1402: xx xx                        dw      CREATE
-  3463 00:1404: xx xx xx xx                  dw      DO_LITERAL,DO_VARIABLE
-  3464 00:1408: xx xx                        dw      BUILD
-  3465 00:140A: xx xx 01 00                  dw      DO_LITERAL,1
-  3466 00:140E: xx xx                        dw      CELLS
-  3467 00:1410: xx xx                        dw      ALLOT
-  3468 00:1412: xx xx                        dw      EXIT
-  3469                        
-  3470                        DO_VARIABLE:
-  3471 00:1414: 7B                           tdc
-  3472 00:1415: 3A                           dec     a
-  3473 00:1416: 3A                           dec     a
-  3474 00:1417: 5B                           tcd
-  3475 00:1418: 68                           pla
-  3476 00:1419: 1A                           inc     a
-  3477 00:141A: 85 01                        sta     <1
-  3478 00:141C: BB C8 C8 7C                  CONTINUE
-       00:1420: 00 00 
-  3479                        
-  3480                        ; WORDS ( -- )
-  3481                        ;
-  3482                        ;   LATEST @ BEGIN
-  3483                        ;       DUP COUNT TYPE SPACE
-  3484                        ;       NFA>LFA @
-  3485                        ;   DUP 0= UNTIL
-  3486                        ;   DROP ;
-  3487                        
-  3488 00:1422: xx xx 00 05                  HEADER  5,"WORDS",NORMAL
-       00:1426: 57 4F 52 44 
-       00:142A: 53 
-  3489 00:142B: 20 xx xx                     jsr     DO_COLON
-  3490 00:142E: xx xx                        dw      LATEST
-  3491 00:1430: xx xx                        dw      FETCH
-  3492 00:1432: xx xx        WORDS_1:        dw      DUP
-  3493 00:1434: xx xx                        dw      COUNT
-  Sat May  7 2016 20:07                                                                                                    Page 69
+  3444 00:13C4: xx xx 22 00                  dw      DO_LITERAL,'"'
+  3445 00:13C8: xx xx                        dw      WORD
+  3446 00:13CA: xx xx                        dw      C_FETCH
+  3447 00:13CC: xx xx                        dw      ONE_PLUS
+  3448 00:13CE: xx xx                        dw      ALIGNED
+  3449 00:13D0: xx xx                        dw      ALLOT
+  3450 00:13D2: xx xx                        dw      EXIT
+  3451                        
+  3452                        ; (S") ( -- c-addr u )
+  3453                        
+  3454                        DO_S_QUOTE:
+  3455 00:13D4: 20 xx xx                     jsr     DO_COLON
+  3456 00:13D7: xx xx                        dw      R_FROM
+  3457 00:13D9: xx xx                        dw      COUNT
+  3458 00:13DB: xx xx                        dw      TWO_DUP
+  3459 00:13DD: xx xx                        dw      PLUS
+  3460 00:13DF: xx xx                        dw      ALIGNED
+  3461 00:13E1: xx xx                        dw      TO_R
+  3462 00:13E3: xx xx                        dw      EXIT
+  3463                        
+  3464                        ; THEN ( orig -- )
+  3465                        
+  3466 00:13E5: xx xx 80 04                  HEADER  4,"THEN",IMMEDIATE
+       00:13E9: 54 48 45 4E 
+  3467 00:13ED: 20 xx xx     THEN:           jsr     DO_COLON
+  3468 00:13F0: xx xx                        dw      HERE
+  3469 00:13F2: xx xx                        dw      SWAP
+  3470 00:13F4: xx xx                        dw      STORE
+  3471 00:13F6: xx xx                        dw      EXIT
+  3472                        
+  3473                        ; UNTIL ( orig -- )
+  3474                        
+  3475 00:13F8: xx xx 80 05                  HEADER  5,"UNTIL",IMMEDIATE
+       00:13FC: 55 4E 54 49 
+       00:1400: 4C 
+  3476 00:1401: 20 xx xx     UNTIL:          jsr     DO_COLON
+  3477 00:1404: xx xx xx xx                  dw      DO_LITERAL,QUERY_BRANCH
+  3478 00:1408: xx xx                        dw      COMMA
+  3479 00:140A: xx xx                        dw      COMMA
+  3480 00:140C: xx xx                        dw      EXIT
+  3481                        
+  3482                        ; USER
+  3483                        
+  3484 00:140E: xx xx 00 04                  HEADER  4,"USER",NORMAL
+       00:1412: 55 53 45 52 
+  3485 00:1416: 20 xx xx     USER:           jsr     DO_COLON
+  3486 00:1419: xx xx                        dw      CREATE
+  3487 00:141B: xx xx xx xx                  dw      DO_LITERAL,DO_USER
+  3488 00:141F: xx xx                        dw      BUILD
+  3489 00:1421: xx xx                        dw      COMMA
+  3490 00:1423: xx xx                        dw      EXIT
+  3491                        
+  3492                        DO_USER:
+  3493 00:1425: 7B                           tdc
+  3494 00:1426: 3A                           dec     a                       ; Push on data stack
+  3495 00:1427: 3A                           dec     a
+  3496 00:1428: 5B                           tcd
+  3497 00:1429: FA                           plx
+  Sun May  8 2016 22:10                                                                                                    Page 69
 
 
-  3494 00:1436: xx xx                        dw      TYPE
-  3495 00:1438: xx xx                        dw      SPACE
-  3496 00:143A: xx xx                        dw      NFA_TO_LFA
-  3497 00:143C: xx xx                        dw      FETCH
-  3498 00:143E: xx xx                        dw      DUP
-  3499 00:1440: xx xx                        dw      ZERO_EQUAL
-  3500 00:1442: xx xx xx xx                  dw      QUERY_BRANCH,WORDS_1
-  3501 00:1446: xx xx                        dw      DROP
-  3502 00:1448: xx xx                        dw      EXIT
+  3498 00:142A: 18                           clc
+  3499 00:142B: BD 01 00                     lda     !1,x
+  3500 00:142E: 69 00 00                     adc     #USER_AREA
+  3501 00:1431: 85 01                        sta     <1
+  3502 00:1433: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:1437: 00 00 
   3503                        
-  3504                        ; [
+  3504                        ; VARIABLE ( “<spaces>name” -- )
   3505                        ;
-  3506                        ; In this implementation it is defined as
-  3507                        ;
-  3508                        ;   0 STATE !
+  3506                        ; Skip leading space delimiters. Parse name delimited by a space. Create a
+  3507                        ; definition for name with the execution semantics defined below. Reserve one
+  3508                        ; cell of data space at an aligned address.
   3509                        
-  3510 00:144A: xx xx 80 01                  HEADER  1,"[",IMMEDIATE
-       00:144E: 5B 
-  3511 00:144F: 20 xx xx     LEFT_BRACKET:   jsr     DO_COLON
-  3512 00:1452: xx xx                        dw      ZERO
-  3513 00:1454: xx xx                        dw      STATE
-  3514 00:1456: xx xx                        dw      STORE
-  3515 00:1458: xx xx                        dw      EXIT
-  3516                        
-  3517                        ; \ ( -- )
-  3518                        ;
-  3519                        ; Parse and discard the remainder of the parse area. \ is an immediate word.
-  3520                        ;
-  3521                        ; In this implementation it is defined as
-  3522                        ;
-  3523                        ;   1 WORD DROP
-  3524                        
-  3525 00:145A: xx xx 80 01                  HEADER  1,"\",IMMEDIATE
-       00:145E: 5C 
-  3526 00:145F: 20 xx xx     BACKSLASH:      jsr     DO_COLON
-  3527 00:1462: xx xx 01 00                  dw      DO_LITERAL,1
-  3528 00:1466: xx xx                        dw      WORD
-  3529 00:1468: xx xx                        dw      DROP
-  3530 00:146A: xx xx                        dw      EXIT
-  3531                        
-  3532                        ; ]
-  3533                        ;
-  3534                        ; In this implementation it is defined as
-  3535                        ;
-  3536                        ;   -1 STATE !
-  3537                        
-  3538 00:146C: xx xx 00 01                  HEADER  1,"]",NORMAL
-       00:1470: 5D 
-  3539 00:1471: 20 xx xx     RIGHT_BRACKET:  jsr     DO_COLON
-  3540 00:1474: xx xx FF FF                  dw      DO_LITERAL,-1
-  3541 00:1478: xx xx                        dw      STATE
-  3542 00:147A: xx xx                        dw      STORE
-  3543 00:147C: xx xx                        dw      EXIT
-  3544                        
-  3545                        ;===============================================================================
-  3546                        ; I/O Operations
-  3547                        ;-------------------------------------------------------------------------------
-  3548                        
-  Sat May  7 2016 20:07                                                                                                    Page 70
+  3510 00:1439: xx xx 00                     LINK    NORMAL
+  3511 00:143C: 08 56 41 52                  db      8,"VARIABLE"
+       00:1440: 49 41 42 4C 
+       00:1444: 45 
+  3512 00:1445: 20 xx xx     VARIABLE:       jsr     DO_COLON
+  3513 00:1448: xx xx                        dw      CREATE
+  3514 00:144A: xx xx xx xx                  dw      DO_LITERAL,DO_VARIABLE
+  3515 00:144E: xx xx                        dw      BUILD
+  3516 00:1450: xx xx 01 00                  dw      DO_LITERAL,1
+  3517 00:1454: xx xx                        dw      CELLS
+  3518 00:1456: xx xx                        dw      ALLOT
+  3519 00:1458: xx xx                        dw      EXIT
+  3520                        
+  3521                        DO_VARIABLE:
+  3522 00:145A: 7B                           tdc
+  3523 00:145B: 3A                           dec     a
+  3524 00:145C: 3A                           dec     a
+  3525 00:145D: 5B                           tcd
+  3526 00:145E: 68                           pla
+  3527 00:145F: 1A                           inc     a
+  3528 00:1460: 85 01                        sta     <1
+  3529 00:1462: BB C8 C8 7C                  CONTINUE
+       00:1466: 00 00 
+  3530                        
+  3531                        ; WHILE ( orig -- orig jump )
+  3532                        
+  3533 00:1468: xx xx 80 05                  HEADER  5,"WHILE",IMMEDIATE
+       00:146C: 57 48 49 4C 
+       00:1470: 45 
+  3534 00:1471: 20 xx xx     WHILE:          jsr     DO_COLON
+  3535 00:1474: xx xx xx xx                  dw      DO_LITERAL,QUERY_BRANCH
+  3536 00:1478: xx xx                        dw      COMMA
+  3537 00:147A: xx xx                        dw      HERE
+  3538 00:147C: xx xx                        dw      ZERO
+  3539 00:147E: xx xx                        dw      COMMA
+  3540 00:1480: xx xx                        dw      EXIT
+  3541                        
+  3542                        ; WORDS ( -- )
+  3543                        ;
+  3544                        ;   LATEST @ BEGIN
+  3545                        ;       DUP COUNT TYPE SPACE
+  3546                        ;       NFA>LFA @
+  3547                        ;   DUP 0= UNTIL
+  3548                        ;   DROP ;
+  3549                        
+  Sun May  8 2016 22:10                                                                                                    Page 70
 
 
-  3549                        ; CR ( -- )
-  3550                        ;
-  3551                        ; Cause subsequent output to appear at the beginning of the next line.
-  3552                        ;
-  3553                        ; In this implementation it is defined as
-  3554                        ;
-  3555                        ;   13 EMIT 10 EMIT
-  3556                        
-  3557 00:147E: xx xx 00 02                  HEADER  2,"CR",NORMAL
-       00:1482: 43 52 
-  3558 00:1484: 20 xx xx     CR:             jsr     DO_COLON
-  3559 00:1487: xx xx 0D 00                  dw      DO_LITERAL,13
-  3560 00:148B: xx xx                        dw      EMIT
-  3561 00:148D: xx xx 0A 00                  dw      DO_LITERAL,10
-  3562 00:1491: xx xx                        dw      EMIT
-  3563 00:1493: xx xx                        dw      EXIT
-  3564                        
-  3565                        ; EMIT ( x -- )
-  3566                        ;
-  3567                        ; If x is a graphic character in the implementation-defined character set,
-  3568                        ; display x. The effect of EMIT for all other values of x is implementation
-  3569                        ; -defined.
-  3570                        
-  3571 00:1495: xx xx 00 04                  HEADER  4,"EMIT",NORMAL
-       00:1499: 45 4D 49 54 
-  3572                                        extern  UartTx
-  3573                        EMIT:
-  3574 00:149D: A5 01                        lda     <1                      ; Fetch character from stack
-  3575 00:149F: 20 xx xx                     jsr     UartTx                  ; .. and transmit
-  3576 00:14A2: 7B                           tdc
-  3577 00:14A3: 1A                           inc     a                       ; Drop the character
-  3578 00:14A4: 1A                           inc     a
-  3579 00:14A5: 5B                           tcd
-  3580 00:14A6: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:14AA: 00 00 
-  3581                        
-  3582                        ; KEY ( -- char )
-  3583                        ;
-  3584                        ; Receive one character char, a member of the implementation-defined character
-  3585                        ; set. Keyboard events that do not correspond to such characters are discarded
-  3586                        ; until a valid character is received, and those events are subsequently
-  3587                        ; unavailable.
-  3588                        ;
-  3589                        ; All standard characters can be received. Characters received by KEY are not
-  3590                        ; displayed.
-  3591                        
-  3592 00:14AC: xx xx 00 03                  HEADER  3,"KEY",NORMAL
-       00:14B0: 4B 45 59 
-  3593                                        extern  UartRx
-  3594                        KEY:
-  3595 00:14B3: 20 xx xx                     jsr     UartRx                  ; Receive a character
-  3596 00:14B6: 29 FF 00                     and     #$00ff                  ; Ensure in ASCII range
-  3597 00:14B9: AA                           tax
-  3598 00:14BA: 7B                           tdc
-  3599 00:14BB: 3A                           dec     a                       ; And push to stack
-  3600 00:14BC: 3A                           dec     a
-  3601 00:14BD: 5B                           tcd
-  3602 00:14BE: 86 01                        stx     <1
-  Sat May  7 2016 20:07                                                                                                    Page 71
+  3550 00:1482: xx xx 00 05                  HEADER  5,"WORDS",NORMAL
+       00:1486: 57 4F 52 44 
+       00:148A: 53 
+  3551 00:148B: 20 xx xx                     jsr     DO_COLON
+  3552 00:148E: xx xx                        dw      LATEST
+  3553 00:1490: xx xx                        dw      FETCH
+  3554 00:1492: xx xx        WORDS_1:        dw      DUP
+  3555 00:1494: xx xx                        dw      COUNT
+  3556 00:1496: xx xx                        dw      TYPE
+  3557 00:1498: xx xx                        dw      SPACE
+  3558 00:149A: xx xx                        dw      NFA_TO_LFA
+  3559 00:149C: xx xx                        dw      FETCH
+  3560 00:149E: xx xx                        dw      DUP
+  3561 00:14A0: xx xx                        dw      ZERO_EQUAL
+  3562 00:14A2: xx xx xx xx                  dw      QUERY_BRANCH,WORDS_1
+  3563 00:14A6: xx xx                        dw      DROP
+  3564 00:14A8: xx xx                        dw      EXIT
+  3565                        
+  3566                        ; [
+  3567                        ;
+  3568                        ; In this implementation it is defined as
+  3569                        ;
+  3570                        ;   0 STATE !
+  3571                        
+  3572 00:14AA: xx xx 80 01                  HEADER  1,"[",IMMEDIATE
+       00:14AE: 5B 
+  3573 00:14AF: 20 xx xx     LEFT_BRACKET:   jsr     DO_COLON
+  3574 00:14B2: xx xx                        dw      ZERO
+  3575 00:14B4: xx xx                        dw      STATE
+  3576 00:14B6: xx xx                        dw      STORE
+  3577 00:14B8: xx xx                        dw      EXIT
+  3578                        
+  3579                        ; [']
+  3580                        
+  3581 00:14BA: xx xx 80 03                  HEADER  3,"[']",IMMEDIATE
+       00:14BE: 5B 27 5D 
+  3582 00:14C1: 20 xx xx                     jsr     DO_COLON
+  3583 00:14C4: xx xx                        dw      TICK
+  3584 00:14C6: xx xx xx xx                  dw      DO_LITERAL,DO_LITERAL
+  3585 00:14CA: xx xx                        dw      COMMA
+  3586 00:14CC: xx xx                        dw      COMMA
+  3587 00:14CE: xx xx                        dw      EXIT
+  3588                        
+  3589                        ; [CHAR]
+  3590                        ;
+  3591                        ;   CHAR ['] LIT ,XT  , ; IMMEDIATE
+  3592                        
+  3593 00:14D0: xx xx 80 06                  HEADER  6,"[CHAR]",IMMEDIATE
+       00:14D4: 5B 43 48 41 
+       00:14D8: 52 5D 
+  3594 00:14DA: 20 xx xx                     jsr     DO_COLON
+  3595 00:14DD: xx xx                        dw      CHAR
+  3596 00:14DF: xx xx xx xx                  dw      DO_LITERAL,DO_LITERAL
+  3597 00:14E3: xx xx                        dw      COMMA
+  3598 00:14E5: xx xx                        dw      COMMA
+  3599 00:14E7: xx xx                        dw      EXIT
+  3600                        
+  3601                        ; \ ( -- )
+  Sun May  8 2016 22:10                                                                                                    Page 71
 
 
-  3603 00:14C0: BB C8 C8 7C                  CONTINUE                        ; Done
-       00:14C4: 00 00 
-  3604                        
-  3605                        ; SPACE ( -- )
+  3602                        ;
+  3603                        ; Parse and discard the remainder of the parse area. \ is an immediate word.
+  3604                        ;
+  3605                        ; In this implementation it is defined as
   3606                        ;
-  3607                        ; Display one space.
-  3608                        ;
-  3609                        ; In this implementation it is defined as
-  3610                        ;
-  3611                        ;   BL EMIT
-  3612                        
-  3613 00:14C6: xx xx 00 05                  HEADER  5,"SPACE",NORMAL
-       00:14CA: 53 50 41 43 
-       00:14CE: 45 
-  3614 00:14CF: 20 xx xx     SPACE:          jsr     DO_COLON
-  3615 00:14D2: xx xx                        dw      BL
-  3616 00:14D4: xx xx                        dw      EMIT
-  3617 00:14D6: xx xx                        dw      EXIT
-  3618                        
-  3619                        ; SPACES ( n -- )
-  3620                        ;
-  3621                        ; If n is greater than zero, display n spaces.
-  3622                        ;
-  3623                        ; In this implementation it is defined as
-  3624                        ;
-  3625                        ;   BEGIN DUP 0> WHILE SPACE 1- REPEAT DROP
-  3626                        
-  3627 00:14D8: xx xx 00 06                  HEADER  6,"SPACES",NORMAL
-       00:14DC: 53 50 41 43 
-       00:14E0: 45 53 
-  3628 00:14E2: 20 xx xx     SPACES:         jsr     DO_COLON
-  3629 00:14E5: xx xx        SPACES_1:       dw      DUP
-  3630 00:14E7: xx xx                        dw      ZERO_GREATER
-  3631 00:14E9: xx xx xx xx                  dw      QUERY_BRANCH,SPACES_2
-  3632 00:14ED: xx xx                        dw      SPACE
-  3633 00:14EF: xx xx                        dw      ONE_MINUS
-  3634 00:14F1: xx xx xx xx                  dw      BRANCH,SPACES_1
-  3635 00:14F5: xx xx        SPACES_2:       dw      DROP
-  3636 00:14F7: xx xx                        dw      EXIT
-  3637                        
-  3638                        ; TYPE ( c-addr u -- )
-  3639                        ;
-  3640                        ; If u is greater than zero, display the character string specified by c-addr
-  3641                        ; and u.
-  3642                        ;
-  3643                        ; In this implementation it is defined as
-  3644                        ;
-  3645                        ;   ?DUP IF
-  3646                        ;     OVER + SWAP DO I C@ EMIT LOOP
-  3647                        ;   ELSE DROP THEN
+  3607                        ;   1 WORD DROP
+  3608                        
+  3609 00:14E9: xx xx 80 01                  HEADER  1,"\",IMMEDIATE
+       00:14ED: 5C 
+  3610 00:14EE: 20 xx xx     BACKSLASH:      jsr     DO_COLON
+  3611 00:14F1: xx xx 01 00                  dw      DO_LITERAL,1
+  3612 00:14F5: xx xx                        dw      WORD
+  3613 00:14F7: xx xx                        dw      DROP
+  3614 00:14F9: xx xx                        dw      EXIT
+  3615                        
+  3616                        ; ]
+  3617                        ;
+  3618                        ; In this implementation it is defined as
+  3619                        ;
+  3620                        ;   -1 STATE !
+  3621                        
+  3622 00:14FB: xx xx 00 01                  HEADER  1,"]",NORMAL
+       00:14FF: 5D 
+  3623 00:1500: 20 xx xx     RIGHT_BRACKET:  jsr     DO_COLON
+  3624 00:1503: xx xx FF FF                  dw      DO_LITERAL,-1
+  3625 00:1507: xx xx                        dw      STATE
+  3626 00:1509: xx xx                        dw      STORE
+  3627 00:150B: xx xx                        dw      EXIT
+  3628                        
+  3629                        ;===============================================================================
+  3630                        ; I/O Operations
+  3631                        ;-------------------------------------------------------------------------------
+  3632                        
+  3633                        ; CR ( -- )
+  3634                        ;
+  3635                        ; Cause subsequent output to appear at the beginning of the next line.
+  3636                        ;
+  3637                        ; In this implementation it is defined as
+  3638                        ;
+  3639                        ;   13 EMIT 10 EMIT
+  3640                        
+  3641 00:150D: xx xx 00 02                  HEADER  2,"CR",NORMAL
+       00:1511: 43 52 
+  3642 00:1513: 20 xx xx     CR:             jsr     DO_COLON
+  3643 00:1516: xx xx 0D 00                  dw      DO_LITERAL,13
+  3644 00:151A: xx xx                        dw      EMIT
+  3645 00:151C: xx xx 0A 00                  dw      DO_LITERAL,10
+  3646 00:1520: xx xx                        dw      EMIT
+  3647 00:1522: xx xx                        dw      EXIT
   3648                        
-  3649 00:14F9: xx xx 00 04                  HEADER  4,"TYPE",NORMAL
-       00:14FD: 54 59 50 45 
-  3650 00:1501: 20 xx xx     TYPE:           jsr     DO_COLON
-  3651 00:1504: xx xx                        dw      QUERY_DUP
-  3652 00:1506: xx xx xx xx                  dw      QUERY_BRANCH,TYPE_2
-  3653 00:150A: xx xx                        dw      OVER
-  3654 00:150C: xx xx                        dw      PLUS
-  Sat May  7 2016 20:07                                                                                                    Page 72
+  3649                        ; EMIT ( x -- )
+  3650                        ;
+  3651                        ; If x is a graphic character in the implementation-defined character set,
+  3652                        ; display x. The effect of EMIT for all other values of x is implementation
+  3653                        ; -defined.
+  3654                        
+  3655 00:1524: xx xx 00 04                  HEADER  4,"EMIT",NORMAL
+       00:1528: 45 4D 49 54 
+  Sun May  8 2016 22:10                                                                                                    Page 72
 
 
-  3655 00:150E: xx xx                        dw      SWAP
-  3656 00:1510: xx xx                        dw      DO_DO
-  3657 00:1512: xx xx        TYPE_1:         dw      I
-  3658 00:1514: xx xx                        dw      C_FETCH
-  3659 00:1516: xx xx                        dw      EMIT
-  3660 00:1518: xx xx xx xx                  dw      DO_LOOP,TYPE_1
-  3661 00:151C: xx xx xx xx                  dw      BRANCH,TYPE_3
-  3662 00:1520: xx xx        TYPE_2          dw      DROP
-  3663 00:1522: xx xx        TYPE_3          dw      EXIT
-  3664                        
-  3665                        ;===============================================================================
-  3666                        ; Formatted Output
-  3667                        ;-------------------------------------------------------------------------------
-  3668                        
-  3669                        ; # ( ud1 -- ud2 )
-  3670                        ;
-  3671                        ; Divide ud1 by the number in BASE giving the quotient ud2 and the remainder n.
-  3672                        ; (n is the least-significant digit of ud1.) Convert n to external form and add
-  3673                        ; the resulting character to the beginning of the pictured numeric output string.
-  3674                        ; An ambiguous condition exists if # executes outside of a <# #> delimited
-  3675                        ; number conversion.
-  3676                        ;
-  3677                        ;       BASE @ >R 0 R@ UM/MOD ROT ROT R> UM/MOD ROT ROT DUP 9 > 7 AND + 30 + HOLD
-  3678                        
-  3679 00:1524: xx xx 00 01                  HEADER  1,"#",NORMAL
-       00:1528: 23 
-  3680 00:1529: 20 xx xx     HASH:           jsr     DO_COLON
-  3681 00:152C: xx xx                        dw      BASE
-  3682 00:152E: xx xx                        dw      FETCH
-  3683 00:1530: xx xx                        dw      TO_R
-  3684 00:1532: xx xx                        dw      ZERO
-  3685 00:1534: xx xx                        dw      R_FETCH
-  3686 00:1536: xx xx                        dw      UM_SLASH_MOD
-  3687 00:1538: xx xx                        dw      ROT
-  3688 00:153A: xx xx                        dw      ROT
-  3689 00:153C: xx xx                        dw      R_FROM
-  3690 00:153E: xx xx                        dw      UM_SLASH_MOD
-  3691 00:1540: xx xx                        dw      ROT
-  3692 00:1542: xx xx                        dw      ROT
-  3693 00:1544: xx xx                        dw      DUP
-  3694 00:1546: xx xx 09 00                  dw      DO_LITERAL,9
-  3695 00:154A: xx xx                        dw      GREATER
-  3696 00:154C: xx xx 07 00                  dw      DO_LITERAL,7
-  3697 00:1550: xx xx                        dw      AND
-  3698 00:1552: xx xx                        dw      PLUS
-  3699 00:1554: xx xx 30 00                  dw      DO_LITERAL,'0'
-  3700 00:1558: xx xx                        dw      PLUS
-  3701 00:155A: xx xx                        dw      HOLD
-  3702 00:155C: xx xx                        dw      EXIT
-  3703                        
-  3704                        ; #> ( xd -- c-addr u )
-  3705                        ;
-  3706                        ; Drop xd. Make the pictured numeric output string available as a character
-  3707                        ; string. c-addr and u specify the resulting character string. A program may
-  3708                        ; replace characters within the string.
-  3709                        ;
-  3710                        ;       2DROP HP @ PAD OVER -
-  3711                        
-  Sat May  7 2016 20:07                                                                                                    Page 73
+  3656                                        extern  UartTx
+  3657                        EMIT:
+  3658 00:152C: A5 01                        lda     <1                      ; Fetch character from stack
+  3659 00:152E: 20 xx xx                     jsr     UartTx                  ; .. and transmit
+  3660 00:1531: 7B                           tdc
+  3661 00:1532: 1A                           inc     a                       ; Drop the character
+  3662 00:1533: 1A                           inc     a
+  3663 00:1534: 5B                           tcd
+  3664 00:1535: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:1539: 00 00 
+  3665                        
+  3666                        ; KEY ( -- char )
+  3667                        ;
+  3668                        ; Receive one character char, a member of the implementation-defined character
+  3669                        ; set. Keyboard events that do not correspond to such characters are discarded
+  3670                        ; until a valid character is received, and those events are subsequently
+  3671                        ; unavailable.
+  3672                        ;
+  3673                        ; All standard characters can be received. Characters received by KEY are not
+  3674                        ; displayed.
+  3675                        
+  3676 00:153B: xx xx 00 03                  HEADER  3,"KEY",NORMAL
+       00:153F: 4B 45 59 
+  3677                                        extern  UartRx
+  3678                        KEY:
+  3679 00:1542: 20 xx xx                     jsr     UartRx                  ; Receive a character
+  3680 00:1545: 29 FF 00                     and     #$00ff                  ; Ensure in ASCII range
+  3681 00:1548: AA                           tax
+  3682 00:1549: 7B                           tdc
+  3683 00:154A: 3A                           dec     a                       ; And push to stack
+  3684 00:154B: 3A                           dec     a
+  3685 00:154C: 5B                           tcd
+  3686 00:154D: 86 01                        stx     <1
+  3687 00:154F: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:1553: 00 00 
+  3688                        
+  3689                        ; KEY? ( -- flag )
+  3690                        ;
+  3691                        ; If a character is available, return true. Otherwise, return false. If
+  3692                        ; non-character keyboard events are available before the first valid character,
+  3693                        ; they are discarded and are subsequently unavailable. The character shall be
+  3694                        ; returned by the next execution of KEY.
+  3695                        
+  3696 00:1555: xx xx 00 04                  HEADER  4,"KEY?",NORMAL
+       00:1559: 4B 45 59 3F 
+  3697                                        extern  UartRxTest
+  3698                        KEY_QUERY:
+  3699 00:155D: 20 xx xx                     jsr     UartRxTest              ; Determine if any data is
+  3700 00:1560: A2 00 00                     ldx     #0                      ; .. available
+  3701 00:1563: 90 01                        bcc     $+3
+  3702 00:1565: CA                           dex
+  3703 00:1566: 7B                           tdc                             ; And push to stack
+  3704 00:1567: 3A                           dec     a
+  3705 00:1568: 3A                           dec     a
+  3706 00:1569: 5B                           tcd
+  3707 00:156A: 86 01                        stx     <1
+  3708 00:156C: BB C8 C8 7C                  CONTINUE                        ; Done
+       00:1570: 00 00 
+  Sun May  8 2016 22:10                                                                                                    Page 73
 
 
-  3712 00:155E: xx xx 00 02                  HEADER  2,"#>",NORMAL
-       00:1562: 23 3E 
-  3713 00:1564: 20 xx xx     HASH_GREATER:   jsr     DO_COLON
-  3714 00:1567: xx xx                        dw      TWO_DROP
-  3715 00:1569: xx xx                        dw      HP
-  3716 00:156B: xx xx                        dw      FETCH
-  3717 00:156D: xx xx                        dw      PAD
-  3718 00:156F: xx xx                        dw      OVER
-  3719 00:1571: xx xx                        dw      MINUS
-  3720 00:1573: xx xx                        dw      EXIT
-  3721                        
-  3722                        ; #S ( ud1 -- ud2 )
-  3723                        ;
-  3724                        ; Convert one digit of ud1 according to the rule for #. Continue conversion
-  3725                        ; until the quotient is zero. ud2 is zero. An ambiguous condition exists if #S
-  3726                        ; executes outside of a <# #> delimited number conversion.
+  3709                        
+  3710                        ; SPACE ( -- )
+  3711                        ;
+  3712                        ; Display one space.
+  3713                        ;
+  3714                        ; In this implementation it is defined as
+  3715                        ;
+  3716                        ;   BL EMIT
+  3717                        
+  3718 00:1572: xx xx 00 05                  HEADER  5,"SPACE",NORMAL
+       00:1576: 53 50 41 43 
+       00:157A: 45 
+  3719 00:157B: 20 xx xx     SPACE:          jsr     DO_COLON
+  3720 00:157E: xx xx                        dw      BL
+  3721 00:1580: xx xx                        dw      EMIT
+  3722 00:1582: xx xx                        dw      EXIT
+  3723                        
+  3724                        ; SPACES ( n -- )
+  3725                        ;
+  3726                        ; If n is greater than zero, display n spaces.
   3727                        ;
-  3728                        ;       BEGIN # 2DUP OR 0= UNTIL
-  3729                        
-  3730 00:1575: xx xx 00 02                  HEADER  2,"#S",NORMAL
-       00:1579: 23 53 
-  3731 00:157B: 20 xx xx     HASH_S:         jsr     DO_COLON
-  3732 00:157E: xx xx        HASH_S_1:       dw      HASH
-  3733 00:1580: xx xx                        dw      TWO_DUP
-  3734 00:1582: xx xx                        dw      OR
-  3735 00:1584: xx xx                        dw      ZERO_EQUAL
-  3736 00:1586: xx xx xx xx                  dw      QUERY_BRANCH,HASH_S_1
-  3737 00:158A: xx xx                        dw      EXIT
-  3738                        
-  3739                        ; . ( n -- )
-  3740                        ;
-  3741                        ; Display n in free field format.
-  3742                        ;
-  3743                        ;       <# DUP ABS 0 #S ROT SIGN #> TYPE SPACE
-  3744                        
-  3745 00:158C: xx xx 00 01                  HEADER  1,".",NORMAL
-       00:1590: 2E 
-  3746 00:1591: 20 xx xx     DOT:            jsr     DO_COLON
-  3747 00:1594: xx xx                        dw      LESS_HASH
-  3748 00:1596: xx xx                        dw      DUP
-  3749 00:1598: xx xx                        dw      ABS
-  3750 00:159A: xx xx                        dw      ZERO
-  3751 00:159C: xx xx                        dw      HASH_S
-  3752 00:159E: xx xx                        dw      ROT
-  3753 00:15A0: xx xx                        dw      SIGN
-  3754 00:15A2: xx xx                        dw      HASH_GREATER
-  3755 00:15A4: xx xx                        dw      TYPE
-  3756 00:15A6: xx xx                        dw      SPACE
-  3757 00:15A8: xx xx                        dw      EXIT
-  3758                        
-  3759                        ; <# ( -- )
-  3760                        ;
-  3761                        ; Initialize the pictured numeric output conversion process.
-  3762                        ;
-  3763                        ;       PAD HP !
-  3764                        
-  3765 00:15AA: xx xx 00 02                  HEADER  2,"<#",NORMAL
-       00:15AE: 3C 23 
-  Sat May  7 2016 20:07                                                                                                    Page 74
+  3728                        ; In this implementation it is defined as
+  3729                        ;
+  3730                        ;   BEGIN DUP 0> WHILE SPACE 1- REPEAT DROP
+  3731                        
+  3732 00:1584: xx xx 00 06                  HEADER  6,"SPACES",NORMAL
+       00:1588: 53 50 41 43 
+       00:158C: 45 53 
+  3733 00:158E: 20 xx xx     SPACES:         jsr     DO_COLON
+  3734 00:1591: xx xx        SPACES_1:       dw      DUP
+  3735 00:1593: xx xx                        dw      ZERO_GREATER
+  3736 00:1595: xx xx xx xx                  dw      QUERY_BRANCH,SPACES_2
+  3737 00:1599: xx xx                        dw      SPACE
+  3738 00:159B: xx xx                        dw      ONE_MINUS
+  3739 00:159D: xx xx xx xx                  dw      BRANCH,SPACES_1
+  3740 00:15A1: xx xx        SPACES_2:       dw      DROP
+  3741 00:15A3: xx xx                        dw      EXIT
+  3742                        
+  3743                        ; TYPE ( c-addr u -- )
+  3744                        ;
+  3745                        ; If u is greater than zero, display the character string specified by c-addr
+  3746                        ; and u.
+  3747                        ;
+  3748                        ; In this implementation it is defined as
+  3749                        ;
+  3750                        ;   ?DUP IF
+  3751                        ;     OVER + SWAP DO I C@ EMIT LOOP
+  3752                        ;   ELSE DROP THEN
+  3753                        
+  3754 00:15A5: xx xx 00 04                  HEADER  4,"TYPE",NORMAL
+       00:15A9: 54 59 50 45 
+  3755 00:15AD: 20 xx xx     TYPE:           jsr     DO_COLON
+  3756 00:15B0: xx xx                        dw      QUERY_DUP
+  3757 00:15B2: xx xx xx xx                  dw      QUERY_BRANCH,TYPE_2
+  3758 00:15B6: xx xx                        dw      OVER
+  3759 00:15B8: xx xx                        dw      PLUS
+  3760 00:15BA: xx xx                        dw      SWAP
+  3761 00:15BC: xx xx                        dw      DO_DO
+  Sun May  8 2016 22:10                                                                                                    Page 74
 
 
-  3766 00:15B0: 20 xx xx     LESS_HASH:      jsr     DO_COLON
-  3767 00:15B3: xx xx                        dw      PAD
-  3768 00:15B5: xx xx                        dw      HP
-  3769 00:15B7: xx xx                        dw      STORE
-  3770 00:15B9: xx xx                        dw      EXIT
-  3771                        
-  3772                        ; HOLD ( char -- )
+  3762 00:15BE: xx xx        TYPE_1:         dw      I
+  3763 00:15C0: xx xx                        dw      C_FETCH
+  3764 00:15C2: xx xx                        dw      EMIT
+  3765 00:15C4: xx xx xx xx                  dw      DO_LOOP,TYPE_1
+  3766 00:15C8: xx xx xx xx                  dw      BRANCH,TYPE_3
+  3767 00:15CC: xx xx        TYPE_2          dw      DROP
+  3768 00:15CE: xx xx        TYPE_3          dw      EXIT
+  3769                        
+  3770                        ;===============================================================================
+  3771                        ; Formatted Output
+  3772                        ;-------------------------------------------------------------------------------
   3773                        
-  3774                        ; Add char to the beginning of the pictured numeric output string. An
-  3775                        ; ambiguous condition exists if HOLD executes outside of a <# #> delimited
-  3776                        ; number conversion.
-  3777                        ;
-  3778                        ;       -1 HP +!  HP @ C!
-  3779                        
-  3780 00:15BB: xx xx 00 04                  HEADER  4,"HOLD",NORMAL
-       00:15BF: 48 4F 4C 44 
-  3781 00:15C3: 20 xx xx     HOLD:           jsr     DO_COLON
-  3782 00:15C6: xx xx FF FF                  dw      DO_LITERAL,-1
-  3783 00:15CA: xx xx                        dw      HP
-  3784 00:15CC: xx xx                        dw      PLUS_STORE
-  3785 00:15CE: xx xx                        dw      HP
-  3786 00:15D0: xx xx                        dw      FETCH
-  3787 00:15D2: xx xx                        dw      C_STORE
-  3788 00:15D4: xx xx                        dw      EXIT
-  3789                        
-  3790                        ; PAD ( -- c-addr )
-  3791                        ;
-  3792                        ; c-addr is the address of a transient region that can be used to hold data
-  3793                        ; for intermediate processing.
-  3794                        
-  3795 00:15D6: xx xx 00 03                  HEADER  3,"PAD",NORMAL
-       00:15DA: 50 41 44 
-  3796 00:15DD: 20 xx xx     PAD:            jsr     DO_CONSTANT
-  3797 00:15E0: C6 00                        dw      PAD_END
-  3798                        
-  3799                        ; SIGN ( n -- )
-  3800                        ;
-  3801                        ; If n is negative, add a minus sign to the beginning of the pictured numeric
-  3802                        ; output string. An ambiguous condition exists if SIGN executes outside of a
-  3803                        ; <# #> delimited number conversion.
-  3804                        ;
-  3805                        ;       [ HEX ] 0< IF 2D HOLD THEN
-  3806                        
-  3807 00:15E2: xx xx 00 04                  HEADER  4,"SIGN",NORMAL
-       00:15E6: 53 49 47 4E 
-  3808 00:15EA: 20 xx xx     SIGN:           jsr     DO_COLON
-  3809 00:15ED: xx xx                        dw      ZERO_LESS
-  3810 00:15EF: xx xx xx xx                  dw      QUERY_BRANCH,SIGN_1
-  3811 00:15F3: xx xx 2D 00                  dw      DO_LITERAL,'-'
-  3812 00:15F7: xx xx                        dw      HOLD
-  3813 00:15F9: xx xx        SIGN_1:         dw      EXIT
-  3814                        
-  3815                        ; U. ( u -- )
-  3816                        ;
-  3817                        ; Display u in free field format.
-  3818                        ;
-  3819                        ;  <# 0 #S #> TYPE SPACE
-  3820                        
-  Sat May  7 2016 20:07                                                                                                    Page 75
+  3774                        ; # ( ud1 -- ud2 )
+  3775                        ;
+  3776                        ; Divide ud1 by the number in BASE giving the quotient ud2 and the remainder n.
+  3777                        ; (n is the least-significant digit of ud1.) Convert n to external form and add
+  3778                        ; the resulting character to the beginning of the pictured numeric output string.
+  3779                        ; An ambiguous condition exists if # executes outside of a <# #> delimited
+  3780                        ; number conversion.
+  3781                        ;
+  3782                        ;       BASE @ >R 0 R@ UM/MOD ROT ROT R> UM/MOD ROT ROT DUP 9 > 7 AND + 30 + HOLD
+  3783                        
+  3784 00:15D0: xx xx 00 01                  HEADER  1,"#",NORMAL
+       00:15D4: 23 
+  3785 00:15D5: 20 xx xx     HASH:           jsr     DO_COLON
+  3786 00:15D8: xx xx                        dw      BASE
+  3787 00:15DA: xx xx                        dw      FETCH
+  3788 00:15DC: xx xx                        dw      TO_R
+  3789 00:15DE: xx xx                        dw      ZERO
+  3790 00:15E0: xx xx                        dw      R_FETCH
+  3791 00:15E2: xx xx                        dw      UM_SLASH_MOD
+  3792 00:15E4: xx xx                        dw      ROT
+  3793 00:15E6: xx xx                        dw      ROT
+  3794 00:15E8: xx xx                        dw      R_FROM
+  3795 00:15EA: xx xx                        dw      UM_SLASH_MOD
+  3796 00:15EC: xx xx                        dw      ROT
+  3797 00:15EE: xx xx                        dw      ROT
+  3798 00:15F0: xx xx                        dw      DUP
+  3799 00:15F2: xx xx 09 00                  dw      DO_LITERAL,9
+  3800 00:15F6: xx xx                        dw      GREATER
+  3801 00:15F8: xx xx 07 00                  dw      DO_LITERAL,7
+  3802 00:15FC: xx xx                        dw      AND
+  3803 00:15FE: xx xx                        dw      PLUS
+  3804 00:1600: xx xx 30 00                  dw      DO_LITERAL,'0'
+  3805 00:1604: xx xx                        dw      PLUS
+  3806 00:1606: xx xx                        dw      HOLD
+  3807 00:1608: xx xx                        dw      EXIT
+  3808                        
+  3809                        ; #> ( xd -- c-addr u )
+  3810                        ;
+  3811                        ; Drop xd. Make the pictured numeric output string available as a character
+  3812                        ; string. c-addr and u specify the resulting character string. A program may
+  3813                        ; replace characters within the string.
+  3814                        ;
+  3815                        ;       2DROP HP @ PAD OVER -
+  3816                        
+  3817 00:160A: xx xx 00 02                  HEADER  2,"#>",NORMAL
+       00:160E: 23 3E 
+  Sun May  8 2016 22:10                                                                                                    Page 75
 
 
-  3821 00:15FB: xx xx 00 02                  HEADER  2,"U.",NORMAL
-       00:15FF: 55 2E 
-  3822 00:1601: 20 xx xx     U_DOT:          jsr     DO_COLON
-  3823 00:1604: xx xx                        dw      LESS_HASH
-  3824 00:1606: xx xx                        dw      ZERO
-  3825 00:1608: xx xx                        dw      HASH_S
-  3826 00:160A: xx xx                        dw      HASH_GREATER
-  3827 00:160C: xx xx                        dw      TYPE
-  3828 00:160E: xx xx                        dw      SPACE
-  3829 00:1610: xx xx                        dw      EXIT
-  3830                        
-  3831                        ;===============================================================================
-  3832                        ; Programming Tools
-  3833                        ;-------------------------------------------------------------------------------
+  3818 00:1610: 20 xx xx     HASH_GREATER:   jsr     DO_COLON
+  3819 00:1613: xx xx                        dw      TWO_DROP
+  3820 00:1615: xx xx                        dw      HP
+  3821 00:1617: xx xx                        dw      FETCH
+  3822 00:1619: xx xx                        dw      PAD
+  3823 00:161B: xx xx                        dw      OVER
+  3824 00:161D: xx xx                        dw      MINUS
+  3825 00:161F: xx xx                        dw      EXIT
+  3826                        
+  3827                        ; #S ( ud1 -- ud2 )
+  3828                        ;
+  3829                        ; Convert one digit of ud1 according to the rule for #. Continue conversion
+  3830                        ; until the quotient is zero. ud2 is zero. An ambiguous condition exists if #S
+  3831                        ; executes outside of a <# #> delimited number conversion.
+  3832                        ;
+  3833                        ;       BEGIN # 2DUP OR 0= UNTIL
   3834                        
-  3835                        ; .NYBBLE ( n -- )
-  3836                        ;
-  3837                        ; Print the least significant nybble of the top value on the stack in hex.
-  3838                        
-  3839                        ;               HEADER  7,".NYBBLE",NORMAL
-  3840                        DOT_NYBBLE:
-  3841 00:1612: A5 01                        lda     <1
-  3842 00:1614: 29 0F 00                     and     #$000f
-  3843 00:1617: 09 30 00                     ora     #$0030
-  3844 00:161A: C9 3A 00                     cmp     #$003a
-  3845 00:161D: 90 03                        bcc     $+5
-  3846 00:161F: 69 06 00                     adc     #$0006
-  3847 00:1622: 20 xx xx                     jsr     UartTx
-  3848 00:1625: 4C xx xx                     jmp     DROP
+  3835 00:1621: xx xx 00 02                  HEADER  2,"#S",NORMAL
+       00:1625: 23 53 
+  3836 00:1627: 20 xx xx     HASH_S:         jsr     DO_COLON
+  3837 00:162A: xx xx        HASH_S_1:       dw      HASH
+  3838 00:162C: xx xx                        dw      TWO_DUP
+  3839 00:162E: xx xx                        dw      OR
+  3840 00:1630: xx xx                        dw      ZERO_EQUAL
+  3841 00:1632: xx xx xx xx                  dw      QUERY_BRANCH,HASH_S_1
+  3842 00:1636: xx xx                        dw      EXIT
+  3843                        
+  3844                        ; . ( n -- )
+  3845                        ;
+  3846                        ; Display n in free field format.
+  3847                        ;
+  3848                        ;       <# DUP ABS 0 #S ROT SIGN #> TYPE SPACE
   3849                        
-  3850                        ; .BYTE ( n -- )
-  3851                        ;
-  3852                        ; Print least significant byte of top value on the stack in hex followed by
-  3853                        ; a space.
-  3854                        
-  3855 00:1628: xx xx 00 05                  HEADER  5,".BYTE",NORMAL
-       00:162C: 2E 42 59 54 
-       00:1630: 45 
-  3856 00:1631: 20 xx xx     DOT_BYTE:       jsr     DO_COLON
-  3857 00:1634: xx xx                        dw      DUP
-  3858 00:1636: xx xx 04 00                  dw      DO_LITERAL,4
-  3859 00:163A: xx xx                        dw      RSHIFT
-  3860 00:163C: xx xx                        dw      DOT_NYBBLE
-  3861 00:163E: xx xx                        dw      DOT_NYBBLE
-  3862 00:1640: xx xx                        dw      SPACE
-  3863 00:1642: xx xx                        dw      EXIT
-  3864                        
-  3865                        ; .WORD ( n -- )
-  3866                        ;
-  3867                        ; Print the top value on the stack in hex followed by a space.
-  3868                        
-  3869 00:1644: xx xx 00 05                  HEADER  5,".WORD",NORMAL
-       00:1648: 2E 57 4F 52 
-       00:164C: 44 
-  3870 00:164D: 20 xx xx     DOT_WORD:       jsr     DO_COLON
-  3871 00:1650: xx xx                        dw      DUP
-  3872 00:1652: xx xx 0C 00                  dw      DO_LITERAL,12
-  3873 00:1656: xx xx                        dw      RSHIFT
-  Sat May  7 2016 20:07                                                                                                    Page 76
+  3850 00:1638: xx xx 00 01                  HEADER  1,".",NORMAL
+       00:163C: 2E 
+  3851 00:163D: 20 xx xx     DOT:            jsr     DO_COLON
+  3852 00:1640: xx xx                        dw      LESS_HASH
+  3853 00:1642: xx xx                        dw      DUP
+  3854 00:1644: xx xx                        dw      ABS
+  3855 00:1646: xx xx                        dw      ZERO
+  3856 00:1648: xx xx                        dw      HASH_S
+  3857 00:164A: xx xx                        dw      ROT
+  3858 00:164C: xx xx                        dw      SIGN
+  3859 00:164E: xx xx                        dw      HASH_GREATER
+  3860 00:1650: xx xx                        dw      TYPE
+  3861 00:1652: xx xx                        dw      SPACE
+  3862 00:1654: xx xx                        dw      EXIT
+  3863                        
+  3864                        ; <# ( -- )
+  3865                        ;
+  3866                        ; Initialize the pictured numeric output conversion process.
+  3867                        ;
+  3868                        ;       PAD HP !
+  3869                        
+  3870 00:1656: xx xx 00 02                  HEADER  2,"<#",NORMAL
+       00:165A: 3C 23 
+  3871 00:165C: 20 xx xx     LESS_HASH:      jsr     DO_COLON
+  3872 00:165F: xx xx                        dw      PAD
+  Sun May  8 2016 22:10                                                                                                    Page 76
 
 
-  3874 00:1658: xx xx                        dw      DOT_NYBBLE
-  3875 00:165A: xx xx                        dw      DUP
-  3876 00:165C: xx xx 08 00                  dw      DO_LITERAL,8
-  3877 00:1660: xx xx                        dw      RSHIFT
-  3878 00:1662: xx xx                        dw      DOT_NYBBLE
-  3879 00:1664: xx xx                        dw      DUP
-  3880 00:1666: xx xx 04 00                  dw      DO_LITERAL,4
-  3881 00:166A: xx xx                        dw      RSHIFT
-  3882 00:166C: xx xx                        dw      DOT_NYBBLE
-  3883 00:166E: xx xx                        dw      DOT_NYBBLE
-  3884 00:1670: xx xx                        dw      SPACE
-  3885 00:1672: xx xx                        dw      EXIT
-  3886                        
-  3887                        ; .DP
-  3888                        
-  3889 00:1674: xx xx 00 03                  HEADER  3,".DP",NORMAL
-       00:1678: 2E 44 50 
-  3890 00:167B: 20 xx xx                     jsr     DO_COLON
-  3891 00:167E: xx xx                        dw      AT_DP
-  3892 00:1680: xx xx                        dw      DOT_WORD
-  3893 00:1682: xx xx                        dw      EXIT
+  3873 00:1661: xx xx                        dw      HP
+  3874 00:1663: xx xx                        dw      STORE
+  3875 00:1665: xx xx                        dw      EXIT
+  3876                        
+  3877                        ; HOLD ( char -- )
+  3878                        
+  3879                        ; Add char to the beginning of the pictured numeric output string. An
+  3880                        ; ambiguous condition exists if HOLD executes outside of a <# #> delimited
+  3881                        ; number conversion.
+  3882                        ;
+  3883                        ;       -1 HP +!  HP @ C!
+  3884                        
+  3885 00:1667: xx xx 00 04                  HEADER  4,"HOLD",NORMAL
+       00:166B: 48 4F 4C 44 
+  3886 00:166F: 20 xx xx     HOLD:           jsr     DO_COLON
+  3887 00:1672: xx xx FF FF                  dw      DO_LITERAL,-1
+  3888 00:1676: xx xx                        dw      HP
+  3889 00:1678: xx xx                        dw      PLUS_STORE
+  3890 00:167A: xx xx                        dw      HP
+  3891 00:167C: xx xx                        dw      FETCH
+  3892 00:167E: xx xx                        dw      C_STORE
+  3893 00:1680: xx xx                        dw      EXIT
   3894                        
-  3895 00:1684: xx xx 00 03                  HEADER  3,".RP",NORMAL
-       00:1688: 2E 52 50 
-  3896 00:168B: 20 xx xx                     jsr     DO_COLON
-  3897 00:168E: xx xx                        dw      AT_RP
-  3898 00:1690: xx xx                        dw      DOT_WORD
-  3899 00:1692: xx xx                        dw      EXIT
-  3900                        
-  3901                        ; .S ( -- )
-  3902                        ;
-  3903                        ; Copy and display the values currently on the data stack. The format of the
-  3904                        ; display is implementation-dependent.
-  3905                        
-  3906 00:1694: xx xx 00 02                  HEADER  2,".S",NORMAL
-       00:1698: 2E 53 
-  3907 00:169A: 20 xx xx                     jsr     DO_COLON
-  3908 00:169D: xx xx 7B 00                  dw      DO_LITERAL,'{'
-  3909 00:16A1: xx xx                        dw      EMIT
-  3910 00:16A3: xx xx                        dw      SPACE
-  3911 00:16A5: xx xx                        dw      AT_DP
-  3912 00:16A7: xx xx                        dw      ONE_PLUS
-  3913 00:16A9: xx xx 80 01                  dw      DO_LITERAL,DSTACK_END
-  3914 00:16AD: xx xx                        dw      SWAP
-  3915 00:16AF: xx xx xx xx                  dw      QUERY_DO_DO,DOT_S_2
-  3916 00:16B3: xx xx        DOT_S_1:        dw      I
-  3917 00:16B5: xx xx                        dw      FETCH
-  3918 00:16B7: xx xx                        dw      DOT_WORD
-  3919 00:16B9: xx xx 02 00                  dw      DO_LITERAL,2
-  3920 00:16BD: xx xx                        dw      DO_PLUS_LOOP
-  3921 00:16BF: xx xx                        dw      DOT_S_1
-  3922 00:16C1: xx xx 7D 00  DOT_S_2:        dw      DO_LITERAL,'}'
-  3923 00:16C5: xx xx                        dw      EMIT
-  3924 00:16C7: xx xx                        dw      SPACE
-  3925 00:16C9: xx xx                        dw      EXIT
-  3926                        
-  3927                        ; ? ( a-addr -- )
-  3928                        ;
-  Sat May  7 2016 20:07                                                                                                    Page 77
+  3895                        ; PAD ( -- c-addr )
+  3896                        ;
+  3897                        ; c-addr is the address of a transient region that can be used to hold data
+  3898                        ; for intermediate processing.
+  3899                        
+  3900 00:1682: xx xx 00 03                  HEADER  3,"PAD",NORMAL
+       00:1686: 50 41 44 
+  3901 00:1689: 20 xx xx     PAD:            jsr     DO_CONSTANT
+  3902 00:168C: C6 00                        dw      PAD_END
+  3903                        
+  3904                        ; SIGN ( n -- )
+  3905                        ;
+  3906                        ; If n is negative, add a minus sign to the beginning of the pictured numeric
+  3907                        ; output string. An ambiguous condition exists if SIGN executes outside of a
+  3908                        ; <# #> delimited number conversion.
+  3909                        ;
+  3910                        ;       [ HEX ] 0< IF 2D HOLD THEN
+  3911                        
+  3912 00:168E: xx xx 00 04                  HEADER  4,"SIGN",NORMAL
+       00:1692: 53 49 47 4E 
+  3913 00:1696: 20 xx xx     SIGN:           jsr     DO_COLON
+  3914 00:1699: xx xx                        dw      ZERO_LESS
+  3915 00:169B: xx xx xx xx                  dw      QUERY_BRANCH,SIGN_1
+  3916 00:169F: xx xx 2D 00                  dw      DO_LITERAL,'-'
+  3917 00:16A3: xx xx                        dw      HOLD
+  3918 00:16A5: xx xx        SIGN_1:         dw      EXIT
+  3919                        
+  3920                        ; U. ( u -- )
+  3921                        ;
+  3922                        ; Display u in free field format.
+  3923                        ;
+  3924                        ;  <# 0 #S #> TYPE SPACE
+  3925                        
+  3926 00:16A7: xx xx 00 02                  HEADER  2,"U.",NORMAL
+       00:16AB: 55 2E 
+  Sun May  8 2016 22:10                                                                                                    Page 77
 
 
-  3929                        ; Display the value stored at a-addr.
-  3930                        
-  3931 00:16CB: xx xx 00 01                  HEADER  1,"?",NORMAL
-       00:16CF: 3F 
-  3932 00:16D0: 20 xx xx                     jsr     DO_COLON
-  3933 00:16D3: xx xx                        dw      FETCH
-  3934 00:16D5: xx xx                        dw      DOT_WORD
-  3935 00:16D7: xx xx                        dw      EXIT
-  3936                        
-  3937 00:16D9: xx xx 00 03                  HEADER  3,"@DP",NORMAL
-       00:16DD: 40 44 50 
-  3938                        AT_DP:
-  3939 00:16E0: 0B                           phd
-  3940 00:16E1: 7B                           tdc
-  3941 00:16E2: 3A                           dec     a
-  3942 00:16E3: 3A                           dec     a
-  3943 00:16E4: 5B                           tcd
-  3944 00:16E5: 68                           pla
-  3945 00:16E6: 85 01                        sta     <1
-  3946 00:16E8: BB C8 C8 7C                  CONTINUE
-       00:16EC: 00 00 
-  3947                        
-  3948 00:16EE: xx xx 00 03                  HEADER  3,"@RP",NORMAL
-       00:16F2: 40 52 50 
-  3949                        AT_RP:
-  3950 00:16F5: 7B                           tdc
-  3951 00:16F6: 3A                           dec     a
-  3952 00:16F7: 3A                           dec     a
-  3953 00:16F8: 5B                           tcd
-  3954 00:16F9: BA                           tsx
-  3955 00:16FA: 86 01                        stx     <1
-  3956 00:16FC: BB C8 C8 7C                  CONTINUE
-       00:1700: 00 00 
-  3957                        
-  3958                        
-  3959                        ;-------------------------------------------------------------------------------
-  3960                        
-  3961                                        include "device.asm"
+  3927 00:16AD: 20 xx xx     U_DOT:          jsr     DO_COLON
+  3928 00:16B0: xx xx                        dw      LESS_HASH
+  3929 00:16B2: xx xx                        dw      ZERO
+  3930 00:16B4: xx xx                        dw      HASH_S
+  3931 00:16B6: xx xx                        dw      HASH_GREATER
+  3932 00:16B8: xx xx                        dw      TYPE
+  3933 00:16BA: xx xx                        dw      SPACE
+  3934 00:16BC: xx xx                        dw      EXIT
+  3935                        
+  3936                        ;===============================================================================
+  3937                        ; Programming Tools
+  3938                        ;-------------------------------------------------------------------------------
+  3939                        
+  3940                        ; .NYBBLE ( n -- )
+  3941                        ;
+  3942                        ; Print the least significant nybble of the top value on the stack in hex.
+  3943                        
+  3944                        ;               HEADER  7,".NYBBLE",NORMAL
+  3945                        DOT_NYBBLE:
+  3946 00:16BE: A5 01                        lda     <1
+  3947 00:16C0: 29 0F 00                     and     #$000f
+  3948 00:16C3: 09 30 00                     ora     #$0030
+  3949 00:16C6: C9 3A 00                     cmp     #$003a
+  3950 00:16C9: 90 03                        bcc     $+5
+  3951 00:16CB: 69 06 00                     adc     #$0006
+  3952 00:16CE: 20 xx xx                     jsr     UartTx
+  3953 00:16D1: 4C xx xx                     jmp     DROP
+  3954                        
+  3955                        ; .BYTE ( n -- )
+  3956                        ;
+  3957                        ; Print least significant byte of top value on the stack in hex followed by
+  3958                        ; a space.
+  3959                        
+  3960 00:16D4: xx xx 00 05                  HEADER  5,".BYTE",NORMAL
+       00:16D8: 2E 42 59 54 
+       00:16DC: 45 
+  3961 00:16DD: 20 xx xx     DOT_BYTE:       jsr     DO_COLON
+  3962 00:16E0: xx xx                        dw      DUP
+  3963 00:16E2: xx xx 04 00                  dw      DO_LITERAL,4
+  3964 00:16E6: xx xx                        dw      RSHIFT
+  3965 00:16E8: xx xx                        dw      DOT_NYBBLE
+  3966 00:16EA: xx xx                        dw      DOT_NYBBLE
+  3967 00:16EC: xx xx                        dw      SPACE
+  3968 00:16EE: xx xx                        dw      EXIT
+  3969                        
+  3970                        ; .WORD ( n -- )
+  3971                        ;
+  3972                        ; Print the top value on the stack in hex followed by a space.
+  3973                        
+  3974 00:16F0: xx xx 00 05                  HEADER  5,".WORD",NORMAL
+       00:16F4: 2E 57 4F 52 
+       00:16F8: 44 
+  3975 00:16F9: 20 xx xx     DOT_WORD:       jsr     DO_COLON
+  3976 00:16FC: xx xx                        dw      DUP
+  3977 00:16FE: xx xx 0C 00                  dw      DO_LITERAL,12
+  3978 00:1702: xx xx                        dw      RSHIFT
+  3979 00:1704: xx xx                        dw      DOT_NYBBLE
+  3980 00:1706: xx xx                        dw      DUP
+  Sun May  8 2016 22:10                                                                                                    Page 78
+
+
+  3981 00:1708: xx xx 08 00                  dw      DO_LITERAL,8
+  3982 00:170C: xx xx                        dw      RSHIFT
+  3983 00:170E: xx xx                        dw      DOT_NYBBLE
+  3984 00:1710: xx xx                        dw      DUP
+  3985 00:1712: xx xx 04 00                  dw      DO_LITERAL,4
+  3986 00:1716: xx xx                        dw      RSHIFT
+  3987 00:1718: xx xx                        dw      DOT_NYBBLE
+  3988 00:171A: xx xx                        dw      DOT_NYBBLE
+  3989 00:171C: xx xx                        dw      SPACE
+  3990 00:171E: xx xx                        dw      EXIT
+  3991                        
+  3992                        ; .DP
+  3993                        
+  3994 00:1720: xx xx 00 03                  HEADER  3,".DP",NORMAL
+       00:1724: 2E 44 50 
+  3995 00:1727: 20 xx xx                     jsr     DO_COLON
+  3996 00:172A: xx xx                        dw      AT_DP
+  3997 00:172C: xx xx                        dw      DOT_WORD
+  3998 00:172E: xx xx                        dw      EXIT
+  3999                        
+  4000 00:1730: xx xx 00 03                  HEADER  3,".RP",NORMAL
+       00:1734: 2E 52 50 
+  4001 00:1737: 20 xx xx                     jsr     DO_COLON
+  4002 00:173A: xx xx                        dw      AT_RP
+  4003 00:173C: xx xx                        dw      DOT_WORD
+  4004 00:173E: xx xx                        dw      EXIT
+  4005                        
+  4006                        ; .S ( -- )
+  4007                        ;
+  4008                        ; Copy and display the values currently on the data stack. The format of the
+  4009                        ; display is implementation-dependent.
+  4010                        
+  4011 00:1740: xx xx 00 02                  HEADER  2,".S",NORMAL
+       00:1744: 2E 53 
+  4012 00:1746: 20 xx xx                     jsr     DO_COLON
+  4013 00:1749: xx xx 7B 00                  dw      DO_LITERAL,'{'
+  4014 00:174D: xx xx                        dw      EMIT
+  4015 00:174F: xx xx                        dw      SPACE
+  4016 00:1751: xx xx                        dw      AT_DP
+  4017 00:1753: xx xx                        dw      ONE_PLUS
+  4018 00:1755: xx xx 80 01                  dw      DO_LITERAL,DSTACK_END
+  4019 00:1759: xx xx                        dw      SWAP
+  4020 00:175B: xx xx xx xx                  dw      QUERY_DO_DO,DOT_S_2
+  4021 00:175F: xx xx        DOT_S_1:        dw      I
+  4022 00:1761: xx xx                        dw      FETCH
+  4023 00:1763: xx xx                        dw      DOT_WORD
+  4024 00:1765: xx xx 02 00                  dw      DO_LITERAL,2
+  4025 00:1769: xx xx                        dw      DO_PLUS_LOOP
+  4026 00:176B: xx xx                        dw      DOT_S_1
+  4027 00:176D: xx xx 7D 00  DOT_S_2:        dw      DO_LITERAL,'}'
+  4028 00:1771: xx xx                        dw      EMIT
+  4029 00:1773: xx xx                        dw      SPACE
+  4030 00:1775: xx xx                        dw      EXIT
+  4031                        
+  4032                        ; ? ( a-addr -- )
+  4033                        ;
+  4034                        ; Display the value stored at a-addr.
+  4035                        
+  Sun May  8 2016 22:10                                                                                                    Page 79
+
+
+  4036 00:1777: xx xx 00 01                  HEADER  1,"?",NORMAL
+       00:177B: 3F 
+  4037 00:177C: 20 xx xx                     jsr     DO_COLON
+  4038 00:177F: xx xx                        dw      FETCH
+  4039 00:1781: xx xx                        dw      DOT_WORD
+  4040 00:1783: xx xx                        dw      EXIT
+  4041                        
+  4042 00:1785: xx xx 00 03                  HEADER  3,"@DP",NORMAL
+       00:1789: 40 44 50 
+  4043                        AT_DP:
+  4044 00:178C: 0B                           phd
+  4045 00:178D: 7B                           tdc
+  4046 00:178E: 3A                           dec     a
+  4047 00:178F: 3A                           dec     a
+  4048 00:1790: 5B                           tcd
+  4049 00:1791: 68                           pla
+  4050 00:1792: 85 01                        sta     <1
+  4051 00:1794: BB C8 C8 7C                  CONTINUE
+       00:1798: 00 00 
+  4052                        
+  4053 00:179A: xx xx 00 03                  HEADER  3,"@RP",NORMAL
+       00:179E: 40 52 50 
+  4054                        AT_RP:
+  4055 00:17A1: 7B                           tdc
+  4056 00:17A2: 3A                           dec     a
+  4057 00:17A3: 3A                           dec     a
+  4058 00:17A4: 5B                           tcd
+  4059 00:17A5: BA                           tsx
+  4060 00:17A6: 86 01                        stx     <1
+  4061 00:17A8: BB C8 C8 7C                  CONTINUE
+       00:17AC: 00 00 
+  4062                        
+  4063                        
+  4064                        ;-------------------------------------------------------------------------------
+  4065                        
+  4066                                        include "device.asm"
      1                        ;==============================================================================
      2                        ;     _    _   _ ____    _____          _   _       _ ____   __  ____
      3                        ;    / \  | \ | / ___|  |  ___|__  _ __| |_| |__   ( )___ \ / /_| ___|
@@ -4695,11 +4815,11 @@
     18                        ;
     19                        ;==============================================================================
     20                        ; Notes:
-  Sat May  7 2016 20:07                                                                                                    Page 78
-
-
     21                        ;
     22                        ;------------------------------------------------------------------------------
+  Sun May  8 2016 22:10                                                                                                    Page 80
+
+
     23                        
     24                        		include	"w65c265.inc"
      1                        ;===============================================================================
@@ -4756,11 +4876,11 @@
     52             0000DF25   PDD5            equ     $00DF25         ; Port 5 Data Direction Register
     53             0000DF26   PDD6            equ     $00DF26         ; Port 6 Data Direction Register
     54             0000DF27   PCS7            equ     $00DF27         ; Port 7 Chip Select
-  Sat May  7 2016 20:07                                                                                                    Page 79
-
-
     55                        
     56                        ;00DF28-3F --- Reserved uninitialized
+  Sun May  8 2016 22:10                                                                                                    Page 81
+
+
     57                        
     58             0000DF40   BCR             equ     $00DF40         ; Bus Control Register
     59             0000DF41   SSCR            equ     $00DF41         ; System Speed Control Register
@@ -4817,11 +4937,11 @@
    110             0000DF76   ACSR3           equ     $00DF76         ; UART 3 Control/Status Register
    111             0000DF77   ARTD3           equ     $00DF77         ; UART 3 Data Register
    112             0000DF78   PIBFR           equ     $00DF78         ; Parallel Interface Flag Register
-  Sat May  7 2016 20:07                                                                                                    Page 80
-
-
    113             0000DF79   PIBER           equ     $00DF79         ; Parallel Interface Enable Register
    114             0000DF7A   PIR2            equ     $00DF7A         ; Parallel Interface Register 2
+  Sun May  8 2016 22:10                                                                                                    Page 82
+
+
    115             0000DF7B   PIR3            equ     $00DF7B         ; Parallel Interface Register 3
    116             0000DF7C   PIR4            equ     $00DF7C         ; Parallel Interface Register 4
    117             0000DF7D   PIR5            equ     $00DF7D         ; Parallel Interface Register 5
@@ -4834,57 +4954,57 @@
     27                        ;
     28                        
     29                        ;               HEADER  7,"(TITLE)",NORMAL
-    30 00:1702: 20 xx xx     DO_TITLE:       jsr     DO_COLON
-    31 00:1705: xx xx                        dw      DO_S_QUOTE
-    32 00:1707: 1C 57 36 35                  db      28,"W65C265SXB ANS-Forth [16.05]"
-       00:170B: 43 32 36 35 
-       00:170F: 53 58 42 20 
-       00:1713: 41 4E 53 2D 
-       00:1717: 46 6F 72 74 
-       00:171B: 68 20 5B 31 
-       00:171F: 36 2E 30 35 
-       00:1723: 5D 
-    33 00:1724: xx xx                        dw      EXIT
+    30 00:17AE: 20 xx xx     DO_TITLE:       jsr     DO_COLON
+    31 00:17B1: xx xx                        dw      DO_S_QUOTE
+    32 00:17B3: 1C 57 36 35                  db      28,"W65C265SXB ANS-Forth [16.05]"
+       00:17B7: 43 32 36 35 
+       00:17BB: 53 58 42 20 
+       00:17BF: 41 4E 53 2D 
+       00:17C3: 46 6F 72 74 
+       00:17C7: 68 20 5B 31 
+       00:17CB: 36 2E 30 35 
+       00:17CF: 5D 
+    33 00:17D0: xx xx                        dw      EXIT
     34                        
     35                        ; BYE ( -- )
     36                        ;
     37                        ; Return control to the host operating system, if any.
     38                        
-    39 00:1726: xx xx 00 03                  HEADER  3,"BYE",NORMAL
-       00:172A: 42 59 45 
+    39 00:17D2: xx xx 00 03                  HEADER  3,"BYE",NORMAL
+       00:17D6: 42 59 45 
     40                        BYE:
-    41 00:172D: 78                           sei			; Restore control to the Mensch Monitor
-    42 00:172E: D8                           cld
-    43 00:172F: 38 FB                        emulate
-    44 00:1731: A9 80        		lda	#1<<7		; Ename the WDC ROM
-    45 00:1733: 1C 40 DF     		trb	BCR
-    46 00:1736: 6C FC FF                     jmp     ($fffc)         ; Reset the processor
+    41 00:17D9: 78                           sei			; Restore control to the Mensch Monitor
+    42 00:17DA: D8                           cld
+    43 00:17DB: 38 FB                        emulate
+    44 00:17DD: A9 80        		lda	#1<<7		; Ename the WDC ROM
+    45 00:17DF: 1C 40 DF     		trb	BCR
+    46 00:17E2: 6C FC FF                     jmp     ($fffc)         ; Reset the processor
     47                        
     48                        ; UNUSED ( -- u )
     49                        ;
     50                        ; u is the amount of space remaining in the region addressed by HERE , in
     51                        ; address units.
     52                        
-    53 00:1739: xx xx 00 06                  HEADER  6,"UNUSED",NORMAL
-       00:173D: 55 4E 55 53 
-       00:1741: 45 44 
-    54 00:1743: 20 xx xx     UNUSED:         jsr     DO_COLON
-    55 00:1746: xx xx 00 80                  dw      DO_LITERAL,$8000
-    56 00:174A: xx xx                        dw      HERE
-    57 00:174C: xx xx                        dw      MINUS
-    58 00:174E: xx xx                        dw      EXIT
+    53 00:17E5: xx xx 00 06                  HEADER  6,"UNUSED",NORMAL
+       00:17E9: 55 4E 55 53 
+       00:17ED: 45 44 
+    54 00:17EF: 20 xx xx     UNUSED:         jsr     DO_COLON
+    55 00:17F2: xx xx 00 80                  dw      DO_LITERAL,$8000
+    56 00:17F6: xx xx                        dw      HERE
+    57 00:17F8: xx xx                        dw      MINUS
+    58 00:17FA: xx xx                        dw      EXIT
     59                        
     60                        ;-------------------------------------------------------------------------------
-  3962                                        
-  3963                        ;-------------------------------------------------------------------------------
-  3964                        
-  Sat May  7 2016 20:07                                                                                                    Page 81
+  4067                        
+  4068                        ;-------------------------------------------------------------------------------
+  4069                        
+  4070 00:17FC: xx xx                        TRAILER
+  4071                        
+  Sun May  8 2016 22:10                                                                                                    Page 83
 
 
-  3965 00:1750: xx xx                        TRAILER
-  3966                                        
-  3967                        		end
+  4072                                        end
 
 
-      Lines assembled: 5874
+      Lines assembled: 6019
       Errors: 0

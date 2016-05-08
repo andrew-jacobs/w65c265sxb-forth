@@ -44,7 +44,7 @@
                 longa   off
 
                 include "w65c816.inc"
-                
+
 ;===============================================================================
 ; Macros
 ;-------------------------------------------------------------------------------
@@ -120,9 +120,9 @@ PAD_SIZE        equ     48
 
 USER_AREA       equ     $0000                   ; User variable area
 TIB_AREA        equ     USER_AREA+USER_SIZE     ; Terminal Input Buffer
-PAD_AREA        equ     TIB_AREA+TIB_SIZE       ; Scratch pad   
+PAD_AREA        equ     TIB_AREA+TIB_SIZE       ; Scratch pad
 PAD_END         equ     PAD_AREA+PAD_SIZE
-                
+
 DSTACK_START    equ     $0100
 DSTACK_END      equ     DSTACK_START+DSTACK_SIZE
 
@@ -2974,7 +2974,10 @@ SEARCH:         jsr     DO_COLON
                 dw      DROP
                 dw      EXIT
 
-; .(
+; .( ( “ccc<paren>” -- )
+;
+; Parse and display ccc delimited by ) (right parenthesis). .( is an immediate
+; word.
 
                 HEADER  2,".(",IMMEDIATE
 DOT_PAREN:      jsr     DO_COLON
@@ -2984,7 +2987,10 @@ DOT_PAREN:      jsr     DO_COLON
                 dw      TYPE
                 dw      EXIT
 
-; ." ( -- )
+; ." ( “ccc<quote>” -- )
+;
+; Parse ccc delimited by " (double-quote). Append the run-time semantics given
+; below to the current definition.
 
                 LINK    IMMEDIATE
                 db      2,".",'"'
@@ -3031,6 +3037,28 @@ DO_PLOOP_END:   iny                             ; Skip over address
                 pla
                 CONTINUE                        ; Done
 
+; ' ( -- xt )
+;
+; Skip leading space delimiters. Parse name delimited by a space. Find name and
+; return xt, the execution token for name. An ambiguous condition exists if name
+; is not found.
+;
+; In this implementation it is defined as:
+;
+;   BL WORD FIND 0= IF ." ?" ABORT THEN
+
+                HEADER  1,"'",NORMAL
+TICK:           jsr     DO_COLON
+                dw      BL
+                dw      WORD
+                dw      FIND
+                dw      ZERO_EQUAL
+                dw      QUERY_BRANCH,TICK_1
+                dw      DO_S_QUOTE
+                db      1,"?"
+                dw      ABORT
+TICK_1:         dw      EXIT
+
 ; : ( -- )
 
                 HEADER  1,":",NORMAL
@@ -3068,7 +3096,7 @@ SEMICOLON:      jsr     DO_COLON
                 dw      LEFT_BRACKET
                 dw      EXIT
 
-; ?DO ( -- )
+; ?DO ( -- jump orig )
 
                 HEADER  3,"?DO",IMMEDIATE
 QUERY_DO:       jsr     DO_COLON
@@ -3173,7 +3201,7 @@ ABORT_QUOTE:    jsr     DO_COLON
                 dw      COMMA
                 dw      EXIT
 
-; AGAIN ( -- )
+; AGAIN ( orig -- )
                 HEADER  5,"AGAIN",IMMEDIATE
 AGAIN:          jsr     DO_COLON
                 dw      DO_LITERAL,BRANCH
@@ -3181,11 +3209,23 @@ AGAIN:          jsr     DO_COLON
                 dw      COMMA
                 dw      EXIT
 
-; BEGIN ( -- )
+; BEGIN ( -- orig )
 
                 HEADER  5,"BEGIN",IMMEDIATE
 BEGIN:          jsr     DO_COLON
                 dw      HERE
+                dw      EXIT
+
+; CHAR ( -- char )
+;
+;   BL WORD 1+ C@
+
+                HEADER  4,"CHAR",NORMAL
+CHAR:           jsr     DO_COLON
+                dw      BL
+                dw      WORD
+                dw      ONE_PLUS
+                dw      C_FETCH
                 dw      EXIT
 
 ; CONSTANT ( x “<spaces>name” -- )
@@ -3211,7 +3251,7 @@ DO_CONSTANT:
                 sta     <1
                 CONTINUE                        ; Done
 
-; DO ( -- )
+; DO ( -- 0 orig )
 
                 HEADER  2,"DO",IMMEDIATE
 DO:             jsr     DO_COLON
@@ -3234,7 +3274,7 @@ DO_DO:
                 tcd
                 CONTINUE
 
-; ELSE ( -- )
+; ELSE ( jump -- jump' )
 
                 HEADER  4,"ELSE",IMMEDIATE
 ELSE:           jsr     DO_COLON
@@ -3253,7 +3293,7 @@ BRANCH:
                 tay
                 CONTINUE                        ; Done
 
-; IF ( -- )
+; IF ( -- jump )
 
                 HEADER  2,"IF",IMMEDIATE
 IF:             jsr     DO_COLON
@@ -3309,7 +3349,7 @@ DO_LITERAL:
                 iny
                 CONTINUE                        ; Done
 
-; LOOP
+; LOOP ( jump orig -- )
 
                 HEADER  4,"LOOP",IMMEDIATE
 LOOP:           jsr     DO_COLON
@@ -3325,7 +3365,6 @@ LOOP_1:         dw      EXIT
 
 ; (LOOP)
 
-;               HEADER  6,"(LOOP)",NORMAL
 DO_LOOP
                 lda     1,s                     ; Add one to loop counter
                 inc     a
@@ -3382,6 +3421,19 @@ RECURSE:        jsr     DO_COLON
                 dw      COMMA
                 dw      EXIT
 
+; REPEAT ( orig jump -- )
+
+                HEADER  6,"REPEAT",IMMEDIATE
+REPEAT:         jsr     DO_COLON
+                dw      SWAP
+                dw      DO_LITERAL,BRANCH
+                dw      COMMA
+                dw      COMMA
+                dw      HERE
+                dw      SWAP
+                dw      STORE
+                dw      EXIT
+
 ; S"
 
                 LINK    IMMEDIATE
@@ -3409,7 +3461,7 @@ DO_S_QUOTE:
                 dw      TO_R
                 dw      EXIT
 
-; THEN ( -- )
+; THEN ( orig -- )
 
                 HEADER  4,"THEN",IMMEDIATE
 THEN:           jsr     DO_COLON
@@ -3418,7 +3470,7 @@ THEN:           jsr     DO_COLON
                 dw      STORE
                 dw      EXIT
 
-; UNTIL ( -- )
+; UNTIL ( orig -- )
 
                 HEADER  5,"UNTIL",IMMEDIATE
 UNTIL:          jsr     DO_COLON
@@ -3437,7 +3489,6 @@ USER:           jsr     DO_COLON
                 dw      COMMA
                 dw      EXIT
 
-                HEADER  6,"(USER)",NORMAL
 DO_USER:
                 tdc
                 dec     a                       ; Push on data stack
@@ -3477,6 +3528,17 @@ DO_VARIABLE:
                 sta     <1
                 CONTINUE
 
+; WHILE ( orig -- orig jump )
+
+                HEADER  5,"WHILE",IMMEDIATE
+WHILE:          jsr     DO_COLON
+                dw      DO_LITERAL,QUERY_BRANCH
+                dw      COMMA
+                dw      HERE
+                dw      ZERO
+                dw      COMMA
+                dw      EXIT
+
 ; WORDS ( -- )
 ;
 ;   LATEST @ BEGIN
@@ -3512,6 +3574,28 @@ LEFT_BRACKET:   jsr     DO_COLON
                 dw      ZERO
                 dw      STATE
                 dw      STORE
+                dw      EXIT
+
+; [']
+
+                HEADER  3,"[']",IMMEDIATE
+                jsr     DO_COLON
+                dw      TICK
+                dw      DO_LITERAL,DO_LITERAL
+                dw      COMMA
+                dw      COMMA
+                dw      EXIT
+
+; [CHAR]
+;
+;   CHAR ['] LIT ,XT  , ; IMMEDIATE
+
+                HEADER  6,"[CHAR]",IMMEDIATE
+                jsr     DO_COLON
+                dw      CHAR
+                dw      DO_LITERAL,DO_LITERAL
+                dw      COMMA
+                dw      COMMA
                 dw      EXIT
 
 ; \ ( -- )
@@ -3597,6 +3681,27 @@ KEY:
                 tax
                 tdc
                 dec     a                       ; And push to stack
+                dec     a
+                tcd
+                stx     <1
+                CONTINUE                        ; Done
+
+; KEY? ( -- flag )
+;
+; If a character is available, return true. Otherwise, return false. If
+; non-character keyboard events are available before the first valid character,
+; they are discarded and are subsequently unavailable. The character shall be
+; returned by the next execution of KEY.
+
+                HEADER  4,"KEY?",NORMAL
+                extern  UartRxTest
+KEY_QUERY:
+                jsr     UartRxTest              ; Determine if any data is
+                ldx     #0                      ; .. available
+                bcc     $+3
+                dex
+                tdc                             ; And push to stack
+                dec     a
                 dec     a
                 tcd
                 stx     <1
@@ -3959,9 +4064,9 @@ AT_RP:
 ;-------------------------------------------------------------------------------
 
                 include "device.asm"
-                
+
 ;-------------------------------------------------------------------------------
 
                 TRAILER
-                
-		end
+
+                end
